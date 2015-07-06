@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def register
-    passhash = Digest::SHA1.hexdigest(params[:password])
+    passhash = password_encryption(params[:password])
     @user = User.new(email: params[:email],
                      password: passhash)
     if @user.save
@@ -40,5 +40,15 @@ class UsersController < ApplicationController
       render json: {message: "Wrong email/password"},
              status: :unprocessable_entity
     end
+  end
+
+  private
+  def password_encryption(password)
+    if !password.nil? && password != ""
+      result = Digest::SHA1.hexdiget(password)
+    else
+      result = nil
+    end
+    result
   end
 end

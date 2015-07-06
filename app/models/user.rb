@@ -4,10 +4,8 @@ class User < ActiveRecord::Base
   PASSWORD_REGEX = /(?=.*[a-zA-Z])(?=.*[0-9]).{4,}/
 
   validates :password, format: { with: PASSWORD_REGEX,
-                                 message: "The password's first character must be a letter,"\
-                                           " it must contain at least 4 characters and no more"\
-                                           " than 15 characters and no characters other than"\
-                                           " letters, numbers and the underscore may be used"}
+                                 message: "The password must contain at least 4 characters"\
+                                           " and must contain at least one number"}
   validates :password, :access_token, presence: true
   validates :email, uniqueness: true, presence: true
   validates :email, format: { with: EMAIL_REGEX,
