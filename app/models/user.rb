@@ -1,15 +1,15 @@
 class User < ActiveRecord::Base
 
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-  PASSWORD_REGEX = /(?=.*[a-zA-Z])(?=.*[0-9]).{4,}/
+  PW_REGEX = /\A(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}\z/
 
-  validates :password, format: { with: PASSWORD_REGEX,
+  validates :password, format: { with: PW_REGEX,
                                  message: "must contain at least 4 characters"\
-                                          " and at least one number"}
-  validates :password, :email, :access_token, presence: true
+                                          " and at least one number" }
+  validates :email, :password, :access_token, presence: true
 
   validates :email, uniqueness: true, format: { with: EMAIL_REGEX,
-                                                message: "is not a valid email." }
+                                                message: "is not a valid email" }
 
   before_validation :ensure_access_token
 
