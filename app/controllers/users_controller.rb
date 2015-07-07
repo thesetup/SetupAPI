@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   private
   def password_encryption(password)
     if !password.nil? && password != ""
-      result = Digest::SHA1.hexdiget(password)
+      result = Digest::SHA1.hexdigest(password)
     else
       result = nil
     end
