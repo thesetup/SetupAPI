@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :password, format: { with: PW_REGEX,
                                  message: " must be at least 8 characters and include: at least one"\
                                           " capital letter, one lower case letter and one number"\
-                                          " or special character. " }
+                                          " or special character." }
 
   validates :email, uniqueness: true, format: { with: EMAIL_REGEX,
                                                 message: "is not a valid email" }
