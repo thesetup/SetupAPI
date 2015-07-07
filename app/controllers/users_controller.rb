@@ -4,10 +4,7 @@ class UsersController < ApplicationController
     @user = User.all
     render json: { user: @user.as_json(only: [:id, :email]) },
            status: :ok
-
   end
-
-
 
   def show
     @user = User.find(params[:user_id])
@@ -33,7 +30,6 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email], password: passhash)
 
     if @user
-      # render json "register.json.jbuilder", status: :created
       render json: { user: @user.as_json(only: [:id, :email, :access_token]) },
              status: :ok
     else
