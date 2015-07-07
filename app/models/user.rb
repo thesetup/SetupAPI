@@ -4,18 +4,16 @@ class User < ActiveRecord::Base
   PW_REGEX = /\A(?-i)(?=^.{8,}$)((?!.*\s)(?=.*[A-Z])(?=.*[a-z]))((?=(.*\d){1,})|(?=(.*\W){1,}))^.*$\z/
 
   before_save :hash_password
-
-  # validates :password, length: {is: 2}
+  before_validation :ensure_access_token
 
   validates :password, format: { with: PW_REGEX,
-                                 message: "Password must have at least 8 characters with at least one"\
-                                          " Capital letter, one lower case letter and at least one number"\
-                                          " or special character."}
+                                 message: " must be at least 8 characters and include: at least one"\
+                                          " capital letter, one lower case letter and one number"\
+                                          " or special character." }
 
   validates :email, uniqueness: true, format: { with: EMAIL_REGEX,
                                                 message: "is not a valid email" }
 
-  before_validation :ensure_access_token
 
   def hash_password
     self.password = Digest::SHA1.hexdigest(password)

@@ -12,7 +12,6 @@ class UsersController < ApplicationController
   end
 
   def register
-    # passhash = password_encryption(params[:password])
     @user = User.new(email: params[:email],
                      password: params[:password])
     if @user.save
@@ -20,16 +19,14 @@ class UsersController < ApplicationController
       render json: { user: @user.as_json(only: [:id, :email, :access_token]) },
              status: :created
     else
-      # binding.pry
+
       render json: { errors: @user.errors.full_messages },
              status: :unprocessable_entity
     end
   end
 
   def login
-    # passhash = Digest::SHA1.hexdigest(params[:password])
     @user = User.find_by(email: params[:email], password: params[:password])
-
     if @user
       render json: { user: @user.as_json(only: [:id, :email, :access_token]) },
              status: :ok
@@ -39,13 +36,4 @@ class UsersController < ApplicationController
     end
   end
 
-  # private
-  # def password_encryption(password)
-  #   if !password.nil? && password != ""
-  #     result = Digest::SHA1.hexdigest(password)
-  #   else
-  #     result = nil
-  #   end
-  #   result
-  # end
 end
