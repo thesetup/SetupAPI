@@ -27,4 +27,5 @@ class ProfilesController < ApplicationController
     render json: @profile,
            status: :ok
   end
+
 end
