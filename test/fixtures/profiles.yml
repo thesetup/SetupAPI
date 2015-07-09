@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  profiler_id: 1
+  profilee_id: 1
+
+two:
+  profiler_id: 1
+  profilee_id: 1
