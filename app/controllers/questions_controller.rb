@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_with_token!
 
   def index
     @questions = Question.all
@@ -34,14 +34,6 @@ class QuestionsController < ApplicationController
                              profile_id: params[:profile_id])
     render json: @question
 
-    # respond_to do |format|
-    #   if @question.save
-    #     format.html { redirect_to @question, notice: 'Question was successfully created.' }
-    #     format.json { render :show, status: :created, location: @question }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @question.errors, status: :unprocessable_entity }
-    #   end
   end
 
 

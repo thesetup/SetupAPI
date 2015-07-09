@@ -15,4 +15,10 @@ class ProfilesController < ApplicationController
                status: :unprocessable_entity
       end
     end
+
+    def index
+        @profile = Profile.all
+        render json: @profile.as_json,
+              status: :ok
+    end
 end
