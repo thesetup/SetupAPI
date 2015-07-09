@@ -11,10 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706191439) do
+ActiveRecord::Schema.define(version: 20150709140620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applications", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.string   "image_url"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "birthyear"
+    t.string   "gender"
+    t.string   "orientation"
+    t.string   "occupation"
+    t.string   "location"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -22,6 +47,15 @@ ActiveRecord::Schema.define(version: 20150706191439) do
     t.string   "access_token"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "username"
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.integer  "videoable_id"
+    t.string   "videoable_type"
+    t.string   "video_url"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end
