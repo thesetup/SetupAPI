@@ -39,4 +39,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def delete
+    @user = User.find(params[:user_id])
+    if @user == current_user
+      @user.destroy
+      render json: {message: "User deleted"},
+             status: :ok
+    else
+      render json: {message: "Only the author of an account may delete an account."},
+             status: :ok
+    end
+  end
+
 end

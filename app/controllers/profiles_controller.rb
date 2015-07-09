@@ -21,4 +21,10 @@ class ProfilesController < ApplicationController
     render json: @profile,
            status: :ok
   end
+
+  def show
+    @profile = Profile.find(params[:profile_id])
+    render json: @profile,
+           status: :ok
+  end
 end

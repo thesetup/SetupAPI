@@ -20,9 +20,11 @@ Rails.application.routes.draw do
   get 'users/:user_id', to: 'users#show'
   get 'users', to: 'users#index'
   post 'users/login', to: 'users#login'
+  delete 'users/:user_id', to: 'users#delete'
 
   post 'profiles/create', to: 'profiles#create'
   get 'profiles', to: 'profiles#index'
+  get 'profiles/:profile_id', to: 'profiles#show'
 
   resources :questions, except: [:destroy] 
   # Example resource route with options:
