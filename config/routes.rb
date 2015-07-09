@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index'
   post 'users/login', to: 'users#login'
 
-  resources :questions, except: [:destroy] 
+  resources :profiles
+  resources :questions, except: [:destroy]
   # Example resource route with options:
   #   resources :products do
   #     member do

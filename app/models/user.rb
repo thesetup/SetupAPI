@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true, format: { with: EMAIL_REGEX,
                                                 message: "is not a valid email" }
 
+  validates :username, uniqueness: true, presence: true
 
   def hash_password
     self.password = Digest::SHA1.hexdigest(password)
