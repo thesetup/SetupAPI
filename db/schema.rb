@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20150709155120) do
     t.string   "username"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
   create_table "videos", force: :cascade do |t|
     t.integer  "videoable_id"
