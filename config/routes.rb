@@ -20,6 +20,9 @@ Rails.application.routes.draw do
 
   post 'users/login', to: 'users#login'
 
+  post 'profiles/create', to: 'profiles#create'
+  get 'profiles', to: 'profiles#index'
+
   # Example resource route with options:
   #   resources :products do
   #     member do

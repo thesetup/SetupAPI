@@ -1,17 +1,28 @@
 class User < ActiveRecord::Base
 
+  after_create :create_profile
+
+  has_many :created_profiles, foreign_key: 'profiler_id', class_name: 'Profile'
+  has_one :profile, foreign_key: 'profilee_id', class_name: 'Profile'
+
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-  PASSWORD_REGEX = /(?=.*[a-zA-Z])(?=.*[0-9]).{4,}/
+  PW_REGEX = /\A(?-i)(?=^.{8,}$)((?!.*\s)(?=.*[A-Z])(?=.*[a-z]))((?=(.*\d){1,})|(?=(.*\W){1,}))^.*$\z/
 
-  validates :password, format: { with: PASSWORD_REGEX,
-                                 message: "The password must contain at least 4 characters"\
-                                           " and must contain at least one number"}
-  validates :password, :access_token, presence: true
-  validates :email, uniqueness: true, presence: true
-  validates :email, format: { with: EMAIL_REGEX,
-                              message: "is not a valid email." }
-
+  before_save :hash_password
   before_validation :ensure_access_token
+
+  validates :password, format: { with: PW_REGEX,
+                                 message: " must be at least 8 characters and include: at least one"\
+                                          " capital letter, one lower case letter and one number"\
+                                          " or special character." }
+
+  validates :email, uniqueness: true, format: { with: EMAIL_REGEX,
+                                                message: "is not a valid email" }
+
+
+  def hash_password
+    self.password = Digest::SHA1.hexdigest(password)
+  end
 
   def ensure_access_token
     if self.access_token.blank?
