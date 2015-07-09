@@ -13,7 +13,8 @@ class UsersController < ApplicationController
   end
 
   def register
-    @user = User.new(email: params[:email],
+    @user = User.new(username: params[:username],
+                     email: params[:email],
                      password: params[:password])
     if @user.save
       # render json "register.json.jbuilder", status: :created
