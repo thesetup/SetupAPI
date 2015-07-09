@@ -16,9 +16,16 @@ class ProfilesController < ApplicationController
       end
     end
 
-    def index
-        @profile = Profile.all
-        render json: @profile.as_json,
-              status: :ok
-    end
+  def index
+    @profile = Profile.all
+    render json: @profile,
+           status: :ok
+  end
+
+  def show
+    @profile = Profile.find(params[:profile_id])
+    render json: @profile,
+           status: :ok
+  end
+
 end
