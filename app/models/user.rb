@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
 
   before_save :hash_password
   before_validation :ensure_access_token
-
   validates :password, format: { with: PW_REGEX,
                                  message: " must be at least 8 characters and include: at least one"\
                                           " capital letter, one lower case letter and one number"\
