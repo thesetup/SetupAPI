@@ -1,4 +1,4 @@
-#User
+#USER
 
 ###Register
 
@@ -10,10 +10,17 @@
 
 ###Delete
 
-#Profile
+#PROFILE
 
 ###Create
 ```POST``` '/profiles'
+
+In creating a profile you become a profiler.  You must enter the email address of your friend, the profilee. 
+
+######Params:
+	
+
+* email (of your friend)
 
 Example Success:
 
@@ -36,9 +43,20 @@ In this API you MAY NOT create a profile for yourself.
     "Profilee cannot be same as Profiler"
  	]
 	}
+	
+###Show
+```GET``` '/profiles/:id'
+
+This endpoint will show a given profile.
+
+Example Success:	
+Example Failure:
+
 
 ###Index
 ```GET``` '/profiles'
+
+You can fetch all profiles at this endpoint.
 
 Example Success:
 
@@ -67,11 +85,49 @@ Example Success:
   }
 ]
 ```
+Example Failure:
+
+###Edit
+In this version of the app., there should be no need to change either the profiler or profilee of a profile.
+
+###Delete
+```DELETE``` '/profiles/:id'
+
+Only the profiler can delete a profile.  A profilee cannot delete the profile created about her, but may delete other profiles for whom she is the profiler.
+
+Example Success:
+
+Example Failure:
+
+#QUESTION
+The 'Question' model is merely a form of boilerplate data points that must be supplied in order to create a profile.
+
+###Create
+```POST``` '/profiles/:profile_id/questions'
+
+```Params:``` 
+ 
+* name
+* email
+* birthyear
+* gender 
+* orientation
+* occupation 
+* location
+* profile_id
+
+
+Example Success:
+
+Example Failure:
 
 
 ###Edit
+```GET``` '/profiles/:profile_id/questions/:id/edit'
 
-###Delete
-
-#Question
-
+###Update
+```PUT``` '/profiles/:profile_id/questions/:id/edit'
+###Index
+```GET``` '/profiles/:profile_id/questions'
+###Show
+```GET``` '/profiles/:profile_id/questions/:id'
