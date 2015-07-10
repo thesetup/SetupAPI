@@ -24,15 +24,23 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(name: params[:name],
-                             email: params[:email],
-                             birthyear: params[:birthyear],
-                             gender: params[:gender],
-                             orientation: params[:orientation],
-                             occupation: params[:occupation],
-                             location: params[:location],
-                             profile_id: params[:profile_id])
-    render json: @question
+    # @user = User.find_by!(email: params[:email])
+    @profile = Profile.find(params[:profile_id])
+    @question = @profile.question.new(name: params[:name],
+                                      email: params[:email],
+                                      birthyear: params[:birthyear],
+                                      gender: params[:gender],
+                                      orientation: params[:orientation],
+                                      occupation: params[:occupation],
+                                      location: params[:location])
+                                      binding.pry
+      if @question.save
+        render json: @question.as_json,
+             status: :created
+      else
+        render json: {errors: @question.errors.full_messages},
+             status: :unprocessable_entity
+      end
 
   end
 
