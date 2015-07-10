@@ -6,7 +6,8 @@ class ProfilesController < ApplicationController
       @user = User.find_by!(email: params[:email])
       @profile = Profile.new(profilee_id: @user.id,
                              profiler_id: current_user.id)
-                          #   binding.pry
+        #### something isn't working with the validation to prevent a
+        #### profiler and profilee having the same id
       if @profile.save
         render json: @profile.as_json,
                status: :created
