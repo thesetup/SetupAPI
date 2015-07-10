@@ -33,6 +33,7 @@ Example Success:
   "updated_at": "2015-07-09T19:13:43.741Z"
 }
 ```
+Status Code: 201 Created
 
 Example Failure:
 
@@ -44,6 +45,7 @@ In this API you MAY NOT create a profile for yourself.
  	]
 	}
 
+Status Code: 422 Unprocessable Entity
 ###Show
 ```GET``` '/profiles/:id'
 

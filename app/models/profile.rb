@@ -5,5 +5,9 @@ class Profile < ActiveRecord::Base
   validates_uniqueness_of :profilee_id, scope: :profiler_id,
                            message: 'cannot be same as Profiler.'
 
-  # validates_uniqueness_of :profilee_id, scope: :profiler_id
+
+  validates_uniqueness_of :profiler_id, scope: :profilee_id
+  ###currently a user is able to create a profile for himself
+  has_many :questions
+
 end

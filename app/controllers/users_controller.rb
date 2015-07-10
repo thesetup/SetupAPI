@@ -47,7 +47,7 @@ class UsersController < ApplicationController
              status: :ok
     else
       render json: {message: "Only the author of an account may delete an account."},
-             status: :ok
+             status: :unauthorized
     end
   end
 
