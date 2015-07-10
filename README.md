@@ -99,6 +99,8 @@ Example Failure:
 
 #QUESTION
 
+The 'Question' model is merely a form of boilerplate data points that must be supplied in order to create a profile.
+
 ###Create
 ```POST``` '/profiles/:profile_id/questions'
 
