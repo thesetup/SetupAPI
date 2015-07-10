@@ -26,10 +26,6 @@ Rails.application.routes.draw do
     resources :questions, except: [:destroy]
   end
 
-  post 'profiles', to: 'profiles#create_question'
-  post 'profiles', to: 'profiles#create_video'
-  post 'profiles', to: 'profiles#create_image'
-  
   # Example resource route with options:
   #   resources :products do
   #     member do

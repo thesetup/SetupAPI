@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
                                           " capital letter, one lower case letter and one number"\
                                           " or special character." }
 
-  validates :email, uniqueness: true, format: { with: EMAIL_REGEX,
-                                                message: "is not a valid email" }
+  validates :email, uniqueness: true, presence: true, format: { with: EMAIL_REGEX,
+                                                      message: "is not a valid email" }
 
   validates :username, uniqueness: true, presence: true
 
