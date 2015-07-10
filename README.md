@@ -24,7 +24,7 @@ Example Success:
       "created_at": "2015-07-08T19:39:46.161Z",
       "updated_at": "2015-07-08T19:39:46.161Z"
     }
-```    
+```
 
 Example Failures:
 
