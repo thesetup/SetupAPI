@@ -15,10 +15,10 @@
 ###Create
 ```POST``` '/profiles'
 
-In creating a profile you become a profiler.  You must enter the email address of your friend, the profilee. 
+In creating a profile you become a profiler.  You must enter the email address of your friend, the profilee.
 
 ######Params:
-	
+
 
 * email (of your friend)
 
@@ -26,7 +26,7 @@ Example Success:
 
 ```
 {
-  "id": 4,
+  "id": 3,
   "profiler_id": 2,
   "profilee_id": 2,
   "created_at": "2015-07-09T19:13:43.741Z",
@@ -43,6 +43,14 @@ In this API you MAY NOT create a profile for yourself.
     "Profilee cannot be same as Profiler"
  	]
 	}
+
+###Show
+```GET``` '/profiles/:id'
+
+	This endpoint will show a given profile.
+
+	Example Success:
+	Example Failure:
 
 ###Index
 ```GET``` '/profiles'
@@ -94,16 +102,20 @@ Example Failure:
 ###Create
 ```POST``` '/profiles/:profile_id/questions'
 
-```Params:``` 
- 
+```Params:```
+
 * name
 * email
 * birthyear
-* gender 
+* gender
 * orientation
-* occupation 
+* occupation
 * location
 * profile_id
+
+Example Success:
+
+Example Failure:
 
 ###Edit
 ```GET``` '/profiles/:profile_id/questions/:id/edit'
