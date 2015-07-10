@@ -22,9 +22,10 @@ Rails.application.routes.draw do
   post 'users/login', to: 'users#login'
   delete 'users/:user_id', to: 'users#delete'
 
-  resources :profiles do 
+  resources :profiles do
     resources :questions, except: [:destroy]
   end
+
   # Example resource route with options:
   #   resources :products do
   #     member do
