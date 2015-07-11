@@ -69,7 +69,7 @@ Example Failure:
     "message": "Wrong email/password"
   }
 ```
-Status code: :unprocessable_entity
+Status Code: :unprocessable_entity
 
 ###Index
 ```GET``` '/users'
