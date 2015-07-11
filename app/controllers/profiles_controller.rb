@@ -21,11 +21,11 @@ class ProfilesController < ApplicationController
                              occupation: params[:occupation],
                              location: params[:location])
 
-      @profile.videos.new(video_url: params[:video_url]),
-                          (videoable_type: params[:videoable_type])
+      @profile.videos.new(video_url: params[:video_url],
+                          videoable_type: params[:videoable_type])
 
-      @profile.images.new(image_url: params[:image_url]),
-                          (imageable_type: params[:imageable_type])
+      @profile.images.new(image_url: params[:image_url],
+                          imageable_type: params[:imageable_type])
 
         #### something isn't working with the validation to prevent a
         #### profiler and profilee having the same id
@@ -37,6 +37,8 @@ class ProfilesController < ApplicationController
                status: :unprocessable_entity
       end
     end
+
+      #### NEED TO USE JBUILDER TO RETURN JSON FOR VIDEO, IMAGE AND QUESTION OBJECTS.
 
     def index
       @profile = Profile.all
