@@ -9,7 +9,7 @@ class Profile < ActiveRecord::Base
   validates_uniqueness_of :profiler_id, scope: :profilee_id
   ###currently a user is able to create a profile for himself
   has_many :questions
-  has_many :videos
-  has_many :images
+  has_many :videos, as: :videoable
+  has_many :images, as: :imageable
 
 end
