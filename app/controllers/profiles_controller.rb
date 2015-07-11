@@ -3,8 +3,12 @@ class ProfilesController < ApplicationController
   before_action :authenticate_with_token!
 
     def create
-      @user = User.new(email: params[:email],
-                       password: params[:password])
+      ###This creates a profile using a temporary password and username
+      ###that the profilee may then change later.
+
+      @user = User.find_or_create_by!(email: params[:email],
+                                      password: params[:password],
+                                      username: params[:username])
 
       @profile = Profile.new(profilee_id: @user.id,
                              profiler_id: current_user.id)
@@ -16,6 +20,13 @@ class ProfilesController < ApplicationController
                              orientation: params[:orientation],
                              occupation: params[:occupation],
                              location: params[:location])
+
+      @profile.videos.new(video_url: params[:video_url]),
+                          (videoable_type: params[:videoable_type])
+
+      @profile.images.new(image_url: params[:image_url]),
+                          (imageable_type: params[:imageable_type])
+
         #### something isn't working with the validation to prevent a
         #### profiler and profilee having the same id
       if @profile.save

@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
                                                       message: "is not a valid email" }
 
   validates :username, uniqueness: true, presence: true
+  has_many :profiles
 
   def hash_password
     self.password = Digest::SHA1.hexdigest(password)
