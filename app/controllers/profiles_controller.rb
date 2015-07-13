@@ -45,6 +45,7 @@ class ProfilesController < ApplicationController
       @image = Image.all
       @video = Video.all
       @question = Question.all
+      render 'index.json.jbuilder'
     end
 
     def show
