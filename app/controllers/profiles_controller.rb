@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
       @profile = Profile.new(profilee_id: @profilee.id,
                              profiler_id: current_user.id)
 
-      @profile.questions.new(birthyear: params[:birthYear],
+      @profile.questions.new(birthyear: params[:birthyear],
                              email: params[:email],
                              name: params[:username],
                              gender: params[:gender],
