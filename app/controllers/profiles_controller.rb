@@ -15,7 +15,6 @@ class ProfilesController < ApplicationController
 
       @profile.questions.new(birthyear: params[:birthyear],
                              email: params[:email],
-                             username: params[:username],
                              name: params[:name],
                              gender: params[:gender],
                              orientation: params[:orientation],
