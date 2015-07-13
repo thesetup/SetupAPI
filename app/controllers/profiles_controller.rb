@@ -30,8 +30,7 @@ class ProfilesController < ApplicationController
                           ##a Profile.
 
       if @profile.save
-        render json: @profile.as_json,
-               status: :created
+        render :create
       else
         render json: {errors: @profile.errors.full_messages},
                status: :unprocessable_entity
@@ -42,8 +41,9 @@ class ProfilesController < ApplicationController
 
     def index
       @profile = Profile.all
-      render json: @profile,
-           status: :ok
+      @image = Image.all
+      @video = Video.all
+      @question = Question.all
     end
 
     def show
