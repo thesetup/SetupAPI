@@ -85,7 +85,7 @@ Example Success:
       "access_token": "1c4864db5ee70e4af3d3a7702966b254",
       "created_at": "2015-07-08T19:18:05.400Z",
       "updated_at": "2015-07-08T19:18:05.400Z",
-      "username": null
+      "username": mpoppins
     },
     {
       "id": 2,
