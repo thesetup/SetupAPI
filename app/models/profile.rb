@@ -2,7 +2,7 @@ class Profile < ActiveRecord::Base
   belongs_to :user, foreign_key: 'profilee_id', class_name: User
   belongs_to :author, foreign_key: 'profiler_id', class_name: User
 
-  validates :profilee_id, uniqueness: { scope: :profiler_id}
+  validates :profilee_id, uniqueness: { scope: :profiler_id }
 
 
   #validates_uniqueness_of :profiler_id, scope: :profilee_id
