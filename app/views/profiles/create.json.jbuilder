@@ -1,4 +1,4 @@
-json.profiles Profile.last
-json.questions Question.last
-json.videos Video.last
-json.images Image.last
+json.profiles @profile
+json.questions @profile.questions
+json.videos @profile.videos
+json.images @profile.images
