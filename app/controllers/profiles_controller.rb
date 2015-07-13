@@ -6,16 +6,17 @@ class ProfilesController < ApplicationController
       ###This creates a profile using a temporary password and username
       ###that the profilee may then change later.
 
-      @user = User.find_or_create_by!(email: params[:email],
-                                      password: params[:password],
-                                      username: params[:username])
+      @profilee = User.create(email: params[:email],
+                              password: params[:password],
+                              username: params[:username])
 
-      @profile = Profile.new(profilee_id: @user.id,
+      @profile = Profile.new(profilee_id: @profilee.id,
                              profiler_id: current_user.id)
+                             #### something isn't working with the validation to prevent a
+                             #### profiler and profilee having the same id
 
-      @profile.questions.new(name: params[:name],
-                             email: params[:email],
-                             birthyear: params[:birthyear],
+      @profile.questions.new(birthyear: params[:birthyear],
+                             name: params[:name],
                              gender: params[:gender],
                              orientation: params[:orientation],
                              occupation: params[:occupation],
@@ -27,8 +28,6 @@ class ProfilesController < ApplicationController
       @profile.images.new(image_url: params[:image_url],
                           imageable_type: params[:imageable_type])
 
-        #### something isn't working with the validation to prevent a
-        #### profiler and profilee having the same id
       if @profile.save
         render json: @profile.as_json,
                status: :created

@@ -5,15 +5,15 @@ class User < ActiveRecord::Base
 
   before_save :hash_password
   before_validation :ensure_access_token
-  validates :password, format: { with: PW_REGEX,
-                                 message: " must be at least 8 characters and include: at least one"\
-                                          " capital letter, one lower case letter and one number"\
-                                          " or special character." }
+    validates :password, format: { with: PW_REGEX,
+                                   message: " must be at least 8 characters and include: at least one"\
+                                            " capital letter, one lower case letter and one number"\
+                                            " or special character." }
 
-  validates :email, uniqueness: true, presence: true, format: { with: EMAIL_REGEX,
-                                                      message: "is not a valid email" }
+    validates :email, uniqueness: true, presence: true, format: { with: EMAIL_REGEX,
+                                                        message: "is not a valid email" }
 
-  validates :username, uniqueness: true, presence: true
+    validates :username, uniqueness: true, presence: true
   has_many :profiles
 
   def hash_password
