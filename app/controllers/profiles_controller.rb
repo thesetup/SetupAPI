@@ -13,9 +13,9 @@ class ProfilesController < ApplicationController
       @profile = Profile.new(profilee_id: @profilee.id,
                              profiler_id: current_user.id)
 
-      @profile.questions.new(birthyear: params[:birthyear],
+      @profile.questions.new(birthyear: params[:birthYear],
                              email: params[:email],
-                             name: params[:name],
+                             name: params[:username],
                              gender: params[:gender],
                              orientation: params[:orientation],
                              occupation: params[:occupation],
@@ -31,7 +31,7 @@ class ProfilesController < ApplicationController
                           ##a Profile.
 
       if @profile.save
-        render :create
+        render 'create.json.jbuilder'
       else
         render json: {errors: @profile.errors.full_messages},
                status: :unprocessable_entity
