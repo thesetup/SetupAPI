@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
 
   before_action :authenticate_with_token!
 
+
     def create
       ###This creates a profile using a temporary password and username
       ###that the profilee may then change later.
@@ -29,6 +30,7 @@ class ProfilesController < ApplicationController
 
                           ##I don't think Videos and Images are being saved to
                           ##a Profile.
+
 
       if @profile.save
         render 'create.json.jbuilder'
