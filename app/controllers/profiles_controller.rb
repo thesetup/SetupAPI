@@ -53,9 +53,20 @@ class ProfilesController < ApplicationController
     end
 
     def show
-      @profile = Profile.find(params[:profile_id])
-      render json: @profile,
-           status: :ok
+      @profile = Profile.find(params[:id])
+      render 'show.json.jbuilder', status: :ok
+    end
+
+    def destroy
+      @profile = Profile.find(params[:id])
+        if @profile.author == current_user
+          @profile.destroy
+          render json: {message: "Profile deleted."},
+                 status: :ok
+        else
+          render json: {message: "Only the author of a profile may delete a profile."},
+                 status: :unauthorized
+        end
     end
 
 end
