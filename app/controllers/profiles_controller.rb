@@ -23,9 +23,15 @@ class ProfilesController < ApplicationController
                              location: params[:location])
 
       @profile.videos.new(video_url: params[:video_url],
-                          videoable_type: params[:videoable_type])
+                          videoable_type: params[:videoable_type],
+                          optional_video_1_url: params[:optional_video_1_url],
+                          optional_video_2_url: params[:optional_video_2_url],
+                          optional_video_3_url: params[:optional_video_3_url],)
 
-      @profile.caption.new(caption: params[:caption])
+      @profile.caption.new(caption: params[:caption],
+                           video_id: params[:video_id])
+
+      @profile.thumbnail.new(thumbnail: params[:thumbnail])
 
       @profile.images.new(image_url: params[:image_url],
                           imageable_type: params[:imageable_type])
