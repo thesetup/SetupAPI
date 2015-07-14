@@ -6,10 +6,9 @@ class ProfilesController < ApplicationController
       ###This creates a profile using a temporary password and username
       ###that the profilee may then change later.
 
-      @profilee = User.new(email: params[:email],
+      @profilee = User.create(email: params[:email],
                               password: params[:password],
-                              username: params[:username],
-                              @user_params)
+                              username: params[:username],)
 
       @profile = Profile.new(profilee_id: @profilee.id,
                              profiler_id: current_user.id)
@@ -21,7 +20,7 @@ class ProfilesController < ApplicationController
                              orientation: params[:orientation],
                              occupation: params[:occupation],
                              location: params[:location])
-#binding.pry
+
       @profile.videos.new(video_url: params[:video_url],
                           videoable_type: params[:videoable_type])
 
@@ -55,8 +54,22 @@ class ProfilesController < ApplicationController
            status: :ok
     end
 
+    def update
+      @image = Image.find(params[:id])
+      if @image.user == current_user
+        @image.update(image_params)
+      else
+        flash[:alert] = 'Only the author of a post may change the post.'
+      end
+    end
+
+  private
   def user_params
-    @user_params = params.require(:user).permit(:avatar, :name)
+    params.require(:user).permit(:avatar, :name)
+  end
+
+  def image_params
+    params.require(:image_url).permit(:imageable_id)
   end
 
 end
