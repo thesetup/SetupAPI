@@ -21,16 +21,12 @@ class ProfilesController < ApplicationController
                              orientation: params[:orientation],
                              occupation: params[:occupation],
                              location: params[:location])
-#binding.pry
+
       @profile.videos.new(video_url: params[:video_url],
                           videoable_type: params[:videoable_type])
 
       @profile.images.new(image_url: params[:image_url],
                           imageable_type: params[:imageable_type])
-
-                          ##I don't think Videos and Images are being saved to
-                          ##a Profile.
-
 
       if @profile.save
 
@@ -41,8 +37,6 @@ class ProfilesController < ApplicationController
                status: :unprocessable_entity
       end
     end
-
-      #### NEED TO USE JBUILDER TO RETURN JSON FOR VIDEO, IMAGE AND QUESTION OBJECTS.
 
     def index
       @profile = Profile.all
