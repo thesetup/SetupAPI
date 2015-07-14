@@ -31,7 +31,9 @@ class ProfilesController < ApplicationController
                           ##a Profile.
 
       if @profile.save
+
         render 'create.json.jbuilder'
+        UserMailer.welcome.deliver
       else
         render json: {errors: @profile.errors.full_messages},
                status: :unprocessable_entity
@@ -46,6 +48,7 @@ class ProfilesController < ApplicationController
       @video = Video.all
       @question = Question.all
       render 'index.json.jbuilder'
+      UserMailer.welcome.deliver_now
     end
 
     def show

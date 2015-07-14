@@ -11,8 +11,17 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
-  config.action_controller.perform_caching = true
+  # config.consider_all_requests_local       = false
+  # config.action_controller.perform_caching = true
+  # config.mandrill_mailer.default_url_options = { :host => 'still-island-6789.herokuapp.com' } #host might have to be heroku.com
+  # config.action_mailer.smtp_settings = {
+  #   :port =>           '587',
+  #   :address =>        'smtp.mandrillapp.com',
+  #   :user_name =>      ENV['MANDRILL_USERNAME'],
+  #   :password =>       ENV['MANDRILL_API_KEY'],
+  #   :domain =>         'domain.com',
+  #   :authentication => :plain
+  # }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
