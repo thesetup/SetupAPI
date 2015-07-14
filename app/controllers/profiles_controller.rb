@@ -6,9 +6,10 @@ class ProfilesController < ApplicationController
       ###This creates a profile using a temporary password and username
       ###that the profilee may then change later.
 
-      @profilee = User.create(email: params[:email],
+      @profilee = User.new(email: params[:email],
                               password: params[:password],
-                              username: params[:username])
+                              username: params[:username],
+                              @user_params)
 
       @profile = Profile.new(profilee_id: @profilee.id,
                              profiler_id: current_user.id)
@@ -53,5 +54,9 @@ class ProfilesController < ApplicationController
       render json: @profile,
            status: :ok
     end
+
+  def user_params
+    @user_params = params.require(:user).permit(:avatar, :name)
+  end
 
 end
