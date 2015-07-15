@@ -1,8 +1,6 @@
 class ProfilesController < ApplicationController
 
   before_action :authenticate_with_token!
-  # before_save :check_video_count
-
 
     def create
       ###This creates a profile using a temporary password and username
@@ -10,7 +8,7 @@ class ProfilesController < ApplicationController
 
       @profilee = User.create(email: params[:email],
                               password: params[:password],
-                              username: params[:username],)
+                              username: params[:username])
 
       @profile = Profile.new(profilee_id: @profilee.id,
                              profiler_id: current_user.id)
@@ -57,12 +55,6 @@ class ProfilesController < ApplicationController
 
     end
 
-    ####Profile cannot own more than 4 videos.  Can only own 1 main video.
-    ####@profile.videos.main == false if @profile.videos.count > 1
-    ####If main == false, @profile.video == 10 sec video.
-    ####if @profile.videos.count > 4 render error json msg.
-    ####
-
     def index
       @profile = Profile.all
       @image = Image.all
@@ -99,13 +91,6 @@ class ProfilesController < ApplicationController
   #   end
   #
   # private
-
-      def check_video_count
-        @profile = Profile.find(params[:id])
-        if @profile.videos.count > 4
-          render json: {message: "A profile may not own more than 4 videos."}
-        end
-      end
 
   # def user_params
   #   params.require(:user).permit(:avatar, :name)
