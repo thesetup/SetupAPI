@@ -11,19 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715190830) do
+ActiveRecord::Schema.define(version: 20150715203616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "applications", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "captions", force: :cascade do |t|
-    t.integer  "video_id"
-    t.string   "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -56,13 +49,6 @@ ActiveRecord::Schema.define(version: 20150715190830) do
     t.integer  "profile_id"
   end
 
-  create_table "thumbnails", force: :cascade do |t|
-    t.integer  "video_id"
-    t.string   "thumbnail_url"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password"
@@ -76,18 +62,14 @@ ActiveRecord::Schema.define(version: 20150715190830) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
   create_table "videos", force: :cascade do |t|
     t.integer  "videoable_id"
     t.string   "videoable_type"
     t.string   "video_url"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "optional_video_1_url"
-    t.string   "optional_video_2_url"
-    t.string   "optional_video_3_url"
-    t.boolean  "main",                 default: true
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "caption"
     t.string   "thumbnail_url"
     t.string   "video_type"

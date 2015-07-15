@@ -23,14 +23,6 @@ class ProfilesController < ApplicationController
                            occupation: params[:occupation],
                            location: params[:location])
 
-    # @profile.videos.new(video_url: params[:video_url],
-    #                     videoable_type: params[:videoable_type],
-    #                     caption: params[:caption],
-    #                     thumbnail_url: params[:thumbnail_url])
-
-    # @profile.images.new(image_url: params[:image_url],
-    #                     imageable_type: params[:imageable_type])
-
     if @profile.save
 
       render 'create.json.jbuilder'
@@ -68,13 +60,6 @@ class ProfilesController < ApplicationController
            status: :ok
   end
 
-
-    ####Profile cannot own more than 4 videos.  Can only own 1 main video.
-    ####@profile.videos.main == false if @profile.videos.count > 1
-    ####If main == false, @profile.video == 10 sec video.
-    ####if @profile.videos.count > 4 render error json msg.
-    ####
-
   def index
     @profile = Profile.all
     @image = Image.all
@@ -111,13 +96,6 @@ class ProfilesController < ApplicationController
   #   end
   #
   # private
-
-  def check_video_count
-    @profile = Profile.find(params[:id])
-    if @profile.videos.count > 4
-      render json: {message: "A profile may not own more than 4 videos."}
-    end
-  end
 
   # def user_params
   #   params.require(:user).permit(:avatar, :name)
