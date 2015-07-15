@@ -1,61 +1,73 @@
 class ProfilesController < ApplicationController
 
   before_action :authenticate_with_token!
-  # before_save :check_video_count
+    # before_save :check_video_count
 
 
-    def create
-      ###This creates a profile using a temporary password and username
-      ###that the profilee may then change later.
+  def create
+    ###This creates a profile using a temporary password and username
+    ###that the profilee may then change later.
 
-      @profilee = User.create(email: params[:email],
-                              password: params[:password],
-                              username: params[:username],)
+    @profilee = User.new(email: params[:email],
+                            password: params[:password],
+                            username: params[:username],)
 
-      @profile = Profile.new(profilee_id: @profilee.id,
-                             profiler_id: current_user.id)
+    @profile = Profile.new(profilee_id: @profilee.id,
+                           profiler_id: current_user.id)
 
-      @profile.questions.new(birthyear: params[:birthyear],
-                             email: params[:email],
-                             name: params[:username],
-                             gender: params[:gender],
-                             orientation: params[:orientation],
-                             occupation: params[:occupation],
-                             location: params[:location])
+    @profile.questions.new(birthyear: params[:birthyear],
+                           email: params[:email],
+                           name: params[:username],
+                           gender: params[:gender],
+                           orientation: params[:orientation],
+                           occupation: params[:occupation],
+                           location: params[:location])
 
-      # @profile.videos.new(video_url: params[:video_url],
-      #                     videoable_type: params[:videoable_type],
-      #                     caption: params[:caption],
-      #                     thumbnail_url: params[:thumbnail_url])
+    # @profile.videos.new(video_url: params[:video_url],
+    #                     videoable_type: params[:videoable_type],
+    #                     caption: params[:caption],
+    #                     thumbnail_url: params[:thumbnail_url])
 
-      # @profile.images.new(image_url: params[:image_url],
-      #                     imageable_type: params[:imageable_type])
+    # @profile.images.new(image_url: params[:image_url],
+    #                     imageable_type: params[:imageable_type])
 
-      if @profile.save
+    if @profile.save
 
-        render 'create.json.jbuilder'
-        #UserMailer.welcome.deliver
-      else
-        render json: {errors: @profile.errors.full_messages},
-               status: :unprocessable_entity
-      end
+      render 'create.json.jbuilder'
+      #UserMailer.welcome.deliver
+    else
+      render json: {errors: @profile.errors.full_messages},
+             status: :unprocessable_entity
     end
+  end
 
-    def create_video
-      @profile = Profile.find(params[:profile_id])
-
-      @video = @profile.videos.new(video_url: params[:video_url],
-                          videoable_type: params[:videoable_type],
-                          caption: params[:caption],
-                          thumbnail_url: params[:thumbnail_url])
-      if @video.save
-        render json: @video,    status: :ok
-      else
-        render json: {errors: @video.errors.full_messages},
+  def create_video
+    @profile = Profile.find(params[:profile_id])
+    @video = @profile.videos.new(video_url: params[:video_url],
+                                 videoable_type: params[:videoable_type],
+                                 caption: params[:caption],
+                                 thumbnail_url: params[:thumbnail_url])
+    if @video.save
+      render json: @video,    status: :ok
+    else
+      render json: {errors: @video.errors.full_messages},
                status: :unprocessable_entity
-      end
-
     end
+  end
+
+  def show_video
+    @profile = Profile.find(params[:profile_id])
+    @video = @profile.videos.find(params[:video_id])
+    render json: @video,
+           status: :ok
+  end
+
+  def index_videos
+    @video = Video.all
+    render json: @video,
+           status: :ok
+  end
+
 
     ####Profile cannot own more than 4 videos.  Can only own 1 main video.
     ####@profile.videos.main == false if @profile.videos.count > 1
@@ -63,30 +75,30 @@ class ProfilesController < ApplicationController
     ####if @profile.videos.count > 4 render error json msg.
     ####
 
-    def index
-      @profile = Profile.all
-      @image = Image.all
-      @video = Video.all
-      @question = Question.all
-      render 'index.json.jbuilder'
-    end
+  def index
+    @profile = Profile.all
+    @image = Image.all
+    @video = Video.all
+    @question = Question.all
+    render 'index.json.jbuilder'
+  end
 
-    def show
-      @profile = Profile.find(params[:id])
-      render 'show.json.jbuilder', status: :ok
-    end
+  def show
+    @profile = Profile.find(params[:id])
+    render 'show.json.jbuilder', status: :ok
+  end
 
-    def destroy
-      @profile = Profile.find(params[:id])
-        if @profile.author == current_user
-          @profile.destroy
-          render json: {message: "Profile deleted."},
-                 status: :ok
-        else
-          render json: {message: "Only the author of a profile may delete a profile."},
-                 status: :unauthorized
-        end
+  def destroy
+    @profile = Profile.find(params[:id])
+    if @profile.author == current_user
+      @profile.destroy
+      render json: {message: "Profile deleted."},
+             status: :ok
+    else
+      render json: {message: "Only the author of a profile may delete a profile."},
+             status: :unauthorized
     end
+  end
 
 
   #   def update
@@ -100,12 +112,12 @@ class ProfilesController < ApplicationController
   #
   # private
 
-      def check_video_count
-        @profile = Profile.find(params[:id])
-        if @profile.videos.count > 4
-          render json: {message: "A profile may not own more than 4 videos."}
-        end
-      end
+  def check_video_count
+    @profile = Profile.find(params[:id])
+    if @profile.videos.count > 4
+      render json: {message: "A profile may not own more than 4 videos."}
+    end
+  end
 
   # def user_params
   #   params.require(:user).permit(:avatar, :name)

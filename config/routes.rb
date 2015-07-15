@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   post '/profiles/:profile_id/videos', to: 'profiles#create_video'
   delete '/profiles/:profile_id/videos/:id', to: 'profiles#delete_video'
+  get '/profiles/:profile_id/videos/:video_id', to: 'profiles#show_video'
+  get '/videos', to: 'profiles#index_videos'
 
   resources :profiles do
   end
