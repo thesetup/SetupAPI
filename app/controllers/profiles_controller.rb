@@ -41,6 +41,20 @@ class ProfilesController < ApplicationController
       end
     end
 
+    def create_video
+      @profile = Profile.find(params[:id])
+      @video = @profile.videos.new(video_url: params[:video_url],
+                          videoable_type: params[:videoable_type],
+                          caption: params[:caption],
+                          thumbnail_url: params[:thumbnail_url])
+      if @video.save
+      render json: @video,    status: :ok
+      else
+      render json: {errors: @video.errors.full_messages},
+             status: :unprocessable_entity
+      end
+
+    end
 
     ####Profile cannot own more than 4 videos.  Can only own 1 main video.
     ####@profile.videos.main == false if @profile.videos.count > 1
