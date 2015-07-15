@@ -28,8 +28,8 @@ class ProfilesController < ApplicationController
       #                     caption: params[:caption],
       #                     thumbnail_url: params[:thumbnail_url])
 
-      @profile.images.new(image_url: params[:image_url],
-                          imageable_type: params[:imageable_type])
+      # @profile.images.new(image_url: params[:image_url],
+      #                     imageable_type: params[:imageable_type])
 
       if @profile.save
 
@@ -49,10 +49,10 @@ class ProfilesController < ApplicationController
                           caption: params[:caption],
                           thumbnail_url: params[:thumbnail_url])
       if @video.save
-      render json: @video,    status: :ok
+        render json: @video,    status: :ok
       else
-      render json: {errors: @video.errors.full_messages},
-             status: :unprocessable_entity
+        render json: {errors: @video.errors.full_messages},
+               status: :unprocessable_entity
       end
 
     end
@@ -101,6 +101,7 @@ class ProfilesController < ApplicationController
   # private
 
       def check_video_count
+        @profile = Profile.find(params[:id])
         if @profile.videos.count > 4
           render json: {message: "A profile may not own more than 4 videos."}
         end
