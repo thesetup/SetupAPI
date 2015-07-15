@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :applications
-  resources :videos
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -23,8 +21,14 @@ Rails.application.routes.draw do
   delete 'users/:user_id', to: 'users#delete'
 
   resources :profiles do
-    resources :questions, except: [:destroy]
+    resources :videos
   end
+
+  ###I think we'll want to use the nested videos routes / videos controller
+  ###to update videos.
+
+
+
 
   # Example resource route with options:
   #   resources :products do

@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 
   before_action :authenticate_with_token!
+  # before_save :check_video_count
 
 
     def create
@@ -23,7 +24,9 @@ class ProfilesController < ApplicationController
                              location: params[:location])
 
       @profile.videos.new(video_url: params[:video_url],
-                          videoable_type: params[:videoable_type])
+                          videoable_type: params[:videoable_type],
+                          caption: params[:caption],
+                          thumbnail_url: params[:thumbnail_url])
 
       @profile.images.new(image_url: params[:image_url],
                           imageable_type: params[:imageable_type])
@@ -37,6 +40,13 @@ class ProfilesController < ApplicationController
                status: :unprocessable_entity
       end
     end
+
+
+    ####Profile cannot own more than 4 videos.  Can only own 1 main video.
+    ####@profile.videos.main == false if @profile.videos.count > 1
+    ####If main == false, @profile.video == 10 sec video.
+    ####if @profile.videos.count > 4 render error json msg.
+    ####
 
     def index
       @profile = Profile.all
@@ -62,7 +72,8 @@ class ProfilesController < ApplicationController
                  status: :unauthorized
         end
     end
-  # 
+
+
   #   def update
   #     @image = Image.find(params[:id])
   #     if @image.user == current_user
@@ -73,24 +84,13 @@ class ProfilesController < ApplicationController
   #   end
   #
   # private
-  # def user_params
-  #   params.require(:user).permit(:avatar, :name)
-  # end
-  #
-  # def image_params
-  #   params.require(:image_url).permit(:imageable_id)
-  # end
 
-    # def update
-    #   @image = Image.find(params[:id])
-    #   if @image.user == current_user
-    #     @image.update(image_params)
-    #   else
-    #     flash[:alert] = 'Only the author of a post may change the post.'
-    #   end
-    # end
+      def check_video_count
+        if @profile.videos.count > 4
+          render json: {message: "A profile may not own more than 4 videos."}
+        end
+      end
 
-  # private
   # def user_params
   #   params.require(:user).permit(:avatar, :name)
   # end
