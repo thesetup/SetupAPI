@@ -81,4 +81,22 @@ class ProfilesController < ApplicationController
   #   params.require(:image_url).permit(:imageable_id)
   # end
 
+    # def update
+    #   @image = Image.find(params[:id])
+    #   if @image.user == current_user
+    #     @image.update(image_params)
+    #   else
+    #     flash[:alert] = 'Only the author of a post may change the post.'
+    #   end
+    # end
+
+  # private
+  # def user_params
+  #   params.require(:user).permit(:avatar, :name)
+  # end
+  #
+  # def image_params
+  #   params.require(:image_url).permit(:imageable_id)
+  # end
+
 end
