@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   post 'users/login', to: 'users#login'
   delete 'users/:user_id', to: 'users#delete'
 
-  put '/profiles/:profile_id/videos/:id', to: 'profiles#create_video'
+  post '/profiles/:profile_id/videos', to: 'profiles#create_video'
   delete '/profiles/:profile_id/videos/:id', to: 'profiles#delete_video'
 
   resources :profiles do

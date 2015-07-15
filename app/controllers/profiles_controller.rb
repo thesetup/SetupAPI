@@ -23,10 +23,10 @@ class ProfilesController < ApplicationController
                              occupation: params[:occupation],
                              location: params[:location])
 
-      @profile.videos.new(video_url: params[:video_url],
-                          videoable_type: params[:videoable_type],
-                          caption: params[:caption],
-                          thumbnail_url: params[:thumbnail_url])
+      # @profile.videos.new(video_url: params[:video_url],
+      #                     videoable_type: params[:videoable_type],
+      #                     caption: params[:caption],
+      #                     thumbnail_url: params[:thumbnail_url])
 
       @profile.images.new(image_url: params[:image_url],
                           imageable_type: params[:imageable_type])
@@ -42,7 +42,8 @@ class ProfilesController < ApplicationController
     end
 
     def create_video
-      @profile = Profile.find(params[:id])
+      @profile = Profile.find(params[:profile_id])
+
       @video = @profile.videos.new(video_url: params[:video_url],
                           videoable_type: params[:videoable_type],
                           caption: params[:caption],
