@@ -24,6 +24,12 @@ Rails.application.routes.draw do
     resources :videos
   end
 
+  ###I think we'll want to use the nested videos routes / videos controller
+  ###to update videos.
+
+
+
+
   # Example resource route with options:
   #   resources :products do
   #     member do

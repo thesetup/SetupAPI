@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 
   before_action :authenticate_with_token!
+  # before_save :check_video_count
 
 
     def create
@@ -24,7 +25,6 @@ class ProfilesController < ApplicationController
 
       @profile.videos.new(video_url: params[:video_url],
                           videoable_type: params[:videoable_type],
-                          main: params[:main],
                           caption: params[:caption],
                           thumbnail_url: params[:thumbnail_url])
 
@@ -40,6 +40,13 @@ class ProfilesController < ApplicationController
                status: :unprocessable_entity
       end
     end
+
+
+    ####Profile cannot own more than 4 videos.  Can only own 1 main video.
+    ####@profile.videos.main == false if @profile.videos.count > 1
+    ####If main == false, @profile.video == 10 sec video.
+    ####if @profile.videos.count > 4 render error json msg.
+    ####
 
     def index
       @profile = Profile.all
@@ -66,6 +73,7 @@ class ProfilesController < ApplicationController
         end
     end
 
+
   #   def update
   #     @image = Image.find(params[:id])
   #     if @image.user == current_user
@@ -76,6 +84,13 @@ class ProfilesController < ApplicationController
   #   end
   #
   # private
+
+      def check_video_count
+        if @profile.videos.count > 4
+          render json: {message: "A profile may not own more than 4 videos."}
+        end
+      end
+
   # def user_params
   #   params.require(:user).permit(:avatar, :name)
   # end
