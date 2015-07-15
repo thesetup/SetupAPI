@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  has_attached_file :avatar, :styles => {
+                                          medium: '300x300>',
+                                          square: '200x200#',
+                                          thumb: '100x100>'
+                                        }
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   PW_REGEX = /\A(?-i)(?=^.{8,}$)((?!.*\s)(?=.*[A-Z])(?=.*[a-z]))((?=(.*\d){1,})|(?=(.*\W){1,}))^.*$\z/
