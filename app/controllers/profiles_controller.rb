@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
     ###This creates a profile using a temporary password and username
     ###that the profilee may then change later.
 
-    @profilee = User.new(email: params[:email],
+    @profilee = User.create(email: params[:email],
                             password: params[:password],
                             username: params[:username],)
 
