@@ -142,7 +142,11 @@ Status Code: :unauthorized
 ###Create
 ```POST``` '/profiles'
 
-In creating a profile you become a profiler.  You must enter the username and email of your friend, the profilee.  You will also create a password for them which they will then change later.
+When you register as a user you are granted an access token.  The access token will identify you as a unique user of our application.
+
+In creating a profile you become a profiler.  You must enter the username and email of your friend, the profilee.  You will also create a password for them which they will then change later.  
+
+All of the parameters listed below are required for profile creation.
 
 ######Params:
 
@@ -150,6 +154,11 @@ In creating a profile you become a profiler.  You must enter the username and em
 * email (of your friend)
 * username
 * password
+* birthyear
+* gender
+* orientation
+* occupation
+* location
 
 Example Success:
 
@@ -159,34 +168,26 @@ Example Success:
     "id": 1,
     "profiler_id": 1,
     "profilee_id": 2,
-    "created_at": "2015-07-14T16:01:30.025Z",
-    "updated_at": "2015-07-14T16:01:30.025Z"
+    "created_at": "2015-07-15T19:43:18.674Z",
+    "updated_at": "2015-07-15T19:43:18.674Z"
   },
   "questions": [
     {
       "id": 1,
       "name": "user2",
-      "email": "user2@email.com",
-      "birthyear": null,
-      "gender": null,
-      "orientation": null,
-      "occupation": null,
-      "location": null,
-      "created_at": "2015-07-14T16:01:30.031Z",
-      "updated_at": "2015-07-14T16:01:30.031Z",
+      "email": "user2@2.com",
+      "birthyear": 1999,
+      "gender": "male",
+      "orientation": "straight",
+      "occupation": "bum",
+      "location": "Atlanta",
+      "created_at": "2015-07-15T19:43:18.680Z",
+      "updated_at": "2015-07-15T19:43:18.680Z",
       "profile_id": 1
     }
   ],
-  "videos": [
-    {
-      "id": 1,
-      "videoable_id": 1,
-      "videoable_type": "Profile",
-      "video_url": null,
-      "created_at": "2015-07-14T16:01:30.036Z",
-      "updated_at": "2015-07-14T16:01:30.036Z"
-    }
-  ]
+  "videos": [],
+  "images": []
 }
 ```
 Status Code: 201 Created
@@ -203,50 +204,94 @@ In this API you MAY NOT create a profile for yourself.
 	}
 
 ```
+```
+{
+  "errors": [
+    "Questions is invalid"
+  ]
+}
+```
 Status Code: 422 Unprocessable Entity
 ###Show
 
 ```GET``` '/profiles/:id'
 
-This endpoint will show a given profile.
+This endpoint will show a given profile and all of the videos, images and questions associated with it.
 
 Example Success:
 
 ```
 {
   "profiles": {
-    "id": 3,
+    "id": 1,
     "profiler_id": 1,
-    "profilee_id": 5,
-    "created_at": "2015-07-14T16:50:49.680Z",
-    "updated_at": "2015-07-14T16:50:49.680Z"
+    "profilee_id": 2,
+    "created_at": "2015-07-15T19:43:18.674Z",
+    "updated_at": "2015-07-15T19:43:18.674Z"
   },
   "questions": [
     {
-      "id": 3,
-      "name": "user5",
-      "email": "user5@email.com",
-      "birthyear": null,
-      "gender": null,
-      "orientation": null,
-      "occupation": null,
-      "location": null,
-      "created_at": "2015-07-14T16:50:49.682Z",
-      "updated_at": "2015-07-14T16:50:49.682Z",
-      "profile_id": 3
+      "id": 1,
+      "name": "user2",
+      "email": "user2@2.com",
+      "birthyear": 1999,
+      "gender": "male",
+      "orientation": "straight",
+      "occupation": "bum",
+      "location": "Atlanta",
+      "created_at": "2015-07-15T19:43:18.680Z",
+      "updated_at": "2015-07-15T19:43:18.680Z",
+      "profile_id": 1
     }
   ],
   "videos": [
     {
-      "id": 3,
-      "videoable_id": 3,
+      "id": 1,
+      "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": null,
-      "created_at": "2015-07-14T16:50:49.684Z",
-      "updated_at": "2015-07-14T16:50:49.684Z"
+      "video_url": "https://catvideo.com",
+      "created_at": "2015-07-15T19:51:59.688Z",
+      "updated_at": "2015-07-15T19:51:59.688Z",
+      "main": true,
+      "caption": "Look at this cat!",
+      "thumbnail_url": "https://thumbnail.com"
+    },
+    {
+      "id": 2,
+      "videoable_id": 1,
+      "videoable_type": "Profile",
+      "video_url": "https://dogvideo.com",
+      "created_at": "2015-07-15T19:55:26.585Z",
+      "updated_at": "2015-07-15T19:55:26.585Z",
+      "main": true,
+      "caption": "Look at this dog!",
+      "thumbnail_url": "https://thumbnail.com"
+    },
+    {
+      "id": 3,
+      "videoable_id": 1,
+      "videoable_type": "Profile",
+      "video_url": "https://snakevideo.com",
+      "created_at": "2015-07-15T19:55:42.124Z",
+      "updated_at": "2015-07-15T19:55:42.124Z",
+      "main": true,
+      "caption": "Look at this snake!",
+      "thumbnail_url": "https://thumbnail.com"
+    },
+    {
+      "id": 4,
+      "videoable_id": 1,
+      "videoable_type": "Profile",
+      "video_url": "https://hippovideo.com",
+      "created_at": "2015-07-15T19:55:52.135Z",
+      "updated_at": "2015-07-15T19:55:52.135Z",
+      "main": true,
+      "caption": "Look at this hippo!",
+      "thumbnail_url": "https://thumbnail.com"
     }
   ]
 }
+
 ```
 
 Example Failure:
@@ -260,26 +305,48 @@ Example Success:
 
 ```
 {
-  "profiles": {
-    "id": 1,
-    "profiler_id": 1,
-    "profilee_id": 2,
-    "created_at": "2015-07-14T16:01:30.025Z",
-    "updated_at": "2015-07-14T16:01:30.025Z"
-  },
+  "profiles": [
+    {
+      "id": 1,
+      "profiler_id": 1,
+      "profilee_id": 2,
+      "created_at": "2015-07-15T19:43:18.674Z",
+      "updated_at": "2015-07-15T19:43:18.674Z"
+    },
+    {
+      "id": 2,
+      "profiler_id": 1,
+      "profilee_id": 3,
+      "created_at": "2015-07-15T19:47:21.579Z",
+      "updated_at": "2015-07-15T19:47:21.579Z"
+    }
+  ],
   "questions": [
     {
       "id": 1,
       "name": "user2",
-      "email": "user2@email.com",
-      "birthyear": null,
-      "gender": null,
-      "orientation": null,
-      "occupation": null,
-      "location": null,
-      "created_at": "2015-07-14T16:01:30.031Z",
-      "updated_at": "2015-07-14T16:01:30.031Z",
+      "email": "user2@2.com",
+      "birthyear": 1999,
+      "gender": "male",
+      "orientation": "straight",
+      "occupation": "bum",
+      "location": "Atlanta",
+      "created_at": "2015-07-15T19:43:18.680Z",
+      "updated_at": "2015-07-15T19:43:18.680Z",
       "profile_id": 1
+    },
+    {
+      "id": 2,
+      "name": "user3",
+      "email": "user3@3.com",
+      "birthyear": 1999,
+      "gender": "female",
+      "orientation": "straight",
+      "occupation": "scientist",
+      "location": "Atlanta",
+      "created_at": "2015-07-15T19:47:21.581Z",
+      "updated_at": "2015-07-15T19:47:21.581Z",
+      "profile_id": 2
     }
   ],
   "videos": [
@@ -287,11 +354,48 @@ Example Success:
       "id": 1,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": null,
-      "created_at": "2015-07-14T16:01:30.036Z",
-      "updated_at": "2015-07-14T16:01:30.036Z"
+      "video_url": "https://catvideo.com",
+      "created_at": "2015-07-15T19:51:59.688Z",
+      "updated_at": "2015-07-15T19:51:59.688Z",
+      "main": true,
+      "caption": "Look at this cat!",
+      "thumbnail_url": "https://thumbnail.com"
+    },
+    {
+      "id": 2,
+      "videoable_id": 1,
+      "videoable_type": "Profile",
+      "video_url": "https://dogvideo.com",
+      "created_at": "2015-07-15T19:55:26.585Z",
+      "updated_at": "2015-07-15T19:55:26.585Z",
+      "main": true,
+      "caption": "Look at this dog!",
+      "thumbnail_url": "https://thumbnail.com"
+    },
+    {
+      "id": 3,
+      "videoable_id": 1,
+      "videoable_type": "Profile",
+      "video_url": "https://snakevideo.com",
+      "created_at": "2015-07-15T19:55:42.124Z",
+      "updated_at": "2015-07-15T19:55:42.124Z",
+      "main": true,
+      "caption": "Look at this snake!",
+      "thumbnail_url": "https://thumbnail.com"
+    },
+    {
+      "id": 4,
+      "videoable_id": 1,
+      "videoable_type": "Profile",
+      "video_url": "https://hippovideo.com",
+      "created_at": "2015-07-15T19:55:52.135Z",
+      "updated_at": "2015-07-15T19:55:52.135Z",
+      "main": true,
+      "caption": "Look at this hippo!",
+      "thumbnail_url": "https://thumbnail.com"
     }
-  ]
+  ],
+  "images": []
 }
 ```
 Example Failure:
@@ -304,9 +408,9 @@ Example Failure:
 Only the profiler can delete a profile.  A profilee cannot delete the profile created about her, but may delete other profiles for whom she is the profiler.
 
 Example Success:
+
 ```
-{
-  "message": "Profile deleted."
+{ "message": "Profile deleted."
 }
 ```
 Example Failure:
@@ -316,3 +420,42 @@ Example Failure:
   "message": "Only the author of a profile may delete a profile."
 }
 ```
+
+###Video Upload
+```POST``` '/profiles/:id/videos'
+
+One video at a time y'all.  Make sure to include these params.  Also note that you can only upload 4 videos per profile.
+
+######Params:
+* video_url
+* thumbnail_url
+* caption
+* video_type
+
+Example Success:
+
+```
+{
+  "id": 1,
+  "videoable_id": 1,
+  "videoable_type": "Profile",
+  "video_url": "https://catvideo.com",
+  "created_at": "2015-07-15T19:51:59.688Z",
+  "updated_at": "2015-07-15T19:51:59.688Z",
+  "main": true,
+  "caption": "Look at this cat!",
+  "thumbnail_url": "https://thumbnail.com"
+}
+```
+Status Code: 200 ok
+
+Example Failure:
+
+```
+{
+  "errors": [
+    "Already have maximum number of videos"
+  ]
+}
+```
+Status Code: 422 Unprocessable Entity
