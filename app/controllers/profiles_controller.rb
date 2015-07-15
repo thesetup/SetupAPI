@@ -23,7 +23,10 @@ class ProfilesController < ApplicationController
                              location: params[:location])
 
       @profile.videos.new(video_url: params[:video_url],
-                          videoable_type: params[:videoable_type])
+                          videoable_type: params[:videoable_type],
+                          main: params[:main],
+                          caption: params[:caption],
+                          thumbnail_url: params[:thumbnail_url])
 
       @profile.images.new(image_url: params[:image_url],
                           imageable_type: params[:imageable_type])
@@ -62,7 +65,7 @@ class ProfilesController < ApplicationController
                  status: :unauthorized
         end
     end
-  # 
+
   #   def update
   #     @image = Image.find(params[:id])
   #     if @image.user == current_user
@@ -72,24 +75,6 @@ class ProfilesController < ApplicationController
   #     end
   #   end
   #
-  # private
-  # def user_params
-  #   params.require(:user).permit(:avatar, :name)
-  # end
-  #
-  # def image_params
-  #   params.require(:image_url).permit(:imageable_id)
-  # end
-
-    # def update
-    #   @image = Image.find(params[:id])
-    #   if @image.user == current_user
-    #     @image.update(image_params)
-    #   else
-    #     flash[:alert] = 'Only the author of a post may change the post.'
-    #   end
-    # end
-
   # private
   # def user_params
   #   params.require(:user).permit(:avatar, :name)

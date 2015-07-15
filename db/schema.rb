@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20150714230954) do
-
+ActiveRecord::Schema.define(version: 20150715023330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,15 +62,15 @@ ActiveRecord::Schema.define(version: 20150714230954) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
   create_table "videos", force: :cascade do |t|
     t.integer  "videoable_id"
     t.string   "videoable_type"
     t.string   "video_url"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.boolean  "main"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "main",           default: true
     t.string   "caption"
     t.string   "thumbnail_url"
   end
