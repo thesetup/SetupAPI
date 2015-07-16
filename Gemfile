@@ -27,7 +27,6 @@ gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
 gem 'foreman'
 gem 'mandrill_mailer'
-gem 'figaro'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
