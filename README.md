@@ -453,3 +453,53 @@ Example Failure:
 }
 ```
 Status Code: 422 Unprocessable Entity
+
+#Images
+@channel 
+An Image can now be posted to a profile - Not with paperclip - until we figure out the S3 thing on our end, images are posted the same way as videos. One image per profile.
+ 
+```POST ‘/profiles/:profile_id/images’
+```
+
+Params:
+
+```image_url
+```
+
+Example Success:
+
+```{
+  "id": 3,
+  "imageable_id": 2,
+  "imageable_type": "Profile",
+  "image_url": "google.com",
+  "created_at": "2015-07-16T16:10:25.020Z",
+  "updated_at": "2015-07-16T16:10:25.020Z"
+}
+```
+
+Example Failure (if trying to post more than 1 image to a profile):
+
+```{
+  "errors": [
+    "Already have maximum number of images"
+  ]
+}
+```
+
+To show one image:
+
+```GET ‘/profiles/:profile_id/images/:image_id’
+```
+
+Example Success:
+
+```{
+  "id": 3,
+  "imageable_id": 2,
+  "imageable_type": "Profile",
+  "image_url": "google.com",
+  "created_at": "2015-07-16T16:10:25.020Z",
+  "updated_at": "2015-07-16T16:10:25.020Z”
+}
+```
