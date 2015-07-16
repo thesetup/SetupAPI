@@ -23,18 +23,20 @@ class ProfilesController < ApplicationController
 
     @profilee = User.create(email: params[:email],
                             password: params[:password],
-                            username: params[:username],)
+                            username: params[:username])
 
     @profile = Profile.new(profilee_id: @profilee.id,
                            profiler_id: current_user.id)
 
-    @profile.questions.new(birthyear: params[:birthyear],
-                           email: params[:email],
-                           name: params[:username],
-                           gender: params[:gender],
-                           orientation: params[:orientation],
-                           occupation: params[:occupation],
-                           location: params[:location])
+    @question = Question.create(birthyear: params[:birthyear],
+                                email: params[:email],
+                                name: params[:username],
+                                gender: params[:gender],
+                                orientation: params[:orientation],
+                                occupation: params[:occupation],
+                                location: params[:location])
+
+    @profile.question = @question
 
     if @profile.save
 

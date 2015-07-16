@@ -1,3 +1,3 @@
 json.profiles @profile
-json.questions @profile.question
+json.question @profile.question
 json.videos @profile.videos

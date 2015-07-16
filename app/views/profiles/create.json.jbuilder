@@ -1,4 +1,4 @@
 json.profiles @profile
-json.questions @profile.questions
+json.question @profile.question
 json.videos @profile.videos
 json.images @profile.images

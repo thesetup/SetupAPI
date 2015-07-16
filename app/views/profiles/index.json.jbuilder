@@ -4,6 +4,6 @@
 @question = Question.all
 
 json.profiles @profile
-json.questions @question
+json.question @question
 json.videos @video
 json.images @image
