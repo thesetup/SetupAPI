@@ -510,20 +510,24 @@ You can now add an avatar to a User
 
 This is a multipart form encoding file upload:
 
-```multipart/form-data
+```
+multipart/form-data
 ```
 
-```PATCH ‘/user/:user_id/image’
+```
+PATCH ‘/user/:user_id/image’
 ```
 
 Params:
 
-```avatar
+```
+avatar
 ```
 
 Example Success:
 
-```{
+```
+{
   "file": {
     "id": 19,
     "email": "Tom@test.com",
