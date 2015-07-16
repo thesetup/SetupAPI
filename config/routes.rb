@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   delete 'users/:user_id', to: 'users#delete'
 
   post '/profiles/:profile_id/videos', to: 'profiles#create_video'
+
   get '/profiles/:profile_id/videos/:video_id', to: 'profiles#show_video'
   get '/videos', to: 'profiles#index_videos'
 
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
   delete '/profiles/:profile_id/images/:image_id', to: 'images#delete_video'
   get '/profiles/:profile_id/images/:image_id', to: 'images#show_image'
   get '/images', to: 'images#index_videos'
+
 
 
   resources :profiles do

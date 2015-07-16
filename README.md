@@ -171,8 +171,7 @@ Example Success:
     "created_at": "2015-07-15T19:43:18.674Z",
     "updated_at": "2015-07-15T19:43:18.674Z"
   },
-  "questions": [
-    {
+  "questions": {
       "id": 1,
       "name": "user2",
       "email": "user2@2.com",
@@ -184,8 +183,7 @@ Example Success:
       "created_at": "2015-07-15T19:43:18.680Z",
       "updated_at": "2015-07-15T19:43:18.680Z",
       "profile_id": 1
-    }
-  ],
+    },
   "videos": [],
   "images": []
 }
@@ -229,8 +227,7 @@ Example Success:
     "created_at": "2015-07-15T19:43:18.674Z",
     "updated_at": "2015-07-15T19:43:18.674Z"
   },
-  "questions": [
-    {
+  "questions": {
       "id": 1,
       "name": "user2",
       "email": "user2@2.com",
@@ -242,8 +239,7 @@ Example Success:
       "created_at": "2015-07-15T19:43:18.680Z",
       "updated_at": "2015-07-15T19:43:18.680Z",
       "profile_id": 1
-    }
-  ],
+    },
   "videos": [
     {
       "id": 1,
@@ -321,8 +317,7 @@ Example Success:
       "updated_at": "2015-07-15T19:47:21.579Z"
     }
   ],
-  "questions": [
-    {
+  "questions": {
       "id": 1,
       "name": "user2",
       "email": "user2@2.com",
@@ -347,8 +342,7 @@ Example Success:
       "created_at": "2015-07-15T19:47:21.581Z",
       "updated_at": "2015-07-15T19:47:21.581Z",
       "profile_id": 2
-    }
-  ],
+    },
   "videos": [
     {
       "id": 1,

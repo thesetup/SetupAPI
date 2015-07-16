@@ -1,8 +1,21 @@
 class ProfilesController < ApplicationController
 
   before_action :authenticate_with_token!
-    # before_save :check_video_count
+  # before_action :check_validation, only: [:_video]
+  # before_action :max_video_count
 
+
+  # def update_delete_video_check
+  #   unless videoable.videos.count <= 4
+  #     errors.add(:base, "Already have maximum number of videos")
+  #   end
+  # end
+  #
+  # def create_video_check
+  #   unless videoable.videos.count < 3
+  #     errors.add(:base, "Already have maximum number of videos")
+  #   end
+  # end
 
   def create
     ###This creates a profile using a temporary password and username
@@ -34,16 +47,20 @@ class ProfilesController < ApplicationController
   end
 
   def create_video
-    ### need to restrict video creation to profile id owner
     @profile = Profile.find(params[:profile_id])
     @video = @profile.videos.new(video_url: params[:video_url],
                                  videoable_type: params[:videoable_type],
                                  caption: params[:caption],
-                                 thumbnail_url: params[:thumbnail_url],
-                                 video_type: params[:video_type])
-    if @video.save
-      render json: @video,
-             status: :ok
+
+                                 thumbnail_url: params[:thumbnail_url])
+
+
+###CURRENTLY WHEN A PROFILER CREATES A NEW VIDEO THE max_video_count VALIDATION
+###IS WORKING, BUT IT'S NOT RETURING THE ERROR MESSAGE.  HTTP STATUS CODE IS 200 OK
+
+    if current_user.id == @profile.author.id
+      @video.save
+      render json: @video,    status: :ok
     else
       render json: {errors: @video.errors.full_messages},
                status: :unprocessable_entity
@@ -53,12 +70,14 @@ class ProfilesController < ApplicationController
   def update_video
     @profile = Profile.find(params[:profile_id])
     @video = @profile.videos.find(params[:video_id])
-    #binding.pry
-    @video.update(video_url: params[:video_url],
-                                 caption: params[:caption],
-                                 thumbnail_url: params[:thumbnail_url])
-    if @video.save
-      render json: @video,    status: :ok
+
+    if current_user.id == @profile.author.id
+      binding.pry
+      @video.update(video_url: params[:video_url],
+                    caption: params[:caption],
+                    thumbnail_url: params[:thumbnail_url])
+
+      render json: @video, status: :ok
     else
       render json: {errors: @video.errors.full_messages},
                status: :unprocessable_entity
@@ -66,27 +85,19 @@ class ProfilesController < ApplicationController
   end
 
   def delete_video
-  end
+    @profile = Profile.find(params[:profile_id])
+    @video = @profile.videos.find(params[:video_id])
 
-  # def create_image
-  #   @profile = Profile.find(params[:profile_id])
-  #   @image = @profile.images.new(image_url: params[:image_url],
-  #                                imageable_type: params[:imageable_type])
-  #
-  # end
-  #
-  # def delete_image
-  #   @profile = Profile.find(params[:id])
-  #   if @profile.author == current_user
-  #     @profile.destroy
-  #     render json: {message: "Profile deleted."},
-  #            status: :ok
-  #   else
-  #     render json: {message: "Only the author of a profile may delete a profile."},
-  #            status: :unauthorized
-  #   end
-  #
-  # end
+    if current_user.id == @profile.author.id
+      @video.destroy
+
+      render json: @video, status: :ok
+    else
+      render json: {errors: @video.errors.full_messages},
+               status: :unprocessable_entity
+    end
+
+  end
 
   def show_video
     @profile = Profile.find(params[:profile_id])
@@ -102,10 +113,6 @@ class ProfilesController < ApplicationController
   end
 
   def index
-    @profile = Profile.all
-    @image = Image.all
-    @video = Video.all
-    @question = Question.all
     render 'index.json.jbuilder'
   end
 
@@ -126,17 +133,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-
-
-  #   def update
-  #     @image = Image.find(params[:id])
-  #     if @image.user == current_user
-  #       @image.update(image_params)
-  #     else
-  #       flash[:alert] = 'Only the author of a post may change the post.'
-  #     end
-  #   end
-  #
   # private
 
   # def user_params
