@@ -39,9 +39,11 @@ class ProfilesController < ApplicationController
     @video = @profile.videos.new(video_url: params[:video_url],
                                  videoable_type: params[:videoable_type],
                                  caption: params[:caption],
-                                 thumbnail_url: params[:thumbnail_url])
+                                 thumbnail_url: params[:thumbnail_url],
+                                 video_type: params[:video_type])
     if @video.save
-      render json: @video,    status: :ok
+      render json: @video,
+             status: :ok
     else
       render json: {errors: @video.errors.full_messages},
                status: :unprocessable_entity
@@ -123,6 +125,7 @@ class ProfilesController < ApplicationController
              status: :unauthorized
     end
   end
+
 
 
   #   def update
