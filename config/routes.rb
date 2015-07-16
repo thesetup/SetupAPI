@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   get '/profiles/:profile_id/videos/:video_id', to: 'profiles#show_video'
   get '/videos', to: 'profiles#index_videos'
 
+  patch '/profiles/:profile_id/videos/:video_id', to: 'profiles#update_video'
+  delete '/profiles/:profile_id/videos/:id', to: 'profiles#delete_video'
+
   resources :profiles do
   end
 
