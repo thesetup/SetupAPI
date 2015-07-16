@@ -1,21 +1,6 @@
 class ProfilesController < ApplicationController
 
   before_action :authenticate_with_token!
-  # before_action :check_validation, only: [:_video]
-  # before_action :max_video_count
-
-
-  # def update_delete_video_check
-  #   unless videoable.videos.count <= 4
-  #     errors.add(:base, "Already have maximum number of videos")
-  #   end
-  # end
-  #
-  # def create_video_check
-  #   unless videoable.videos.count < 3
-  #     errors.add(:base, "Already have maximum number of videos")
-  #   end
-  # end
 
   def create
     ###This creates a profile using a temporary password and username
@@ -50,22 +35,23 @@ class ProfilesController < ApplicationController
 
   def create_video
     @profile = Profile.find(params[:profile_id])
-    @video = @profile.videos.new(video_url: params[:video_url],
-                                 videoable_type: params[:videoable_type],
-                                 caption: params[:caption],
+    if @profile.videos.count < 4
+      @video = @profile.videos.new(video_url: params[:video_url],
+                                   videoable_type: params[:videoable_type],
+                                   caption: params[:caption],
 
-                                 thumbnail_url: params[:thumbnail_url])
+                                   thumbnail_url: params[:thumbnail_url])
 
-
-###CURRENTLY WHEN A PROFILER CREATES A NEW VIDEO THE max_video_count VALIDATION
-###IS WORKING, BUT IT'S NOT RETURING THE ERROR MESSAGE.  HTTP STATUS CODE IS 200 OK
-
-    if current_user.id == @profile.author.id
-      @video.save
-      render json: @video,    status: :ok
+      if current_user.id == @profile.author.id
+        @video.save
+        render json: @video, status: :ok
+      else
+        render json: {errors: @video.errors.full_messages},
+                 status: :unprocessable_entity
+      end
     else
-      render json: {errors: @video.errors.full_messages},
-               status: :unprocessable_entity
+      render json: {message: "There are already 4 videos on this profile."},
+                status: :unprocessable_entity
     end
   end
 
