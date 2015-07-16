@@ -3,17 +3,15 @@ class ProfilesController < ApplicationController
   before_action :authenticate_with_token!
 
   def create
-    ###This creates a profile using a temporary password and username
-    ###that the profilee may then change later.
-
-    @profilee = User.create(email: params[:email],
+    #binding.pry
+    @profilee = User.new(email: params[:email],
                             password: params[:password],
                             username: params[:username])
 
     @profile = Profile.new(profilee_id: @profilee.id,
                            profiler_id: current_user.id)
 
-    @question = Question.create(birthyear: params[:birthyear],
+    @question = Question.new(birthyear: params[:birthyear],
                                 email: params[:email],
                                 name: params[:username],
                                 gender: params[:gender],
@@ -21,15 +19,26 @@ class ProfilesController < ApplicationController
                                 occupation: params[:occupation],
                                 location: params[:location])
 
-    @profile.question = @question
-
-    if @profile.save
-
-      render 'create.json.jbuilder'
+   if @question.save
+      if @profilee.save
+        @profile.update(profilee_id: @profilee.id)
+        if @profile.save
+        @profile.question = @question
+        render 'create.json.jbuilder'
+        else
+          render json: {errors: @profile.errors.full_messages},
+                  status: :unprocessable_entity
+        end
+      else
+        render json: {errors: @profilee.errors.full_messages}, 
+                status: :unprocessable_entity
+      end
       #UserMailer.welcome.deliver
     else
-      render json: {errors: @profile.errors.full_messages},
-             status: :unprocessable_entity
+      # render json: {errors: @profile.errors.full_messages},
+      #        status: :unprocessable_entity
+      render json: {errors: @question.errors.full_messages},
+              status: :unprocessable_entity
     end
   end
 
@@ -60,7 +69,6 @@ class ProfilesController < ApplicationController
     @video = @profile.videos.find(params[:video_id])
 
     if current_user.id == @profile.author.id
-      binding.pry
       @video.update(video_url: params[:video_url],
                     caption: params[:caption],
                     thumbnail_url: params[:thumbnail_url])
