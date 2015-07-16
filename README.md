@@ -503,3 +503,39 @@ Example Success:
   "updated_at": "2015-07-16T16:10:25.020Z”
 }
 ```
+
+# User Avatar
+
+You can now add an avatar to a User
+
+This is a multipart form encoding file upload:
+
+```multipart/form-data
+```
+
+```PATCH ‘/user/:user_id/image’
+```
+
+Params:
+
+```avatar
+```
+
+Example Success:
+
+```{
+  "file": {
+    "id": 19,
+    "email": "Tom@test.com",
+    "password": "35327b5dc7503e200f15c499f310c4f572e3a59f",
+    "access_token": "62987172d3bce86c61937d98600c8d61",
+    "created_at": "2015-07-16T19:02:36.779Z",
+    "updated_at": "2015-07-16T19:55:21.965Z",
+    "username": "Tom",
+    "avatar_file_name": "most_of_my_pictures_turned_out_blurry__but_tiy_represent__.jpg",
+    "avatar_content_type": "image/jpeg",
+    "avatar_file_size": 558979,
+    "avatar_updated_at": "2015-07-16T19:55:20.504Z"
+  }
+}
+```
