@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20150715203616) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "captions", force: :cascade do |t|
+    t.integer  "video_id"
+    t.string   "caption"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "images", force: :cascade do |t|
     t.integer  "imageable_id"
     t.string   "imageable_type"
@@ -47,6 +54,13 @@ ActiveRecord::Schema.define(version: 20150715203616) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "profile_id"
+  end
+
+  create_table "thumbnails", force: :cascade do |t|
+    t.integer  "video_id"
+    t.string   "thumbnail_url"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|

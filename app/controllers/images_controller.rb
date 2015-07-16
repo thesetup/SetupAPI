@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
     @user = current_user
     @user.avatar = params[:avatar]
 
-    if @user.save
+    if @user.save(validate: false)
       render json: { file: @user },
              status: :ok
     else
