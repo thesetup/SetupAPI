@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
 
   def index
-    @user = User.all
-    render json: @user.as_json,
+    @users = User.all
+    render json: @users,
            status: :ok
   end
 
   def show
     @user = User.find(params[:user_id])
-    render json: @user.as_json(only: [:id, :email, :access_token, :username]),
+    render json: @user,
            status: :ok
   end
 
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
                      password: params[:password])
     if @user.save
       # render json "register.json.jbuilder", status: :created
-      render json: @user.as_json,
+      render json: @user,
              status: :created
     else
 
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     hash_pass = Digest::SHA1.hexdigest(params[:password])
     @user = User.find_by(email: params[:email], password: hash_pass)
     if @user
-      render json: @user.as_json,
+      render json: @user,
              status: :ok
     else
       render json: {message: "Wrong email/password"},
