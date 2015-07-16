@@ -12,6 +12,10 @@ class ImagesController < ApplicationController
     end
   end
 
+  def show_avatar
+
+  end
+
   def create_image
     @profile = Profile.find(params[:profile_id])
     @image = @profile.images.new(image_url: params[:image_url],

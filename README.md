@@ -453,3 +453,89 @@ Example Failure:
 }
 ```
 Status Code: 422 Unprocessable Entity
+
+#Images
+@channel 
+An Image can now be posted to a profile - Not with paperclip - until we figure out the S3 thing on our end, images are posted the same way as videos. One image per profile.
+ 
+```POST ‘/profiles/:profile_id/images’
+```
+
+Params:
+
+```image_url
+```
+
+Example Success:
+
+```{
+  "id": 3,
+  "imageable_id": 2,
+  "imageable_type": "Profile",
+  "image_url": "google.com",
+  "created_at": "2015-07-16T16:10:25.020Z",
+  "updated_at": "2015-07-16T16:10:25.020Z"
+}
+```
+
+Example Failure (if trying to post more than 1 image to a profile):
+
+```{
+  "errors": [
+    "Already have maximum number of images"
+  ]
+}
+```
+
+To show one image:
+
+```GET ‘/profiles/:profile_id/images/:image_id’
+```
+
+Example Success:
+
+```{
+  "id": 3,
+  "imageable_id": 2,
+  "imageable_type": "Profile",
+  "image_url": "google.com",
+  "created_at": "2015-07-16T16:10:25.020Z",
+  "updated_at": "2015-07-16T16:10:25.020Z”
+}
+```
+
+# User Avatar
+
+You can now add an avatar to a User
+
+This is a multipart form encoding file upload:
+
+```multipart/form-data
+```
+
+```PATCH ‘/user/:user_id/image’
+```
+
+Params:
+
+```avatar
+```
+
+Example Success:
+
+```{
+  "file": {
+    "id": 19,
+    "email": "Tom@test.com",
+    "password": "35327b5dc7503e200f15c499f310c4f572e3a59f",
+    "access_token": "62987172d3bce86c61937d98600c8d61",
+    "created_at": "2015-07-16T19:02:36.779Z",
+    "updated_at": "2015-07-16T19:55:21.965Z",
+    "username": "Tom",
+    "avatar_file_name": "most_of_my_pictures_turned_out_blurry__but_tiy_represent__.jpg",
+    "avatar_content_type": "image/jpeg",
+    "avatar_file_size": 558979,
+    "avatar_updated_at": "2015-07-16T19:55:20.504Z"
+  }
+}
+```
