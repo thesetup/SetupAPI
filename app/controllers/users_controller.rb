@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    render json: @user.as_json(only: [:id, :email, :access_token]),
+    render json: @user.as_json(only: [:id, :email, :access_token, :username]),
            status: :ok
   end
 
