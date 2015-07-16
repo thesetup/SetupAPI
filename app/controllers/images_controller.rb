@@ -1,15 +1,13 @@
 class ImagesController < ApplicationController
   def update_avatar
-    @avatar = User.find(params[:user_id])
-    @upload = @avatar.users.update(avatar_file_name: params[:avatar_file_name],
-                                   avatar_content_type: params[:avatar_content_type],
-                                   avatar_file_size: params[:avatar_file_size])
+    @user = current_user
+    @user.avatar = params[:avatar]
 
-    if @upload.save
-      render json: { file: @upload },
+    if @user.save
+      render json: { file: @user },
              status: :ok
     else
-      render json: { errors: @upload.errors.full_messages },
+      render json: { errors: @user.errors.full_messages },
              status: :unprocessable_entity
     end
   end
