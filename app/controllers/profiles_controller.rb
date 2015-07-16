@@ -34,6 +34,7 @@ class ProfilesController < ApplicationController
   end
 
   def create_video
+    ### need to restrict video creation to profile id owner
     @profile = Profile.find(params[:profile_id])
     @video = @profile.videos.new(video_url: params[:video_url],
                                  videoable_type: params[:videoable_type],
@@ -46,6 +47,44 @@ class ProfilesController < ApplicationController
                status: :unprocessable_entity
     end
   end
+
+  def update_video
+    @profile = Profile.find(params[:profile_id])
+    @video = @profile.videos.find(params[:video_id])
+    #binding.pry
+    @video.update(video_url: params[:video_url],
+                                 caption: params[:caption],
+                                 thumbnail_url: params[:thumbnail_url])
+    if @video.save
+      render json: @video,    status: :ok
+    else
+      render json: {errors: @video.errors.full_messages},
+               status: :unprocessable_entity
+    end
+  end
+
+  def delete_video
+  end
+
+  # def create_image
+  #   @profile = Profile.find(params[:profile_id])
+  #   @image = @profile.images.new(image_url: params[:image_url],
+  #                                imageable_type: params[:imageable_type])
+  #
+  # end
+  #
+  # def delete_image
+  #   @profile = Profile.find(params[:id])
+  #   if @profile.author == current_user
+  #     @profile.destroy
+  #     render json: {message: "Profile deleted."},
+  #            status: :ok
+  #   else
+  #     render json: {message: "Only the author of a profile may delete a profile."},
+  #            status: :unauthorized
+  #   end
+  #
+  # end
 
   def show_video
     @profile = Profile.find(params[:profile_id])
