@@ -1,74 +1,42 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
+  def update_avatar
+    @avatar = User.find(params[:user_id])
+    @upload = @avatar.users.update(avatar_file_name: params[:avatar_file_name],
+                                   avatar_content_type: params[:avatar_content_type],
+                                   avatar_file_size: params[:avatar_file_size])
 
-  # GET /images
-  # GET /images.json
-  def index
-    @images = Image.all
-  end
-
-  # GET /images/1
-  # GET /images/1.json
-  def show
-  end
-
-  # GET /images/new
-  def new
-    @image = Image.new
-  end
-
-  # GET /images/1/edit
-  def edit
-  end
-
-  # POST /images
-  # POST /images.json
-  def create
-    @image = Image.new(image_params)
-
-    respond_to do |format|
-      if @image.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
-        format.json { render :show, status: :created, location: @image }
-      else
-        format.html { render :new }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
-      end
+    if @upload.save
+      render json: { file: @upload },
+             status: :ok
+    else
+      render json: { errors: @upload.errors.full_messages },
+             status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /images/1
-  # PATCH/PUT /images/1.json
-  def update
-    respond_to do |format|
-      if @image.update(image_params)
-        format.html { redirect_to @image, notice: 'Image was successfully updated.' }
-        format.json { render :show, status: :ok, location: @image }
-      else
-        format.html { render :edit }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
-      end
+  def create_image
+    @profile = Profile.find(params[:profile_id])
+    @image = @profile.images.new(image_url: params[:image_url],
+                                 imageable_type: params[:imageable_type])
+    if @image.save
+      render json: @image,
+             status: :ok
+    else
+      render json: {errors: @image.errors.full_messages},
+             status: :unprocessable_entity
     end
   end
 
-  # DELETE /images/1
-  # DELETE /images/1.json
-  def destroy
-    @image.destroy
-    respond_to do |format|
-      format.html { redirect_to images_url, notice: 'Image was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+  def show_image
+    @profile = Profile.find(params[:profile_id])
+    @image = @profile.images.find(params[:image_id])
+    render json: @image,
+           status: :ok
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_image
-      @image = Image.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def image_params
-      params[:image]
-    end
+  def index_image
+    @image = Image.all
+    render json: @image,
+           status: :ok
+  end
 end

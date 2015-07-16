@@ -51,6 +51,7 @@ class ProfilesController < ApplicationController
     @video = @profile.videos.new(video_url: params[:video_url],
                                  videoable_type: params[:videoable_type],
                                  caption: params[:caption],
+
                                  thumbnail_url: params[:thumbnail_url])
 
 
