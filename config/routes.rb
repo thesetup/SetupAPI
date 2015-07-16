@@ -21,9 +21,12 @@ Rails.application.routes.draw do
   delete 'users/:user_id', to: 'users#delete'
 
   post '/profiles/:profile_id/videos', to: 'profiles#create_video'
-  delete '/profiles/:profile_id/videos/:id', to: 'profiles#delete_video'
+
   get '/profiles/:profile_id/videos/:video_id', to: 'profiles#show_video'
   get '/videos', to: 'profiles#index_videos'
+
+  patch '/profiles/:profile_id/videos/:video_id', to: 'profiles#update_video'
+  delete '/profiles/:profile_id/videos/:video_id', to: 'profiles#delete_video'
 
   patch '/user/:user_id/image', to: 'images#update_avatar'
 
