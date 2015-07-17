@@ -248,7 +248,6 @@ Example Success:
       "video_url": "https://catvideo.com",
       "created_at": "2015-07-15T19:51:59.688Z",
       "updated_at": "2015-07-15T19:51:59.688Z",
-      "main": true,
       "caption": "Look at this cat!",
       "thumbnail_url": "https://thumbnail.com"
     },
@@ -259,7 +258,6 @@ Example Success:
       "video_url": "https://dogvideo.com",
       "created_at": "2015-07-15T19:55:26.585Z",
       "updated_at": "2015-07-15T19:55:26.585Z",
-      "main": true,
       "caption": "Look at this dog!",
       "thumbnail_url": "https://thumbnail.com"
     },
@@ -270,7 +268,6 @@ Example Success:
       "video_url": "https://snakevideo.com",
       "created_at": "2015-07-15T19:55:42.124Z",
       "updated_at": "2015-07-15T19:55:42.124Z",
-      "main": true,
       "caption": "Look at this snake!",
       "thumbnail_url": "https://thumbnail.com"
     },
@@ -281,7 +278,6 @@ Example Success:
       "video_url": "https://hippovideo.com",
       "created_at": "2015-07-15T19:55:52.135Z",
       "updated_at": "2015-07-15T19:55:52.135Z",
-      "main": true,
       "caption": "Look at this hippo!",
       "thumbnail_url": "https://thumbnail.com"
     }
@@ -291,6 +287,45 @@ Example Success:
 ```
 
 Example Failure:
+
+###Show All Profiles for Given User
+```GET``` '/users/:id/profiles'
+
+Example Success:
+
+```
+[
+  {
+    "id": 7,
+    "profiler_id": 2,
+    "profilee_id": 9,
+    "created_at": "2015-07-17T13:34:42.156Z",
+    "updated_at": "2015-07-17T13:34:42.156Z"
+  },
+  {
+    "id": 8,
+    "profiler_id": 2,
+    "profilee_id": 10,
+    "created_at": "2015-07-17T13:34:56.850Z",
+    "updated_at": "2015-07-17T13:34:56.850Z"
+  },
+  {
+    "id": 9,
+    "profiler_id": 2,
+    "profilee_id": 11,
+    "created_at": "2015-07-17T13:34:42.156Z",
+    "updated_at": "2015-07-17T13:34:42.156Z"
+  },
+  {
+    "id": 10,
+    "profiler_id": 2,
+    "profilee_id": 12,
+    "created_at": "2015-07-17T13:34:56.850Z",
+    "updated_at": "2015-07-17T13:34:56.850Z"
+  }
+]
+```
+Status Code: 200 :ok
 
 ###Index
 ```GET``` '/profiles'
@@ -455,9 +490,9 @@ Example Failure:
 Status Code: 422 Unprocessable Entity
 
 #Images
-@channel 
+@channel
 An Image can now be posted to a profile - Not with paperclip - until we figure out the S3 thing on our end, images are posted the same way as videos. One image per profile.
- 
+
 ```POST ‘/profiles/:profile_id/images’
 ```
 
