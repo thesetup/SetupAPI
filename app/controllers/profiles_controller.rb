@@ -8,6 +8,8 @@ class ProfilesController < ApplicationController
                             password: params[:password],
                             username: params[:username])
 
+    @profilee.avatar = params[:avatar]
+
     @profile = Profile.new(profilee_id: @profilee.id,
                            profiler_id: current_user.id)
 
@@ -132,3 +134,5 @@ class ProfilesController < ApplicationController
   end
 
 end
+
+
