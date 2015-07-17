@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :authenticate_with_token!, :only [:update_avatar, :create_image, :delete_image]
+  before_action :authenticate_with_token!
 
   def update_avatar
     @user = current_user
