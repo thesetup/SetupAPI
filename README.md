@@ -289,6 +289,7 @@ Example Success:
 Example Failure:
 
 ###Show All Profiles for Given User
+Here you're able to see all profiles that are owned by a specific user.
 ```GET``` '/users/:id/profiles'
 
 Example Success:
