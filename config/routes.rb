@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   delete '/profiles/:profile_id/images/:image_id', to: 'images#delete_video'
   get '/profiles/:profile_id/images/:image_id', to: 'images#show_image'
   get '/images', to: 'images#index_videos'
+  patch '/profiles/:profile_id/images/:image_id', to: 'images#update_image'
+
 
   resources :profiles do
   end
