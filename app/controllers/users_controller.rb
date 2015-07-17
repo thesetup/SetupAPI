@@ -12,6 +12,12 @@ class UsersController < ApplicationController
            status: :ok
   end
 
+  def profiles
+    @user = User.find(params[:user_id])
+    render json: Profile.where(profiler_id: @user.id),
+           status: :ok
+  end
+
   def register
     @user = User.new(username: params[:username],
                      email: params[:email],

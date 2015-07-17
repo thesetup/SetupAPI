@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index'
   post 'users/login', to: 'users#login'
   delete 'users/:user_id', to: 'users#delete'
+  get 'users/:user_id/profiles', to: 'users#profiles'
 
   post '/profiles/:profile_id/videos', to: 'profiles#create_video'
 
