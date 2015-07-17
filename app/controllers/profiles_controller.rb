@@ -19,24 +19,22 @@ class ProfilesController < ApplicationController
                                 occupation: params[:occupation],
                                 location: params[:location])
 
-   if @question.save
+    if @question.save
       if @profilee.save
-        @profile.update(profilee_id: @profilee.id)
+         @profile.update(profilee_id: @profilee.id)
         if @profile.save
-        @profile.question = @question
-        render 'create.json.jbuilder'
+           @profile.question = @question
+           render 'create.json.jbuilder'
         else
-          render json: {errors: @profile.errors.full_messages},
+           render json: {errors: @profile.errors.full_messages},
                   status: :unprocessable_entity
         end
       else
-        render json: {errors: @profilee.errors.full_messages}, 
+        render json: {errors: @profilee.errors.full_messages},
                 status: :unprocessable_entity
       end
       #UserMailer.welcome.deliver
     else
-      # render json: {errors: @profile.errors.full_messages},
-      #        status: :unprocessable_entity
       render json: {errors: @question.errors.full_messages},
               status: :unprocessable_entity
     end
@@ -115,9 +113,9 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     if @profile
-    render 'show.json.jbuilder', status: :ok
+      render 'show.json.jbuilder', status: :ok
     else
-      render :status => 404
+      render json: {errors: @profile.errors.full_messages}
     end
   end
 
@@ -132,15 +130,5 @@ class ProfilesController < ApplicationController
              status: :unauthorized
     end
   end
-
-  # private
-
-  # def user_params
-  #   params.require(:user).permit(:avatar, :name)
-  # end
-  #
-  # def image_params
-  #   params.require(:image_url).permit(:imageable_id)
-  # end
 
 end
