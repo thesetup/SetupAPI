@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
              status: :unauthenticated
     end
   end
+
+  rescue_from ActiveRecord::RecordNotFound do
+   render json: { error: "You've tried to access a record which does not exist.  YOU FOOL!" },
+     status: :not_found
+  end
 end
