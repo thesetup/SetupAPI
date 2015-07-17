@@ -80,6 +80,37 @@ class ProfilesController < ApplicationController
     end
   end
 
+  # def update_avatar
+  #   @profile = Profile.find(params[:profile_id])
+  #   @avatar = @profile.videos.find(params[:video_id])
+  #
+  #   if current_user.id == @profile.author.id
+  #     @avatar.update(video_url: params[:video_url],
+  #                   caption: params[:caption],
+  #                   thumbnail_url: params[:thumbnail_url])
+  #
+  #     render json: @video, status: :ok
+  #   else
+  #     render json: {errors: @video.errors.full_messages},
+  #            status: :unprocessable_entity
+  #   end
+  # end
+
+  def update_avatar
+    @profile = Profile.find(params[:profile_id])
+    @user = current_user
+    @user.avatar = params[:avatar]
+
+    if current_user.id == @profile.author.id
+      @user.save(validate: false)
+      render json: { file: @user },
+             status: :ok
+    else
+      render json: { errors: @user.errors.full_messages },
+             status: :unprocessable_entity
+    end
+  end
+
   def delete_video
     @profile = Profile.find(params[:profile_id])
     @video = @profile.videos.find(params[:video_id])
