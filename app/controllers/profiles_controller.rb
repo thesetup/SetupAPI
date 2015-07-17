@@ -114,7 +114,11 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
+    if @profile
     render 'show.json.jbuilder', status: :ok
+    else
+      render :status => 404
+    end
   end
 
   def destroy
