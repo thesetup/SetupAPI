@@ -29,11 +29,6 @@
 	* [Create Avatar for Yourself] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#create-avatar-for-yourself)
 
 
-
-
-
-
-
 #URL:
 
 * https://still-island-6789.herokuapp.com
@@ -573,8 +568,14 @@ In this first version of Setup, a user can have only one avatar.  To this end, t
 ###Create Avatar for Profile
 ```PUT '/profiles/:profile_id/avatar'```
 
+######Params:
+
+* avatar
+
+
 Example Response:
-In this example we see user information for user with id: 2.  Use this endpoint everytime you want to change your profilee's avatar.
+
+In this example we see user information for user with id: 2.  Use this endpoint every time you want to change your profilee's avatar.
 
 ```
 {
@@ -598,6 +599,10 @@ In this example we see user information for user with id: 2.  Use this endpoint 
 Again, this is only an option if no one has already created a profile for you.  In this example User 1 is creating his own avatar. Use this same endpoint everytime you want to change your avatar.
 
 ```PUT 'users/:user_id/avatar'```
+
+######Params:
+
+* avatar
 
 Example Response:
 
