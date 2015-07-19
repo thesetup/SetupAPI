@@ -1,3 +1,39 @@
+#API DOCUMENTATION
+
+#TABLE OF CONTENTS:
+
+1. [USER] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#USER)
+	*	[Register] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Register)
+	*  [Login] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Login)
+	*  [Index] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Index)
+	*  [Show] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Show)
+	*  [Delete] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Delete)
+
+2. [PROFILE] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#PROFILE)
+	*  [Create] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Create)
+	*  [Show Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Show_Profile)
+	*  [Show All Profiles for User] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Show_All_Profiles_for_User)
+	*  [Index Profiles] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Index_Profiles)
+	*  [Edit Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Edit_Profile)
+	*  [Delete Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Delete_Profile)
+
+3.  [VIDEO] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#VIDEO)
+
+	*  [Create Video] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Create_Video)
+	*  [Swap Video] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Edit_Video)
+	*  [Delete Video] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Delete_Video)
+
+4.  [AVATAR] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#AVATAR)
+
+	*  [Create Avatar for Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Create_Avatar_for_Profile)
+	* [Create Avatar for Yourself] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Create_Avatar_for_Yourself)
+
+
+
+
+
+
+
 #URL:
 
 * https://still-island-6789.herokuapp.com
@@ -16,19 +52,15 @@
 Example Success:
 
 ```
-  {
-    "id": 1,
-    "email": "walt@white.bb",
-    "password": "ebfc7910077770c8340f63cd2dca2ac1f120444f",
-    "access_token": "424e388fdd162a48a935816a7bbce79e",
-    "created_at": "2015-07-19T03:58:50.887Z",
-    "updated_at": "2015-07-19T03:58:50.887Z",
-    "username": "heisenberg",
-    "avatar_file_name": null,
-    "avatar_content_type": null,
-    "avatar_file_size": null,
-    "avatar_updated_at": null
-  }
+    {
+      "id": 1,
+      "email": "mary@poppins.com",
+      "password": "cea205a2de95383297dcfe248c5a1b3038ca01c0",
+      "access_token": "1c4864db5ee70e4af3d3a7702966b254",
+      "created_at": "2015-07-08T19:39:46.161Z",
+      "updated_at": "2015-07-08T19:39:46.161Z",
+      "username": "mpoppins"
+    }
 ```
 Status Code: :created
 
@@ -55,19 +87,14 @@ Example Success:
 
 ```
   {
-    "id": 1,
-    "email": "walt@white.bb",
-    "password": "ebfc7910077770c8340f63cd2dca2ac1f120444f",
-    "access_token": "424e388fdd162a48a935816a7bbce79e",
-    "created_at": "2015-07-19T03:58:50.887Z",
-    "updated_at": "2015-07-19T03:58:50.887Z",
-    "username": "heisenberg",
-    "avatar_file_name": null,
-    "avatar_content_type": null,
-    "avatar_file_size": null,
-    "avatar_updated_at": null
+    "id": 2,
+    "email": "walt@white.com",
+    "password": "33e475263fead060c56753b9003467f268fdba4d",
+    "access_token": "7b64bc42e115ce71ff84d1f8593a6a2b",
+    "created_at": "2015-07-10T03:08:00.762Z",
+    "updated_at": "2015-07-10T03:08:00.762Z",
+    "username": "heisenberg"
   }
-
 ```
 Status Code: :ok
 
@@ -89,25 +116,25 @@ Example Success:
   [
   {
     "id": 1,
-    "email": "walt@white.bb",
+    "email": "mary@poppins.com",
     "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
     "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
     "created_at": "2015-07-19T03:32:17.108Z",
     "updated_at": "2015-07-19T03:41:56.401Z",
-    "username": "heisenberg",
+    "username": "mpoppins",
     "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
     "avatar_content_type": "image/jpeg",
     "avatar_file_size": 136717,
     "avatar_updated_at": "2015-07-19T03:41:55.678Z"
   },
   {
-    "id": 2,
-    "email": "mary@poppins.com",
+    "id": 1,
+    "email": "walt@white.bb",
     "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
     "access_token": "ba9498f019520a1a48a27144e0bb4189",
     "created_at": "2015-07-19T03:31:27.874Z",
     "updated_at": "2015-07-19T03:45:13.294Z",
-    "username": "mpoppins",
+    "username": "heisenberg",
     "avatar_file_name": "20150626-IMG_7963.jpg",
     "avatar_content_type": "image/jpeg",
     "avatar_file_size": 8641207,
@@ -120,7 +147,16 @@ Status Code: :ok
 ###Show
 ```GET '/users/:user_id'```
 
-Status Code :ok for Success
+Example Success:
+
+```
+  {
+    "id": 1,
+    "email": "mary@poppins.com",
+    "access_token": "1c4864db5ee70e4af3d3a7702966b254"
+  }
+```
+Status Code: :ok
 
 ###Delete
 ```DELETE '/users/:user_id'```
@@ -220,7 +256,7 @@ In this API you MAY NOT create a profile for yourself.
 }
 ```
 Status Code: 422 Unprocessable Entity
-###Show
+###Show Profile
 
 ```GET '/profiles/:id'```
 
@@ -257,41 +293,45 @@ Example Success:
       "id": 1,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://catvideo.mp4",
+      "video_url": "https://catvideo.com",
       "created_at": "2015-07-15T19:51:59.688Z",
       "updated_at": "2015-07-15T19:51:59.688Z",
+      "main": true,
       "caption": "Look at this cat!",
-      "thumbnail_url": "https://thumbnail.png"
+      "thumbnail_url": "https://thumbnail.com"
     },
     {
       "id": 2,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://dogvideo.mp4",
+      "video_url": "https://dogvideo.com",
       "created_at": "2015-07-15T19:55:26.585Z",
       "updated_at": "2015-07-15T19:55:26.585Z",
+      "main": true,
       "caption": "Look at this dog!",
-      "thumbnail_url": "https://thumbnail.png"
+      "thumbnail_url": "https://thumbnail.com"
     },
     {
       "id": 3,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://snakevideo.mp4",
+      "video_url": "https://snakevideo.com",
       "created_at": "2015-07-15T19:55:42.124Z",
       "updated_at": "2015-07-15T19:55:42.124Z",
+      "main": true,
       "caption": "Look at this snake!",
-      "thumbnail_url": "https://thumbnail.png"
+      "thumbnail_url": "https://thumbnail.com"
     },
     {
       "id": 4,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://hippovideo.mp4",
+      "video_url": "https://hippovideo.com",
       "created_at": "2015-07-15T19:55:52.135Z",
       "updated_at": "2015-07-15T19:55:52.135Z",
+      "main": true,
       "caption": "Look at this hippo!",
-      "thumbnail_url": "https://thumbnail.png"
+      "thumbnail_url": "https://thumbnail.com"
     }
   ]
 }
@@ -336,7 +376,7 @@ Example Response:
   }
 ]
 ```
-###Index
+###Index Profiles
 ```GET '/profiles'```
 
 You can fetch all profiles at this endpoint.
@@ -435,10 +475,10 @@ Example Success:
 }
 ```
 
-###Edit
+###Edit Profile
 Currently their is no endpoint to change attributes on the Question model.  This may be added as a feature at a later date.
 
-###Delete
+###Delete Profile
 ```DELETE '/profiles/:id'```
 
 A profile may only be deleted by its profiler.  A profilee cannot delete a profile created about her, but may delete other profiles for whom she is the profiler.
@@ -462,7 +502,7 @@ Status code :422
 
 #Video
 
-###Create a Video
+###Create Video
 ```POST '/profiles/:profile_id/videos'```
 
 One video at a time y'all.  Make sure to include these params.  Also note that only 4 videos may be associated with any one profile.
@@ -503,7 +543,7 @@ Status Code: 422 Unprocessable Entity
 #Avatars
 In this first version of Setup, a user can have only one avatar.  To this end, there are two types of users and therefore two types of avatars.  The first is an avatar uploaded by a profiler for her profilee.  The second is for a user who has not had a profile created for herself, but would like use the app to browse other profiles.
 
-###Create an Avatar for a Profilee
+###Create Avatar for Profile
 ```PUT '/profiles/:profile_id/avatar'```
 
 Example Response:
@@ -527,7 +567,7 @@ In this example we see user information for user with id: 2.  Use this endpoint 
 }
 ```
 
-###Create an Avatar for Yourself
+###Create Avatar for Yourself
 Again, this is only an option if no one has already created a profile for you.  In this example User 1 is creating his own avatar. Use this same endpoint everytime you want to change your avatar.
 
 ```PUT 'users/:user_id/avatar'```
