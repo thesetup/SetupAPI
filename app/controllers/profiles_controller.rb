@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 
   before_action :authenticate_with_token!
+#  before_action :check_validation, :except => [:update_avatar]
 
   def create
     #binding.pry
@@ -8,7 +9,7 @@ class ProfilesController < ApplicationController
                             password: params[:password],
                             username: params[:username])
 
-    @profilee.avatar = params[:avatar]
+    #@profilee.avatar = params[:avatar]
 
     @profile = Profile.new(profilee_id: @profilee.id,
                            profiler_id: current_user.id)
@@ -83,30 +84,13 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # def update_avatar
-  #   @profile = Profile.find(params[:profile_id])
-  #   @avatar = @profile.videos.find(params[:video_id])
-  #
-  #   if current_user.id == @profile.author.id
-  #     @avatar.update(video_url: params[:video_url],
-  #                   caption: params[:caption],
-  #                   thumbnail_url: params[:thumbnail_url])
-  #
-  #     render json: @video, status: :ok
-  #   else
-  #     render json: {errors: @video.errors.full_messages},
-  #            status: :unprocessable_entity
-  #   end
-  # end
-
   def update_avatar
     @profile = Profile.find(params[:profile_id])
     @user = @profile.user
     @user.avatar = params[:avatar]
-    # binding.pry
 
     if current_user.id == @profile.author.id
-      @user.save(validate:false) ###This will change the password of the profilee everytime a new avatar is uploaded.
+      @user.save(validate: false)
       render json: { file: @user },
              status: :ok
     else
