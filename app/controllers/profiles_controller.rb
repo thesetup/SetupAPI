@@ -21,6 +21,9 @@ class ProfilesController < ApplicationController
                                 occupation: params[:occupation],
                                 location: params[:location])
 
+                                ###Questions are saving w/o password,
+                                ###Profile not created however.
+
     if @question.save
       if @profilee.save
          @profile.update(profilee_id: @profilee.id)
@@ -98,11 +101,12 @@ class ProfilesController < ApplicationController
 
   def update_avatar
     @profile = Profile.find(params[:profile_id])
-    @user = current_user
+    @user = @profile.user
     @user.avatar = params[:avatar]
+    # binding.pry
 
     if current_user.id == @profile.author.id
-      @user.save(validate: false)
+      @user.save(validate:false) ###This will change the password of the profilee everytime a new avatar is uploaded.
       render json: { file: @user },
              status: :ok
     else
@@ -165,5 +169,3 @@ class ProfilesController < ApplicationController
   end
 
 end
-
-
