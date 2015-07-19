@@ -3,30 +3,30 @@
 #TABLE OF CONTENTS:
 
 1. [USER] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#USER)
-	*	[Register] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Register)
-	*  [Login] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Login)
-	*  [Index] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Index)
-	*  [Show] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Show)
+	*	[Register] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Register)
+	*  [Login] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Login)
+	*  [Index] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Index)
+	*  [Show] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Show)
 	*  [Delete] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Delete)
 
 2. [PROFILE] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#PROFILE)
-	*  [Create] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Create)
-	*  [Show Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Show_Profile)
-	*  [Show All Profiles for User] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Show_All_Profiles_for_User)
-	*  [Index Profiles] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Index_Profiles)
-	*  [Edit Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Edit_Profile)
-	*  [Delete Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Delete_Profile)
+	*  [Create] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Create)
+	*  [Show Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Show-Profile)
+	*  [Show All Profiles for User] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Show-All-Profiles-for-User)
+	*  [Index Profiles] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Index-Profiles)
+	*  [Edit Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Edit-Profile)
+	*  [Delete Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Delete-Profile)
 
 3.  [VIDEO] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#VIDEO)
 
-	*  [Create Video] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Create_Video)
-	*  [Swap Video] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Edit_Video)
-	*  [Delete Video] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Delete_Video)
+	*  [Create Video] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Create-Video)
+	*  [Swap Video] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Edit-Video)
+	*  [Delete Video] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Delete-Video)
 
 4.  [AVATAR] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#AVATAR)
 
-	*  [Create Avatar for Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Create_Avatar_for_Profile)
-	* [Create Avatar for Yourself] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md###Create_Avatar_for_Yourself)
+	*  [Create Avatar for Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Create-Avatar-for-Profile)
+	* [Create Avatar for Yourself] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#Create-Avatar-for-Yourself)
 
 
 
