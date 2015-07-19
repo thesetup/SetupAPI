@@ -20,24 +20,24 @@ Rails.application.routes.draw do
   post 'users/login',                                       to: 'users#login'
   delete 'users/:user_id',                                  to: 'users#delete'
   get 'users/:user_id/profiles',                            to: 'users#profiles'                  ## See all profiles belonging to a user.
-  patch '/users/:user_id/avatar',                           to: 'users#update_self_avatar'        ## Update your own avatar.
+  put 'users/:user_id/avatar',                              to: 'users#update_self_avatar'        ## Update your own avatar.
 
-  post '/profiles/:profile_id/videos',                      to: 'videos#create_video'
-  get '/profiles/:profile_id/videos/:video_id',             to: 'videos#show_video'
-  get '/videos',                                            to: 'videos#index_videos'
-  patch '/profiles/:profile_id/:video_id',                  to: 'videos#update_video'
+  post 'profiles/:profile_id/videos',                       to: 'videos#create_video'
+  get 'profiles/:profile_id/videos/:video_id',              to: 'videos#show_video'
+  get 'videos',                                             to: 'videos#index_videos'
+  patch 'profiles/:profile_id/:video_id',                   to: 'videos#update_video'
   delete '/profiles/:profile_id/videos/:video_id',          to: 'videos#delete_video'
 
   get 'profiles',                                           to: 'profiles#index'
   get 'profiles/:profile_id',                               to: 'profiles#show'
   delete 'profiles/:profile_id',                            to: 'profiles#destroy'
   post 'profiles',                                          to: 'profiles#create'
-  patch '/profiles/:profile_id/avatar',                     to: 'profiles#update_profilee_avatar' ## Update a profilee's avatar.
+  put 'profiles/:profile_id/avatar',                        to: 'profiles#update_profilee_avatar' ## Update a profilee's avatar.
 
-  post '/profiles/:profile_id/images',                      to: 'images#create_image'
-  get '/profiles/:profile_id/images/:image_id',             to: 'images#show_image'
-  get '/images',                                            to: 'images#index_image'
-  patch '/profiles/:profile_id/images/:image_id',           to: 'images#update_image'
+  post 'profiles/:profile_id/images',                      to: 'images#create_image'
+  get 'profiles/:profile_id/images/:image_id',             to: 'images#show_image'
+  get 'images',                                            to: 'images#index_image'
+  patch 'profiles/:profile_id/images/:image_id',           to: 'images#update_image'
 
 
 

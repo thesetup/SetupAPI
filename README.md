@@ -78,25 +78,33 @@ Example Success:
 
 ```
   [
-    {
-      "id": 1,
-      "email": "mary@poppins.com",
-      "password": "cea205a2de95383297dcfe248c5a1b3038ca01c0",
-      "access_token": "1c4864db5ee70e4af3d3a7702966b254",
-      "created_at": "2015-07-08T19:18:05.400Z",
-      "updated_at": "2015-07-08T19:18:05.400Z",
-      "username": mpoppins
-    },
-    {
-      "id": 2,
-      "email": "walt@white.com",
-      "password": "33e475263fead060c56753b9003467f268fdba4d",
-      "access_token": "7b64bc42e115ce71ff84d1f8593a6a2b",
-      "created_at": "2015-07-08T19:39:46.161Z",
-      "updated_at": "2015-07-08T19:39:46.161Z",
-      "username": "heisenberg"
-    }
-  ]
+  {
+    "id": 1,
+    "email": "mary@poppins.com",
+    "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
+    "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
+    "created_at": "2015-07-19T03:32:17.108Z",
+    "updated_at": "2015-07-19T03:41:56.401Z",
+    "username": "mpoppins",
+    "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
+    "avatar_content_type": "image/jpeg",
+    "avatar_file_size": 136717,
+    "avatar_updated_at": "2015-07-19T03:41:55.678Z"
+  },
+  {
+    "id": 1,
+    "email": "walt@white.bb",
+    "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
+    "access_token": "ba9498f019520a1a48a27144e0bb4189",
+    "created_at": "2015-07-19T03:31:27.874Z",
+    "updated_at": "2015-07-19T03:45:13.294Z",
+    "username": "heisenberg",
+    "avatar_file_name": "20150626-IMG_7963.jpg",
+    "avatar_content_type": "image/jpeg",
+    "avatar_file_size": 8641207,
+    "avatar_updated_at": "2015-07-19T03:45:05.611Z"
+  }
+]
 ```
 Status Code: :ok
 
@@ -293,9 +301,47 @@ Example Success:
 }
 
 ```
+###Show All Profiles for User
+```GET '/users/:user_id/profiles'```
 
+Take a gander at all of the profiles any one user has created.
+
+Example Response:
+
+```
+[
+  {
+    "id": 7,
+    "profiler_id": 2,
+    "profilee_id": 9,
+    "created_at": "2015-07-17T13:34:42.156Z",
+    "updated_at": "2015-07-17T13:34:42.156Z"
+  },
+  {
+    "id": 8,
+    "profiler_id": 2,
+    "profilee_id": 10,
+    "created_at": "2015-07-17T13:34:56.850Z",
+    "updated_at": "2015-07-17T13:34:56.850Z"
+  },
+  {
+    "id": 9,
+    "profiler_id": 2,
+    "profilee_id": 11,
+    "created_at": "2015-07-17T13:34:42.156Z",
+    "updated_at": "2015-07-17T13:34:42.156Z"
+  },
+  {
+    "id": 10,
+    "profiler_id": 2,
+    "profilee_id": 12,
+    "created_at": "2015-07-17T13:34:56.850Z",
+    "updated_at": "2015-07-17T13:34:56.850Z"
+  }
+]
+```
 ###Index
-```GET``` '/profiles'
+```GET '/profiles'```
 
 You can fetch all profiles at this endpoint.
 
@@ -352,45 +398,41 @@ Example Success:
       "id": 1,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://catvideo.com",
+      "video_url": "catvideo.mp4",
       "created_at": "2015-07-15T19:51:59.688Z",
       "updated_at": "2015-07-15T19:51:59.688Z",
-      "main": true,
       "caption": "Look at this cat!",
-      "thumbnail_url": "https://thumbnail.com"
+      "thumbnail_url": "catvideo.png"
     },
     {
       "id": 2,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://dogvideo.com",
+      "video_url": "dogvideo.mp4",
       "created_at": "2015-07-15T19:55:26.585Z",
       "updated_at": "2015-07-15T19:55:26.585Z",
-      "main": true,
       "caption": "Look at this dog!",
-      "thumbnail_url": "https://thumbnail.com"
+      "thumbnail_url": "dogvideo.png"
     },
     {
       "id": 3,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://snakevideo.com",
+      "video_url": "snakevideo.mp4",
       "created_at": "2015-07-15T19:55:42.124Z",
       "updated_at": "2015-07-15T19:55:42.124Z",
-      "main": true,
       "caption": "Look at this snake!",
-      "thumbnail_url": "https://thumbnail.com"
+      "thumbnail_url": "snakevideo.png"
     },
     {
       "id": 4,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://hippovideo.com",
+      "video_url": "hippovideo.mp4",
       "created_at": "2015-07-15T19:55:52.135Z",
       "updated_at": "2015-07-15T19:55:52.135Z",
-      "main": true,
       "caption": "Look at this hippo!",
-      "thumbnail_url": "https://thumbnail.com"
+      "thumbnail_url": "hippovideo.png"
     }
   ],
   "images": []
@@ -422,7 +464,9 @@ Example Failure:
 ```
 Status code :422
 
-###Video Upload
+#Video
+
+###Create a Video
 ```POST '/profiles/:profile_id/videos'```
 
 One video at a time y'all.  Make sure to include these params.  Also note that only 4 videos may be associated with any one profile.
@@ -440,11 +484,11 @@ Example Success:
   "id": 1,
   "videoable_id": 1,
   "videoable_type": "Profile",
-  "video_url": "https://catvideo.com",
+  "video_url": "catvideo.mp4",
   "created_at": "2015-07-15T19:51:59.688Z",
   "updated_at": "2015-07-15T19:51:59.688Z",
   "caption": "Look at this cat!",
-  "thumbnail_url": "https://thumbnail.com"
+  "thumbnail_url": "https://thumbnail.png"
 }
 ```
 Status Code: 200 ok
@@ -459,3 +503,54 @@ Example Failure:
 }
 ```
 Status Code: 422 Unprocessable Entity
+
+#Avatars
+In this first version of Setup, a user can have only one avatar.  To this end, there are two types of users and therefore two types of avatars.  The first is an avatar uploaded by a profiler for her profilee.  The second is for a user who has not had a profile created for herself, but would like use the app to browse other profiles.
+
+###Create an Avatar for a Profilee
+```PUT '/profiles/:profile_id/avatar'```
+
+Example Response:
+In this example we see user information for user with id: 2.  Use this endpoint everytime you want to change your profilee's avatar.
+
+```
+{
+  "file": {
+    "id": 2,
+    "email": "user2@user2.com",
+    "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
+    "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
+    "created_at": "2015-07-19T03:32:17.108Z",
+    "updated_at": "2015-07-19T03:41:56.401Z",
+    "username": "user2",
+    "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
+    "avatar_content_type": "image/jpeg",
+    "avatar_file_size": 136717,
+    "avatar_updated_at": "2015-07-19T03:41:55.678Z"
+  }
+}
+```
+
+###Create an Avatar for Yourself
+Again, this is only an option if no one has already created a profile for you.  In this example User 1 is creating his own avatar. Use this same endpoint everytime you want to change your avatar.
+
+```PUT 'users/:user_id/avatar'```
+
+Example Response:
+
+```
+{
+  "file": {
+    "id": 1,
+    "email": "user1@user1.com",
+    "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
+    "access_token": "ba9498f019520a1a48a27144e0bb4189",
+    "created_at": "2015-07-19T03:31:27.874Z",
+    "updated_at": "2015-07-19T03:45:13.294Z",
+    "username": "user1",
+    "avatar_file_name": "20150626-IMG_7963.jpg",
+    "avatar_content_type": "image/jpeg",
+    "avatar_file_size": 8641207,
+    "avatar_updated_at": "2015-07-19T03:45:05.611Z"
+  }
+}
