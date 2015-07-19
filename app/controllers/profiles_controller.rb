@@ -1,15 +1,11 @@
 class ProfilesController < ApplicationController
 
   before_action :authenticate_with_token!
-#  before_action :check_validation, :except => [:update_avatar]
 
   def create
-    #binding.pry
     @profilee = User.new(email: params[:email],
                             password: params[:password],
                             username: params[:username])
-
-    #@profilee.avatar = params[:avatar]
 
     @profile = Profile.new(profilee_id: @profilee.id,
                            profiler_id: current_user.id)
