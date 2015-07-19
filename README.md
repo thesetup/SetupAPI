@@ -5,7 +5,7 @@
 #USER
 
 ###Register
-```POST``` ‘/users/register’
+```POST ‘/users/register’```
 
 ######Params:
 
@@ -40,7 +40,7 @@ Example Failures:
 ```
 Status Code: :unprocessable_entity
 ###Login
-```POST``` '/users/login'
+```POST '/users/login'```
 
 ######Params:
 
@@ -72,36 +72,44 @@ Example Failure:
 Status code: :unprocessable_entity
 
 ###Index
-```GET``` '/users'
+```GET '/users'```
 
 Example Success:
 
 ```
   [
-    {
-      "id": 1,
-      "email": "mary@poppins.com",
-      "password": "cea205a2de95383297dcfe248c5a1b3038ca01c0",
-      "access_token": "1c4864db5ee70e4af3d3a7702966b254",
-      "created_at": "2015-07-08T19:18:05.400Z",
-      "updated_at": "2015-07-08T19:18:05.400Z",
-      "username": mpoppins
-    },
-    {
-      "id": 2,
-      "email": "walt@white.com",
-      "password": "33e475263fead060c56753b9003467f268fdba4d",
-      "access_token": "7b64bc42e115ce71ff84d1f8593a6a2b",
-      "created_at": "2015-07-08T19:39:46.161Z",
-      "updated_at": "2015-07-08T19:39:46.161Z",
-      "username": "heisenberg"
-    }
-  ]
+  {
+    "id": 1,
+    "email": "mary@poppins.com",
+    "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
+    "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
+    "created_at": "2015-07-19T03:32:17.108Z",
+    "updated_at": "2015-07-19T03:41:56.401Z",
+    "username": "mpoppins",
+    "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
+    "avatar_content_type": "image/jpeg",
+    "avatar_file_size": 136717,
+    "avatar_updated_at": "2015-07-19T03:41:55.678Z"
+  },
+  {
+    "id": 1,
+    "email": "walt@white.bb",
+    "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
+    "access_token": "ba9498f019520a1a48a27144e0bb4189",
+    "created_at": "2015-07-19T03:31:27.874Z",
+    "updated_at": "2015-07-19T03:45:13.294Z",
+    "username": "heisenberg",
+    "avatar_file_name": "20150626-IMG_7963.jpg",
+    "avatar_content_type": "image/jpeg",
+    "avatar_file_size": 8641207,
+    "avatar_updated_at": "2015-07-19T03:45:05.611Z"
+  }
+]
 ```
 Status Code: :ok
 
 ###Show
-```GET``` '/users/:user_id'
+```GET '/users/:user_id'```
 
 Example Success:
 
@@ -115,9 +123,9 @@ Example Success:
 Status Code: :ok
 
 ###Delete
-```DELETE``` '/users/:user_id'
+```DELETE '/users/:user_id'```
 
-* Requires Access-Token in Headers
+* Requires Access-Token in Headers.
 
 Example Success:
 
@@ -140,9 +148,9 @@ Status Code: :unauthorized
 #PROFILE
 
 ###Create
-```POST``` '/profiles'
+```POST '/profiles'```
 
-When you register as a user you are granted an access token.  The access token will identify you as a unique user of our application.
+When you register as a user you are granted an access token.  The access token will identify you as a unique user of Setup.
 
 In creating a profile you become a profiler.  You must enter the username and email of your friend, the profilee.  You will also create a password for them which they will then change later.  
 
@@ -171,7 +179,8 @@ Example Success:
     "created_at": "2015-07-15T19:43:18.674Z",
     "updated_at": "2015-07-15T19:43:18.674Z"
   },
-  "questions": {
+  "questions": [
+    {
       "id": 1,
       "name": "user2",
       "email": "user2@2.com",
@@ -183,7 +192,8 @@ Example Success:
       "created_at": "2015-07-15T19:43:18.680Z",
       "updated_at": "2015-07-15T19:43:18.680Z",
       "profile_id": 1
-    },
+    }
+  ],
   "videos": [],
   "images": []
 }
@@ -212,7 +222,7 @@ In this API you MAY NOT create a profile for yourself.
 Status Code: 422 Unprocessable Entity
 ###Show
 
-```GET``` '/profiles/:id'
+```GET '/profiles/:id'```
 
 This endpoint will show a given profile and all of the videos, images and questions associated with it.
 
@@ -227,7 +237,8 @@ Example Success:
     "created_at": "2015-07-15T19:43:18.674Z",
     "updated_at": "2015-07-15T19:43:18.674Z"
   },
-  "questions": {
+  "questions": [
+    {
       "id": 1,
       "name": "user2",
       "email": "user2@2.com",
@@ -239,7 +250,8 @@ Example Success:
       "created_at": "2015-07-15T19:43:18.680Z",
       "updated_at": "2015-07-15T19:43:18.680Z",
       "profile_id": 1
-    },
+    }
+  ],
   "videos": [
     {
       "id": 1,
@@ -248,6 +260,7 @@ Example Success:
       "video_url": "https://catvideo.com",
       "created_at": "2015-07-15T19:51:59.688Z",
       "updated_at": "2015-07-15T19:51:59.688Z",
+      "main": true,
       "caption": "Look at this cat!",
       "thumbnail_url": "https://thumbnail.com"
     },
@@ -258,6 +271,7 @@ Example Success:
       "video_url": "https://dogvideo.com",
       "created_at": "2015-07-15T19:55:26.585Z",
       "updated_at": "2015-07-15T19:55:26.585Z",
+      "main": true,
       "caption": "Look at this dog!",
       "thumbnail_url": "https://thumbnail.com"
     },
@@ -268,6 +282,7 @@ Example Success:
       "video_url": "https://snakevideo.com",
       "created_at": "2015-07-15T19:55:42.124Z",
       "updated_at": "2015-07-15T19:55:42.124Z",
+      "main": true,
       "caption": "Look at this snake!",
       "thumbnail_url": "https://thumbnail.com"
     },
@@ -278,6 +293,7 @@ Example Success:
       "video_url": "https://hippovideo.com",
       "created_at": "2015-07-15T19:55:52.135Z",
       "updated_at": "2015-07-15T19:55:52.135Z",
+      "main": true,
       "caption": "Look at this hippo!",
       "thumbnail_url": "https://thumbnail.com"
     }
@@ -285,15 +301,12 @@ Example Success:
 }
 
 ```
+###Show All Profiles for User
+```GET '/users/:user_id/profiles'```
 
-Example Failure:
+Take a gander at all of the profiles any one user has created.
 
-###Show All Profiles for Given User
-Here you're able to see all profiles that are owned by a specific user.
-
-```GET``` '/users/:id/profiles'
-
-Example Success:
+Example Response:
 
 ```
 [
@@ -327,10 +340,8 @@ Example Success:
   }
 ]
 ```
-Status Code: 200 :ok
-
 ###Index
-```GET``` '/profiles'
+```GET '/profiles'```
 
 You can fetch all profiles at this endpoint.
 
@@ -354,7 +365,8 @@ Example Success:
       "updated_at": "2015-07-15T19:47:21.579Z"
     }
   ],
-  "questions": {
+  "questions": [
+    {
       "id": 1,
       "name": "user2",
       "email": "user2@2.com",
@@ -379,64 +391,61 @@ Example Success:
       "created_at": "2015-07-15T19:47:21.581Z",
       "updated_at": "2015-07-15T19:47:21.581Z",
       "profile_id": 2
-    },
+    }
+  ],
   "videos": [
     {
       "id": 1,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://catvideo.com",
+      "video_url": "catvideo.mp4",
       "created_at": "2015-07-15T19:51:59.688Z",
       "updated_at": "2015-07-15T19:51:59.688Z",
-      "main": true,
       "caption": "Look at this cat!",
-      "thumbnail_url": "https://thumbnail.com"
+      "thumbnail_url": "catvideo.png"
     },
     {
       "id": 2,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://dogvideo.com",
+      "video_url": "dogvideo.mp4",
       "created_at": "2015-07-15T19:55:26.585Z",
       "updated_at": "2015-07-15T19:55:26.585Z",
-      "main": true,
       "caption": "Look at this dog!",
-      "thumbnail_url": "https://thumbnail.com"
+      "thumbnail_url": "dogvideo.png"
     },
     {
       "id": 3,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://snakevideo.com",
+      "video_url": "snakevideo.mp4",
       "created_at": "2015-07-15T19:55:42.124Z",
       "updated_at": "2015-07-15T19:55:42.124Z",
-      "main": true,
       "caption": "Look at this snake!",
-      "thumbnail_url": "https://thumbnail.com"
+      "thumbnail_url": "snakevideo.png"
     },
     {
       "id": 4,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://hippovideo.com",
+      "video_url": "hippovideo.mp4",
       "created_at": "2015-07-15T19:55:52.135Z",
       "updated_at": "2015-07-15T19:55:52.135Z",
-      "main": true,
       "caption": "Look at this hippo!",
-      "thumbnail_url": "https://thumbnail.com"
+      "thumbnail_url": "hippovideo.png"
     }
   ],
   "images": []
 }
 ```
-Example Failure:
 
 ###Edit
+Currently their is no endpoint to change attributes on the Question model.  This may be added as a feature at a later date.
 
 ###Delete
-```DELETE``` '/profiles/:id'
+```DELETE '/profiles/:id'```
 
-Only the profiler can delete a profile.  A profilee cannot delete the profile created about her, but may delete other profiles for whom she is the profiler.
+A profile may only be deleted by its profiler.  A profilee cannot delete a profile created about her, but may delete other profiles for whom she is the profiler.
 
 Example Success:
 
@@ -444,6 +453,8 @@ Example Success:
 { "message": "Profile deleted."
 }
 ```
+Status Code: :ok
+
 Example Failure:
 
 ```
@@ -451,11 +462,14 @@ Example Failure:
   "message": "Only the author of a profile may delete a profile."
 }
 ```
+Status code :422
 
-###Video Upload
-```POST``` '/profiles/:id/videos'
+#Video
 
-One video at a time y'all.  Make sure to include these params.  Also note that you can only upload 4 videos per profile.
+###Create a Video
+```POST '/profiles/:profile_id/videos'```
+
+One video at a time y'all.  Make sure to include these params.  Also note that only 4 videos may be associated with any one profile.
 
 ######Params:
 * video_url
@@ -470,12 +484,11 @@ Example Success:
   "id": 1,
   "videoable_id": 1,
   "videoable_type": "Profile",
-  "video_url": "https://catvideo.com",
+  "video_url": "catvideo.mp4",
   "created_at": "2015-07-15T19:51:59.688Z",
   "updated_at": "2015-07-15T19:51:59.688Z",
-  "main": true,
   "caption": "Look at this cat!",
-  "thumbnail_url": "https://thumbnail.com"
+  "thumbnail_url": "https://thumbnail.png"
 }
 ```
 Status Code: 200 ok
@@ -491,92 +504,53 @@ Example Failure:
 ```
 Status Code: 422 Unprocessable Entity
 
-#Images
-@channel
-An Image can now be posted to a profile - Not with paperclip - until we figure out the S3 thing on our end, images are posted the same way as videos. One image per profile.
+#Avatars
+In this first version of Setup, a user can have only one avatar.  To this end, there are two types of users and therefore two types of avatars.  The first is an avatar uploaded by a profiler for her profilee.  The second is for a user who has not had a profile created for herself, but would like use the app to browse other profiles.
 
-```POST ‘/profiles/:profile_id/images’
-```
+###Create an Avatar for a Profilee
+```PUT '/profiles/:profile_id/avatar'```
 
-Params:
-
-```image_url
-```
-
-Example Success:
-
-```{
-  "id": 3,
-  "imageable_id": 2,
-  "imageable_type": "Profile",
-  "image_url": "google.com",
-  "created_at": "2015-07-16T16:10:25.020Z",
-  "updated_at": "2015-07-16T16:10:25.020Z"
-}
-```
-
-Example Failure (if trying to post more than 1 image to a profile):
-
-```{
-  "errors": [
-    "Already have maximum number of images"
-  ]
-}
-```
-
-To show one image:
-
-```GET ‘/profiles/:profile_id/images/:image_id’
-```
-
-Example Success:
-
-```{
-  "id": 3,
-  "imageable_id": 2,
-  "imageable_type": "Profile",
-  "image_url": "google.com",
-  "created_at": "2015-07-16T16:10:25.020Z",
-  "updated_at": "2015-07-16T16:10:25.020Z”
-}
-```
-
-# User Avatar
-
-You can now add an avatar to a User
-
-This is a multipart form encoding file upload:
-
-```
-multipart/form-data
-```
-
-```
-PATCH ‘/user/:user_id/image’
-```
-
-Params:
-
-```
-avatar
-```
-
-Example Success:
+Example Response:
+In this example we see user information for user with id: 2.  Use this endpoint everytime you want to change your profilee's avatar.
 
 ```
 {
   "file": {
-    "id": 19,
-    "email": "Tom@test.com",
-    "password": "35327b5dc7503e200f15c499f310c4f572e3a59f",
-    "access_token": "62987172d3bce86c61937d98600c8d61",
-    "created_at": "2015-07-16T19:02:36.779Z",
-    "updated_at": "2015-07-16T19:55:21.965Z",
-    "username": "Tom",
-    "avatar_file_name": "most_of_my_pictures_turned_out_blurry__but_tiy_represent__.jpg",
+    "id": 2,
+    "email": "user2@user2.com",
+    "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
+    "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
+    "created_at": "2015-07-19T03:32:17.108Z",
+    "updated_at": "2015-07-19T03:41:56.401Z",
+    "username": "user2",
+    "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
     "avatar_content_type": "image/jpeg",
-    "avatar_file_size": 558979,
-    "avatar_updated_at": "2015-07-16T19:55:20.504Z"
+    "avatar_file_size": 136717,
+    "avatar_updated_at": "2015-07-19T03:41:55.678Z"
   }
 }
 ```
+
+###Create an Avatar for Yourself
+Again, this is only an option if no one has already created a profile for you.  In this example User 1 is creating his own avatar. Use this same endpoint everytime you want to change your avatar.
+
+```PUT 'users/:user_id/avatar'```
+
+Example Response:
+
+```
+{
+  "file": {
+    "id": 1,
+    "email": "user1@user1.com",
+    "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
+    "access_token": "ba9498f019520a1a48a27144e0bb4189",
+    "created_at": "2015-07-19T03:31:27.874Z",
+    "updated_at": "2015-07-19T03:45:13.294Z",
+    "username": "user1",
+    "avatar_file_name": "20150626-IMG_7963.jpg",
+    "avatar_content_type": "image/jpeg",
+    "avatar_file_size": 8641207,
+    "avatar_updated_at": "2015-07-19T03:45:05.611Z"
+  }
+}
