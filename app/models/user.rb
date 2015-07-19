@@ -23,7 +23,9 @@ class User < ActiveRecord::Base
   has_many :profiles
 
   def hash_password
+    if self.password.length < 39
     self.password = Digest::SHA1.hexdigest(password)
+    end
   end
 
   def ensure_access_token

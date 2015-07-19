@@ -4,10 +4,8 @@ class ImagesController < ApplicationController
   def update_avatar
     @user = User.find(params[:user_id])
     @user.avatar = params[:avatar]
-#binding.pry
-#Avatar is currently saving to the user passed in the path parameter,
-#but also changes that user's password every time a new avatar is patched.
-    if @user.save!
+    if current_user.id == @user.id
+      @user.save(validate: false)
       render json: { file: @user },
              status: :ok
     else
