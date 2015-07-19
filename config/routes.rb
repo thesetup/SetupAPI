@@ -29,8 +29,8 @@ Rails.application.routes.draw do
   delete '/profiles/:profile_id/videos/:video_id',          to: 'videos#delete_video'
 
   get 'profiles',                                           to: 'profiles#index'
-  get 'profiles/:id',                                       to: 'profiles#show'
-  delete 'profiles/:id',                                    to: 'profiles#destroy'
+  get 'profiles/:profile_id',                               to: 'profiles#show'
+  delete 'profiles/:profile_id',                            to: 'profiles#destroy'
   post 'profiles',                                          to: 'profiles#create'
   patch '/profiles/:profile_id/avatar',                     to: 'profiles#update_profilee_avatar' ## Update a profilee's avatar.
 
