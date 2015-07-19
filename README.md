@@ -257,45 +257,41 @@ Example Success:
       "id": 1,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://catvideo.com",
+      "video_url": "https://catvideo.mp4",
       "created_at": "2015-07-15T19:51:59.688Z",
       "updated_at": "2015-07-15T19:51:59.688Z",
-      "main": true,
       "caption": "Look at this cat!",
-      "thumbnail_url": "https://thumbnail.com"
+      "thumbnail_url": "https://thumbnail.png"
     },
     {
       "id": 2,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://dogvideo.com",
+      "video_url": "https://dogvideo.mp4",
       "created_at": "2015-07-15T19:55:26.585Z",
       "updated_at": "2015-07-15T19:55:26.585Z",
-      "main": true,
       "caption": "Look at this dog!",
-      "thumbnail_url": "https://thumbnail.com"
+      "thumbnail_url": "https://thumbnail.png"
     },
     {
       "id": 3,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://snakevideo.com",
+      "video_url": "https://snakevideo.mp4",
       "created_at": "2015-07-15T19:55:42.124Z",
       "updated_at": "2015-07-15T19:55:42.124Z",
-      "main": true,
       "caption": "Look at this snake!",
-      "thumbnail_url": "https://thumbnail.com"
+      "thumbnail_url": "https://thumbnail.png"
     },
     {
       "id": 4,
       "videoable_id": 1,
       "videoable_type": "Profile",
-      "video_url": "https://hippovideo.com",
+      "video_url": "https://hippovideo.mp4",
       "created_at": "2015-07-15T19:55:52.135Z",
       "updated_at": "2015-07-15T19:55:52.135Z",
-      "main": true,
       "caption": "Look at this hippo!",
-      "thumbnail_url": "https://thumbnail.com"
+      "thumbnail_url": "https://thumbnail.png"
     }
   ]
 }
