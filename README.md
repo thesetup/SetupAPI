@@ -101,7 +101,7 @@ Example Success:
     "avatar_updated_at": "2015-07-19T03:41:55.678Z"
   },
   {
-    "id": 1,
+    "id": 2,
     "email": "mary@poppins.com",
     "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
     "access_token": "ba9498f019520a1a48a27144e0bb4189",
@@ -120,16 +120,7 @@ Status Code: :ok
 ###Show
 ```GET '/users/:user_id'```
 
-Example Success:
-
-```
-  {
-    "id": 1,
-    "email": "mary@poppins.com",
-    "access_token": "1c4864db5ee70e4af3d3a7702966b254"
-  }
-```
-Status Code: :ok
+Status Code :ok for Success
 
 ###Delete
 ```DELETE '/users/:user_id'```
