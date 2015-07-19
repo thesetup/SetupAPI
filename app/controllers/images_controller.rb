@@ -1,22 +1,6 @@
 class ImagesController < ApplicationController
   before_action :authenticate_with_token!
 
-  def update_avatar
-    @user = User.find(params[:user_id])
-    @user.avatar = params[:avatar]
-    if current_user.id == @user.id
-      @user.save(validate: false)
-      render json: { file: @user },
-             status: :ok
-    else
-      render json: { errors: @user.errors.full_messages },
-             status: :unprocessable_entity
-    end
-  end
-
-  def show_avatar
-
-  end
 
   def create_image
     @profile = Profile.find(params[:profile_id])
