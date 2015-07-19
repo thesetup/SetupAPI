@@ -16,15 +16,19 @@
 Example Success:
 
 ```
-    {
-      "id": 1,
-      "email": "mary@poppins.com",
-      "password": "cea205a2de95383297dcfe248c5a1b3038ca01c0",
-      "access_token": "1c4864db5ee70e4af3d3a7702966b254",
-      "created_at": "2015-07-08T19:39:46.161Z",
-      "updated_at": "2015-07-08T19:39:46.161Z",
-      "username": "mpoppins"
-    }
+  {
+    "id": 1,
+    "email": "walt@white.bb",
+    "password": "ebfc7910077770c8340f63cd2dca2ac1f120444f",
+    "access_token": "424e388fdd162a48a935816a7bbce79e",
+    "created_at": "2015-07-19T03:58:50.887Z",
+    "updated_at": "2015-07-19T03:58:50.887Z",
+    "username": "heisenberg",
+    "avatar_file_name": null,
+    "avatar_content_type": null,
+    "avatar_file_size": null,
+    "avatar_updated_at": null
+  }
 ```
 Status Code: :created
 
@@ -51,14 +55,19 @@ Example Success:
 
 ```
   {
-    "id": 2,
-    "email": "walt@white.com",
-    "password": "33e475263fead060c56753b9003467f268fdba4d",
-    "access_token": "7b64bc42e115ce71ff84d1f8593a6a2b",
-    "created_at": "2015-07-10T03:08:00.762Z",
-    "updated_at": "2015-07-10T03:08:00.762Z",
-    "username": "heisenberg"
+    "id": 1,
+    "email": "walt@white.bb",
+    "password": "ebfc7910077770c8340f63cd2dca2ac1f120444f",
+    "access_token": "424e388fdd162a48a935816a7bbce79e",
+    "created_at": "2015-07-19T03:58:50.887Z",
+    "updated_at": "2015-07-19T03:58:50.887Z",
+    "username": "heisenberg",
+    "avatar_file_name": null,
+    "avatar_content_type": null,
+    "avatar_file_size": null,
+    "avatar_updated_at": null
   }
+
 ```
 Status Code: :ok
 
@@ -80,12 +89,12 @@ Example Success:
   [
   {
     "id": 1,
-    "email": "mary@poppins.com",
+    "email": "walt@white.bb",
     "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
     "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
     "created_at": "2015-07-19T03:32:17.108Z",
     "updated_at": "2015-07-19T03:41:56.401Z",
-    "username": "mpoppins",
+    "username": "heisenberg",
     "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
     "avatar_content_type": "image/jpeg",
     "avatar_file_size": 136717,
@@ -93,12 +102,12 @@ Example Success:
   },
   {
     "id": 1,
-    "email": "walt@white.bb",
+    "email": "mary@poppins.com",
     "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
     "access_token": "ba9498f019520a1a48a27144e0bb4189",
     "created_at": "2015-07-19T03:31:27.874Z",
     "updated_at": "2015-07-19T03:45:13.294Z",
-    "username": "heisenberg",
+    "username": "mpoppins",
     "avatar_file_name": "20150626-IMG_7963.jpg",
     "avatar_content_type": "image/jpeg",
     "avatar_file_size": 8641207,
