@@ -28,7 +28,8 @@ class VideosController < ApplicationController
     if current_user.id == @profile.author.id
       @video.update(video_url: params[:video_url],
                     caption: params[:caption],
-                    thumbnail_url: params[:thumbnail_url])
+                    thumbnail_url: params[:thumbnail_url],
+                    video_type: params[:video_type])
       render json: @video, status: :ok
     else
       render json: {errors: @video.errors.full_messages},

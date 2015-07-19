@@ -34,10 +34,10 @@ Rails.application.routes.draw do
   post 'profiles',                                          to: 'profiles#create'
   put 'profiles/:profile_id/avatar',                        to: 'profiles#update_profilee_avatar' ## Update a profilee's avatar.
 
-  post 'profiles/:profile_id/images',                      to: 'images#create_image'
-  get 'profiles/:profile_id/images/:image_id',             to: 'images#show_image'
-  get 'images',                                            to: 'images#index_image'
-  patch 'profiles/:profile_id/images/:image_id',           to: 'images#update_image'
+  post 'profiles/:profile_id/images',                       to: 'images#create_image'
+  get 'profiles/:profile_id/images/:image_id',              to: 'images#show_image'
+  get 'images',                                             to: 'images#index_image'
+  patch 'profiles/:profile_id/images/:image_id',            to: 'images#update_image'
 
 
 
