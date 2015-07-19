@@ -45,6 +45,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_self_avatar
+    @user = User.find(params[:user_id])
+    @user.avatar = params[:avatar]
+    if current_user.id == @user.id
+      @user.save(validate: false)
+      render json: { file: @user },
+             status: :ok
+    else
+      render json: { errors: @user.errors.full_messages },
+             status: :unprocessable_entity
+    end
+  end
+
   def delete
     @user = User.find(params[:user_id])
     if @user == current_user

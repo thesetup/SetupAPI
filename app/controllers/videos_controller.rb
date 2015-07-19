@@ -1,74 +1,65 @@
 class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :edit, :update, :destroy]
 
-  # GET /videos
-  # GET /videos.json
-  def index
-    @videos = Video.all
-  end
+  def create_video
+    @profile = Profile.find(params[:profile_id])
+    if @profile.videos.count < 4
+      @video = @profile.videos.new(video_url: params[:video_url],
+                                   videoable_type: params[:videoable_type],
+                                   caption: params[:caption],
+                                   thumbnail_url: params[:thumbnail_url])
 
-  # GET /videos/1
-  # GET /videos/1.json
-  def show
-  end
-
-  # GET /videos/new
-  def new
-    @video = Video.new
-  end
-
-  # GET /videos/1/edit
-  def edit
-  end
-
-  # POST /videos
-  # POST /videos.json
-  def create
-    @video = Video.new(video_params)
-
-    respond_to do |format|
-      if @video.save
-        format.html { redirect_to @video, notice: 'Video was successfully created.' }
-        format.json { render :show, status: :created, location: @video }
+      if current_user.id == @profile.author.id
+        @video.save
+        render json: @video, status: :created
       else
-        format.html { render :new }
-        format.json { render json: @video.errors, status: :unprocessable_entity }
+        render json: {errors: @video.errors.full_messages},
+                 status: :unprocessable_entity
       end
+    else
+      render json: {message: "There are already 4 videos on this profile."},
+                status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /videos/1
-  # PATCH/PUT /videos/1.json
-  def update
-    respond_to do |format|
-      if @video.update(video_params)
-        format.html { redirect_to @video, notice: 'Video was successfully updated.' }
-        format.json { render :show, status: :ok, location: @video }
-      else
-        format.html { render :edit }
-        format.json { render json: @video.errors, status: :unprocessable_entity }
-      end
+  def update_video
+    @profile = Profile.find(params[:profile_id])
+    @video = @profile.videos.find(params[:video_id])
+
+    if current_user.id == @profile.author.id
+      @video.update(video_url: params[:video_url],
+                    caption: params[:caption],
+                    thumbnail_url: params[:thumbnail_url])
+      render json: @video, status: :ok
+    else
+      render json: {errors: @video.errors.full_messages},
+               status: :unprocessable_entity
     end
   end
 
-  # DELETE /videos/1
-  # DELETE /videos/1.json
-  def destroy
-    @video.destroy
-    respond_to do |format|
-      format.html { redirect_to videos_url, notice: 'Video was successfully destroyed.' }
-      format.json { head :no_content }
+  def delete_video
+    @profile = Profile.find(params[:profile_id])
+    @video = @profile.videos.find(params[:video_id])
+
+    if current_user.id == @profile.author.id
+      @video.destroy
+      render json: @video, status: :ok
+    else
+      render json: {errors: @video.errors.full_messages},
+               status: :unprocessable_entity
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_video
-      @video = Video.find(params[:id])
-    end
+  def show_video
+    @profile = Profile.find(params[:profile_id])
+    @video = @profile.videos.find(params[:video_id])
+    render json: @video,
+           status: :ok
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def video_params
-      params[:video]
-    end
+  def index_videos
+    @video = Video.all
+    render json: @video,
+           status: :ok
+  end
+
 end
