@@ -2,10 +2,12 @@ class ImagesController < ApplicationController
   before_action :authenticate_with_token!
 
   def update_avatar
-    @user = current_user
+    @user = User.find(params[:user_id])
     @user.avatar = params[:avatar]
-
-    if @user.save(validate: false)
+#binding.pry
+#Avatar is currently saving to the user passed in the path parameter,
+#but also changes that user's password every time a new avatar is patched.
+    if @user.save!
       render json: { file: @user },
              status: :ok
     else
