@@ -20,7 +20,7 @@
 3.  [VIDEO] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#video)
 
 	*  [Create Video] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#create-video)
-	*  [Swap Video] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#edit-video)
+	*  [Swap Video] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#swap-video)
 	*  [Delete Video] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#delete-video)
 
 4.  [AVATAR] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#avatar)
