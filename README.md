@@ -540,7 +540,34 @@ Example Failure:
 ```
 Status Code: 422 Unprocessable Entity
 
-#Avatars
+###Swap Video
+```PATCH 'profiles/:profile_id/:video_id'```
+
+Obviously you must be the owner of a profile to swap out its' videos.
+
+Example Response:
+
+```
+{
+  "id": 1,
+  "videoable_id": 1,
+  "videoable_type": "Profile",
+  "video_url": "dogvideo.mp4",
+  "created_at": "2015-07-19T17:07:42.455Z",
+  "updated_at": "2015-07-19T17:07:42.455Z",
+  "caption": "Look at this dog!",
+  "thumbnail_url": "dogvideo.png",
+  "video_type": null
+}
+```
+
+###Delete Video
+```DELETE 'profiles/:profile_id/videos/:video_id'```
+
+Ah, ah ah.  No deleting videos unless you own the profile.  You'll get a nasty error message if you try.
+
+
+#Avatar
 In this first version of Setup, a user can have only one avatar.  To this end, there are two types of users and therefore two types of avatars.  The first is an avatar uploaded by a profiler for her profilee.  The second is for a user who has not had a profile created for herself, but would like use the app to browse other profiles.
 
 ###Create Avatar for Profile
