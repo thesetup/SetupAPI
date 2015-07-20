@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   get 'images',                                             to: 'images#index_image'
   patch 'profiles/:profile_id/images/:image_id',            to: 'images#update_image'
 
+  get 'questions/search',                                   to: 'questions#search'
+
 
 
 
