@@ -355,7 +355,8 @@ Example Success:
     "avatar_content_type": "image/jpeg",
     "avatar_file_size": 136717,
     "avatar_updated_at": "2015-07-19T03:41:55.678Z"
-  }
+  },
+  "avatar_url": "http://tiysetup.s3.amazonaws.com/users/avatars/000/000/002/original/1024px-Cassowary_head_frontal.jpg?1437277315"
 }
 
 ```
@@ -653,13 +654,14 @@ In this example we see user information for user with id: 2.  Use this endpoint 
     "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
     "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
     "created_at": "2015-07-19T03:32:17.108Z",
-    "updated_at": "2015-07-19T03:41:56.401Z",
+    "updated_at": "2015-07-20T15:46:00.754Z",
     "username": "user2",
     "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
     "avatar_content_type": "image/jpeg",
     "avatar_file_size": 136717,
-    "avatar_updated_at": "2015-07-19T03:41:55.678Z"
-  }
+    "avatar_updated_at": "2015-07-20T15:46:00.195Z"
+  },
+  "avatar_url": "http://tiysetup.s3.amazonaws.com/users/avatars/000/000/002/original/1024px-Cassowary_head_frontal.jpg?1437407160"
 }
 ```
 
@@ -688,5 +690,6 @@ Example Response:
     "avatar_content_type": "image/jpeg",
     "avatar_file_size": 8641207,
     "avatar_updated_at": "2015-07-19T03:45:05.611Z"
-  }
+  },
+  "avatar_url": "http://tiysetup.s3.amazonaws.com/users/avatars/000/000/002/original/1024px-Cassowary_head_frontal.jpg?1437407160"
 }
