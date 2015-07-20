@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    render json: @users,
+    render json: @users, 
            status: :ok
   end
 
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     @user.avatar = params[:avatar]
     if current_user.id == @user.id
       @user.save(validate: false)
-      render json: { file: @user },
+      render json: { file: @user, avatar: @user.avatar.url },
              status: :ok
     else
       render json: { errors: @user.errors.full_messages },

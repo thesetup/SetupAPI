@@ -123,7 +123,7 @@ Example Success:
     "avatar_updated_at": "2015-07-19T03:41:55.678Z"
   },
   {
-    "id": 1,
+    "id": 2,
     "email": "walt@white.bb",
     "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
     "access_token": "ba9498f019520a1a48a27144e0bb4189",
@@ -145,11 +145,19 @@ Status Code: :ok
 Example Success:
 
 ```
-  {
-    "id": 1,
-    "email": "mary@poppins.com",
-    "access_token": "1c4864db5ee70e4af3d3a7702966b254"
-  }
+{
+  "id": 1,
+  "email": "mary@poppins.com",
+  "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
+  "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
+  "created_at": "2015-07-19T03:32:17.108Z",
+  "updated_at": "2015-07-19T03:41:56.401Z",
+  "username": "mpoppins",
+  "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
+  "avatar_content_type": "image/jpeg",
+  "avatar_file_size": 136717,
+  "avatar_updated_at": "2015-07-19T03:41:55.678Z"
+}
 ```
 Status Code: :ok
 
@@ -202,31 +210,41 @@ All of the parameters listed below are required for profile creation.
 Example Success:
 
 ```
- {
+{
   "profiles": {
-    "id": 1,
-    "profiler_id": 1,
-    "profilee_id": 2,
-    "created_at": "2015-07-15T19:43:18.674Z",
-    "updated_at": "2015-07-15T19:43:18.674Z"
+    "id": 3,
+    "profiler_id": 2,
+    "profilee_id": 6,
+    "created_at": "2015-07-20T14:36:33.241Z",
+    "updated_at": "2015-07-20T14:36:33.241Z"
   },
-  "questions": [
-    {
-      "id": 1,
-      "name": "user2",
-      "email": "user2@2.com",
-      "birthyear": 1999,
-      "gender": "male",
-      "orientation": "straight",
-      "occupation": "bum",
-      "location": "Atlanta",
-      "created_at": "2015-07-15T19:43:18.680Z",
-      "updated_at": "2015-07-15T19:43:18.680Z",
-      "profile_id": 1
-    }
-  ],
+  "question": {
+    "id": 4,
+    "name": "Cakemind",
+    "email": "cakemind@email.com",
+    "birthyear": 1999,
+    "gender": "male",
+    "orientation": "straight",
+    "occupation": "student",
+    "location": "here",
+    "created_at": "2015-07-20T14:36:33.228Z",
+    "updated_at": "2015-07-20T14:36:33.251Z",
+    "profile_id": 3
+  },
   "videos": [],
-  "images": []
+  "users": {
+    "id": 6,
+    "email": "cakemind@email.com",
+    "password": "c6823d67cf36b468706cf6011fd87ee26cb82212",
+    "access_token": "344d20626d8323e484295a3118e70821",
+    "created_at": "2015-07-20T14:36:33.236Z",
+    "updated_at": "2015-07-20T14:36:33.236Z",
+    "username": "Cakemind",
+    "avatar_file_name": null,
+    "avatar_content_type": null,
+    "avatar_file_size": null,
+    "avatar_updated_at": null
+  }
 }
 ```
 Status Code: 201 Created
@@ -291,7 +309,6 @@ Example Success:
       "video_url": "https://catvideo.com",
       "created_at": "2015-07-15T19:51:59.688Z",
       "updated_at": "2015-07-15T19:51:59.688Z",
-      "main": true,
       "caption": "Look at this cat!",
       "thumbnail_url": "https://thumbnail.com"
     },
@@ -302,7 +319,6 @@ Example Success:
       "video_url": "https://dogvideo.com",
       "created_at": "2015-07-15T19:55:26.585Z",
       "updated_at": "2015-07-15T19:55:26.585Z",
-      "main": true,
       "caption": "Look at this dog!",
       "thumbnail_url": "https://thumbnail.com"
     },
@@ -313,7 +329,6 @@ Example Success:
       "video_url": "https://snakevideo.com",
       "created_at": "2015-07-15T19:55:42.124Z",
       "updated_at": "2015-07-15T19:55:42.124Z",
-      "main": true,
       "caption": "Look at this snake!",
       "thumbnail_url": "https://thumbnail.com"
     },
@@ -324,11 +339,24 @@ Example Success:
       "video_url": "https://hippovideo.com",
       "created_at": "2015-07-15T19:55:52.135Z",
       "updated_at": "2015-07-15T19:55:52.135Z",
-      "main": true,
       "caption": "Look at this hippo!",
       "thumbnail_url": "https://thumbnail.com"
     }
-  ]
+  ],
+  "users": {
+    "id": 2,
+    "email": "user2@user2.com",
+    "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
+    "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
+    "created_at": "2015-07-19T03:32:17.108Z",
+    "updated_at": "2015-07-19T03:41:56.401Z",
+    "username": "user2",
+    "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
+    "avatar_content_type": "image/jpeg",
+    "avatar_file_size": 136717,
+    "avatar_updated_at": "2015-07-19T03:41:55.678Z"
+  },
+  "avatar_url": "http://tiysetup.s3.amazonaws.com/users/avatars/000/000/002/original/1024px-Cassowary_head_frontal.jpg?1437277315"
 }
 
 ```
@@ -466,7 +494,47 @@ Example Success:
       "thumbnail_url": "hippovideo.png"
     }
   ],
-  "images": []
+  "users": [
+      {
+        "id": 1,
+        "email": "mary@poppins.com",
+        "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
+        "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
+        "created_at": "2015-07-19T03:32:17.108Z",
+        "updated_at": "2015-07-19T03:41:56.401Z",
+        "username": "mpoppins",
+        "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
+        "avatar_content_type": "image/jpeg",
+        "avatar_file_size": 136717,
+        "avatar_updated_at": "2015-07-19T03:41:55.678Z"
+      },
+      {
+        "id": 2,
+        "email": "walt@white.com",
+        "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
+        "access_token": "ba9498f019520a1a48a27144e0bb4189",
+        "created_at": "2015-07-19T03:31:27.874Z",
+        "updated_at": "2015-07-19T03:52:42.416Z",
+        "username": "heisenberg",
+        "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
+        "avatar_content_type": "image/jpeg",
+        "avatar_file_size": 136717,
+        "avatar_updated_at": "2015-07-19T03:52:41.866Z"
+      },
+      {
+        "id": 3,
+        "email": "leeroy@jenkins.com",
+        "password": "ebfc7910077770c8340f63cd2dca2ac1f120444f",
+        "access_token": "424e388fdd162a48a935816a7bbce79e",
+        "created_at": "2015-07-19T03:58:50.887Z",
+        "updated_at": "2015-07-19T03:58:50.887Z",
+        "username": "ohleeroy",
+        "avatar_file_name": null,
+        "avatar_content_type": null,
+        "avatar_file_size": null,
+        "avatar_updated_at": null
+      }
+    ]
 }
 ```
 
@@ -519,7 +587,8 @@ Example Success:
   "created_at": "2015-07-15T19:51:59.688Z",
   "updated_at": "2015-07-15T19:51:59.688Z",
   "caption": "Look at this cat!",
-  "thumbnail_url": "https://thumbnail.png"
+  "thumbnail_url": "https://thumbnail.png",
+  "video_type": "null"
 }
 ```
 Status Code: 200 ok
@@ -585,13 +654,14 @@ In this example we see user information for user with id: 2.  Use this endpoint 
     "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
     "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
     "created_at": "2015-07-19T03:32:17.108Z",
-    "updated_at": "2015-07-19T03:41:56.401Z",
+    "updated_at": "2015-07-20T15:46:00.754Z",
     "username": "user2",
     "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
     "avatar_content_type": "image/jpeg",
     "avatar_file_size": 136717,
-    "avatar_updated_at": "2015-07-19T03:41:55.678Z"
-  }
+    "avatar_updated_at": "2015-07-20T15:46:00.195Z"
+  },
+  "avatar_url": "http://tiysetup.s3.amazonaws.com/users/avatars/000/000/002/original/1024px-Cassowary_head_frontal.jpg?1437407160"
 }
 ```
 
@@ -620,5 +690,6 @@ Example Response:
     "avatar_content_type": "image/jpeg",
     "avatar_file_size": 8641207,
     "avatar_updated_at": "2015-07-19T03:45:05.611Z"
-  }
+  },
+  "avatar_url": "http://tiysetup.s3.amazonaws.com/users/avatars/000/000/002/original/1024px-Cassowary_head_frontal.jpg?1437407160"
 }
