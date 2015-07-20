@@ -49,7 +49,7 @@ class ProfilesController < ApplicationController
 
     if current_user.id == @profile.author.id
       @user.save(validate: false)
-      render json: { file: @user },
+      render json: { file: @user, avatar_url: @user.avatar.url },
              status: :ok
     else
       render json: { errors: @user.errors.full_messages },
