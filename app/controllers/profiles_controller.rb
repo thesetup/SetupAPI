@@ -58,7 +58,7 @@ class ProfilesController < ApplicationController
   end
 
   def index
-    render 'index.json.jbuilder'
+    render 'index.json.jbuilder', status: :ok
   end
 
   def show
