@@ -7,4 +7,4 @@ json.profiles @profile
 json.question @question
 json.videos @video
 json.users @user
-json.avatar_url @profile.user.avatar.url
+# json.avatar_url @profile.user.avatar.url
