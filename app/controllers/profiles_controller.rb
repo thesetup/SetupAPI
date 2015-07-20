@@ -21,24 +21,26 @@ class ProfilesController < ApplicationController
                                 ###Questions are saving w/o password,
                                 ###Profile not created however.
 
-    if @question.save
-      if @profilee.save
-         @profile.update(profilee_id: @profilee.id)
-        if @profile.save
-           @profile.question = @question
-           render 'create.json.jbuilder'
+    ActiveRecord::Base.transaction do
+      if @question.save!
+        if @profilee.save!
+           @profile.update!(profilee_id: @profilee.id)
+          if @profile.save!
+             @profile.question = @question
+             render 'create.json.jbuilder'
+          else
+             render json: {errors: @profile.errors.full_messages},
+                    status: :unprocessable_entity
+          end
         else
-           render json: {errors: @profile.errors.full_messages},
+          render json: {errors: @profilee.errors.full_messages},
                   status: :unprocessable_entity
         end
+        #UserMailer.welcome.deliver
       else
-        render json: {errors: @profilee.errors.full_messages},
+        render json: {errors: @question.errors.full_messages},
                 status: :unprocessable_entity
       end
-      #UserMailer.welcome.deliver
-    else
-      render json: {errors: @question.errors.full_messages},
-              status: :unprocessable_entity
     end
   end
 
@@ -58,6 +60,10 @@ class ProfilesController < ApplicationController
   end
 
   def index
+    @profiles = Profile.all
+    @videos = Video.all
+    @questions = Question.all
+    @users = User.all
     render 'index.json.jbuilder', status: :ok
   end
 

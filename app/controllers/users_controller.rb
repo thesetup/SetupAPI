@@ -50,7 +50,8 @@ class UsersController < ApplicationController
     @user.avatar = params[:avatar]
     if current_user.id == @user.id
       @user.save(validate: false)
-      render json: { file: @user, avatar: @user.avatar.url },
+      @user.avatar_url = @user.avatar.url
+      render json: { file: @user },
              status: :ok
     else
       render json: { errors: @user.errors.full_messages },

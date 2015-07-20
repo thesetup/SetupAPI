@@ -1,9 +1,10 @@
-@profile = Profile.all
-@video = Video.all
-@question = Question.all
-@user = User.all
+json.profiles @profiles do |p|
+  json.id p.id
+  json.profiler_id p.profiler_id
+  json.profilee_id p.profilee_id
+  json.avatar_url p.user.avatar.url
+end
 
-json.profiles @profile
-json.question @question
-json.videos @video
-json.users @user
+json.questions @questions
+json.videos @videos
+json.users @users
