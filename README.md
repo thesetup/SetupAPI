@@ -78,18 +78,27 @@ Status Code: :unprocessable_entity
 * email
 * password
 
-Example Success:
+Example Response:
+
+If the logged in user has a profile, this is the response you can expect.
 
 ```
-  {
-    "id": 2,
-    "email": "walt@white.com",
-    "password": "33e475263fead060c56753b9003467f268fdba4d",
-    "access_token": "7b64bc42e115ce71ff84d1f8593a6a2b",
-    "created_at": "2015-07-10T03:08:00.762Z",
-    "updated_at": "2015-07-10T03:08:00.762Z",
-    "username": "heisenberg"
+{
+  "profile": {
+    "id": 5,
+    "profiler_id": 3,
+    "profilee_id": 9,
+    "created_at": "2015-07-21T16:33:12.371Z",
+    "updated_at": "2015-07-21T16:33:12.371Z"
   }
+}
+
+```
+If the logged in user does not have a profile, peep this.
+```
+{
+  "profiles": null
+}
 ```
 Status Code: :ok
 
@@ -363,39 +372,25 @@ Example Success:
 ###Show All Profiles for User
 ```GET '/users/:user_id/profiles'```
 
-Take a gander at all of the profiles any one user has created.
+Take a gander at all of the profiles any one user has created.  In this array, each profile now includes the username and avatar_url associated with it.
 
 Example Response:
 
 ```
 [
   {
-    "id": 7,
+    "id": 2,
     "profiler_id": 2,
-    "profilee_id": 9,
-    "created_at": "2015-07-17T13:34:42.156Z",
-    "updated_at": "2015-07-17T13:34:42.156Z"
+    "profilee_id": 5,
+    "username": "Cakemind",
+    "avatar_url": "wholovescake.png"
   },
   {
-    "id": 8,
+    "id": 3,
     "profiler_id": 2,
-    "profilee_id": 10,
-    "created_at": "2015-07-17T13:34:56.850Z",
-    "updated_at": "2015-07-17T13:34:56.850Z"
-  },
-  {
-    "id": 9,
-    "profiler_id": 2,
-    "profilee_id": 11,
-    "created_at": "2015-07-17T13:34:42.156Z",
-    "updated_at": "2015-07-17T13:34:42.156Z"
-  },
-  {
-    "id": 10,
-    "profiler_id": 2,
-    "profilee_id": 12,
-    "created_at": "2015-07-17T13:34:56.850Z",
-    "updated_at": "2015-07-17T13:34:56.850Z"
+    "profilee_id": 6,
+    "username": "Tendertoes",
+    "avatar_url": "tendertoes.png"
   }
 ]
 ```

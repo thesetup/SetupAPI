@@ -13,8 +13,7 @@ class UsersController < ApplicationController
   end
 
   def profiles
-    @user = User.find(params[:user_id])
-    @profiles = Profile.where(profiler_id: @user.id)
+    @profiles = User.find(params[:user_id]).created_profiles
     render 'profiles.json.jbuilder',
     status: :ok
   end
@@ -38,7 +37,7 @@ class UsersController < ApplicationController
     hash_pass = Digest::SHA1.hexdigest(params[:password])
     @user = User.find_by(email: params[:email], password: hash_pass)
     if @user
-      render json: @user,
+      render json: {profile: @user.made_profile},
              status: :ok
     else
       render json: {message: "Wrong email/password"},
