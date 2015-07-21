@@ -7,7 +7,5 @@ class Profile < ActiveRecord::Base
   has_one :question, dependent: :destroy
   has_many :videos, as: :videoable, dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy
-
-
-
+  
 end

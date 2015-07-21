@@ -20,7 +20,9 @@ class User < ActiveRecord::Base
                                                         message: "is not a valid email" }
 
     validates :username, uniqueness: true, presence: true
-  has_many :profiles
+    has_many :profiles  
+  # has_many :created_profiles, class_name: "Profile", foreign_key: :profiler_id
+  # has_many :made_profiles, class_name: "Profile", foreign_key: :profilee_id
 
   def hash_password
     if self.password.length < 39
