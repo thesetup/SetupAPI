@@ -84,7 +84,19 @@ If the logged in user has a profile, this is the response you can expect.
 
 ```
 {
-  "profile": {
+  "id": 9,
+  "email": "jim@fletcher.com",
+  "password": "f4a69973e7b0bf9d160f9f60e3c3acd2494beb0d",
+  "access_token": "ad9dbebb146aa2117e06ace350750983",
+  "created_at": "2015-07-21T16:33:12.363Z",
+  "updated_at": "2015-07-21T16:33:12.363Z",
+  "username": "jfetch",
+  "avatar_file_name": null,
+  "avatar_content_type": null,
+  "avatar_file_size": null,
+  "avatar_updated_at": null,
+  "avatar_remote_url": null,
+  "made_profile": {
     "id": 5,
     "profiler_id": 3,
     "profilee_id": 9,
@@ -92,12 +104,22 @@ If the logged in user has a profile, this is the response you can expect.
     "updated_at": "2015-07-21T16:33:12.371Z"
   }
 }
-
 ```
 If the logged in user does not have a profile, peep this.
 ```
 {
-  "profiles": null
+  "id": 10,
+  "email": "tiny@tim.com",
+  "password": "f4a69973e7b0bf9d160f9f60e3c3acd2494beb0d",
+  "access_token": "f745ee4e0f1138d74e40530e44b8fda0",
+  "created_at": "2015-07-21T19:14:24.208Z",
+  "updated_at": "2015-07-21T19:14:24.208Z",
+  "username": "ttim",
+  "avatar_file_name": null,
+  "avatar_content_type": null,
+  "avatar_file_size": null,
+  "avatar_updated_at": null,
+  "avatar_remote_url": null
 }
 ```
 Status Code: :ok
