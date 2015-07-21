@@ -48,6 +48,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:profile_id])
     @user = @profile.user
     @user.avatar = params[:avatar]
+    @user.avatar_remote_url = params[:avatar_remote_url]
 
     if current_user.id == @profile.author.id
       @user.save(validate: false)
