@@ -14,8 +14,9 @@ class UsersController < ApplicationController
 
   def profiles
     @user = User.find(params[:user_id])
-    render json: Profile.where(profiler_id: @user.id),
-           status: :ok
+    @profiles = Profile.where(profiler_id: @user.id)
+    render 'profiles.json.jbuilder',
+    status: :ok
   end
 
   def register
