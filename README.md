@@ -668,6 +668,11 @@ Again, this is only an option if no one has already created a profile for you.  
 ######Params:
 
 * avatar
+* avatar_remote_url
+
+avatar is form-data
+avatar_remote_url is a string
+
 
 Example Response:
 
