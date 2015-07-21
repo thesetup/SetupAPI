@@ -385,7 +385,8 @@ Example Success:
     "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
     "avatar_content_type": "image/jpeg",
     "avatar_file_size": 136717,
-    "avatar_updated_at": "2015-07-19T03:41:55.678Z"
+    "avatar_updated_at": "2015-07-19T03:41:55.678Z",
+    "avatar_remote_url:: "http://bit.ly/1eeYNQf"
   },
   "avatar_url": "http://tiysetup.s3.amazonaws.com/users/avatars/000/000/002/original/1024px-Cassowary_head_frontal.jpg?1437277315"
 }
@@ -676,7 +677,8 @@ In this example we see user information for user with id: 2.  Use this endpoint 
     "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
     "avatar_content_type": "image/jpeg",
     "avatar_file_size": 136717,
-    "avatar_updated_at": "2015-07-20T15:46:00.195Z"
+    "avatar_updated_at": "2015-07-20T15:46:00.195Z",
+    "avatar_remote_url:: "http://bit.ly/1eeYNQf"
   },
   "avatar_url": "http://tiysetup.s3.amazonaws.com/users/avatars/000/000/002/original/1024px-Cassowary_head_frontal.jpg?1437407160"
 }
@@ -712,6 +714,8 @@ Example Response:
     "avatar_content_type": "image/jpeg",
     "avatar_file_size": 8641207,
     "avatar_updated_at": "2015-07-19T03:45:05.611Z"
+    "avatar_remote_url:: "http://bit.ly/1eeYNQf"
   },
   "avatar_url": "http://tiysetup.s3.amazonaws.com/users/avatars/000/000/002/original/1024px-Cassowary_head_frontal.jpg?1437407160"
 }
+```
