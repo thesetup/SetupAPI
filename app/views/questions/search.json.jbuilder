@@ -1,18 +1,9 @@
-# json.questions @questions do |q|
-#   json.id q.id
-#
-#   # json.avatar_url q.user.avatar.url
-# end
-#
-# json.questions @questions do |q|
-# json.profile_id q.profile_id
-# end
+
 json.questions @questions
-
-# json.questions q.orientation
-# json.questions q.birthyear
-# json.questions q.occupation
-# end
-
-
-json.profiles @profiles 
+json.profiles @profiles do |p|
+  json.id         p.id
+  json.profiler_id p.profiler_id
+  json.profilee_id p.profilee_id
+  json.avatar_remote_url p.user.avatar_remote_url
+  json.avatar_url p.user.avatar.url
+end
