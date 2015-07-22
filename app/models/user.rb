@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
     validates :username, uniqueness: true, presence: true
     has_many :created_profiles, class_name: "Profile", foreign_key: :profiler_id
-    has_one :made_profile, class_name: "Profile", foreign_key: :profilee_id
+    has_one :made_profile, class_name: "Profile", foreign_key: :profilee_id, dependent: :destroy
 
   def hash_password
     if self.password.length < 39

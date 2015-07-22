@@ -4,4 +4,5 @@ json.array! @profiles do |profile|
   json.profilee_id profile.profilee_id
   json.username profile.user.username
   json.avatar_url profile.user.avatar.url
+  json.avatar_remote_url profile.user.avatar_remote_url
 end

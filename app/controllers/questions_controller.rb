@@ -8,11 +8,8 @@ class QuestionsController < ApplicationController
       @profiles << q.profile
     end
 
-    #@profiles = Profile.search(search_text)
     if @questions.present?
       render 'search.json.jbuilder', status: :ok
-      # render json: @questions.to_json(:include => :profile)
-
     else
 
       render json: { message: "Oops! Maybe nothing matches your search. Please search again." },
