@@ -9,7 +9,6 @@ class QuestionsController < ApplicationController
     # @questions = (question_by_search & question_by_age)
 
     @questions = Question.search(search_text).where(birthyear: (DateTime.now.utc.year-max_age)..(DateTime.now.utc.year-min_age))
-
     @profiles = []
     @questions.map do |q|
       @profiles << q.profile
