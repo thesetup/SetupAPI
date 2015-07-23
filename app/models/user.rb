@@ -43,4 +43,11 @@ class User < ActiveRecord::Base
     token
   end
 
+  def as_json(opts={})
+    defaults = {
+      except: [:access_token, :password]
+    }
+    super(defaults.merge(opts))
+  end
+
 end

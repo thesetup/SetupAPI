@@ -9,5 +9,4 @@ class Question < ActiveRecord::Base
                                         :orientation,
                                         :occupation,
                                         :location]
-
 end

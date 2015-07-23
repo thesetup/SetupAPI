@@ -18,29 +18,20 @@ class ProfilesController < ApplicationController
                                 occupation: params[:occupation],
                                 location: params[:location])
 
-                                ###Questions are saving w/o password,
-                                ###Profile not created however.
 
-    ActiveRecord::Base.transaction do
-      if @question.save!
-        if @profilee.save!
-           @profile.update!(profilee_id: @profilee.id)
-          if @profile.save!
-             @profile.question = @question
-             render 'create.json.jbuilder'
-          else
-             render json: {errors: @profile.errors.full_messages},
-                    status: :unprocessable_entity
-          end
-        else
-          render json: {errors: @profilee.errors.full_messages},
-                  status: :unprocessable_entity
-        end
-        #UserMailer.welcome.deliver
-      else
-        render json: {errors: @question.errors.full_messages},
-                status: :unprocessable_entity
+    begin
+      ActiveRecord::Base.transaction do
+        @question.save!
+        @profilee.save!
+        @profile.update!(profilee_id: @profilee.id)
+        @profile.question = @question
       end
+      render 'create.json.jbuilder'
+    rescue ActiveRecord::RecordInvalid => e
+      render json: { message: "Save failed: #{e.message}",
+                     question: @question.errors.full_messages,
+                    },
+        status: :unprocessable_entity
     end
   end
 
