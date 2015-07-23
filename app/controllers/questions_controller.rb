@@ -1,7 +1,8 @@
 class QuestionsController < ApplicationController
   def search
     search_text = params[:keywords]
-    @questions = Question.search(search_text)
+    min_age = params[:min_age].to_i
+    max_age = params[:max_age].to_i
 
     # question_by_search = Question.search(search_text)
     # question_by_age = Question.where(birthyear: (DateTime.now.utc.year-max_age)..(DateTime.now.utc.year - min_age))
@@ -20,6 +21,7 @@ class QuestionsController < ApplicationController
 
       render json: { message: "Oops! Maybe nothing matches your search. Please search again." },
              render: :not_found
+
     end
   end
 end
