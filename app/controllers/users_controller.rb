@@ -2,20 +2,20 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    render json: @users,
+    render json: @users, except: [:password, :access_token],
            status: :ok
   end
 
   def show
     @user = User.find(params[:user_id])
-    render json: @user,
+      render json: @user, except: :password,
            status: :ok
   end
 
   def profiles
     @profiles = User.find(params[:user_id]).created_profiles
     render 'profiles.json.jbuilder',
-    status: :ok
+            status: :ok
   end
 
   def register
@@ -23,10 +23,9 @@ class UsersController < ApplicationController
                      email: params[:email],
                      password: params[:password])
     if @user.save
-      render json: @user,
-             status: :created
+      render 'register.json.jbuilder',
+              status: :created
     else
-
       render json: { errors: @user.errors.full_messages },
              status: :unprocessable_entity
     end
@@ -36,7 +35,7 @@ class UsersController < ApplicationController
     hash_pass = Digest::SHA1.hexdigest(params[:password])
     @user = User.find_by(email: params[:email], password: hash_pass)
     if @user
-      render json: @user, include: :made_profile,
+      render json: @user, include: :made_profile, except: :password,
              status: :ok
     else
       render json: {message: "Wrong email/password"},
