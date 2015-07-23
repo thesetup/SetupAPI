@@ -28,6 +28,8 @@
 	* [Create Avatar for Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#create-avatar-for-profile)
 	* [Create Avatar for Yourself] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#create-avatar-for-yourself)
 
+5. [SEARCH] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#search)
+
 
 #URL:
 
@@ -47,15 +49,14 @@
 Example Success:
 
 ```
-    {
-      "id": 1,
-      "email": "mary@poppins.com",
-      "password": "cea205a2de95383297dcfe248c5a1b3038ca01c0",
-      "access_token": "1c4864db5ee70e4af3d3a7702966b254",
-      "created_at": "2015-07-08T19:39:46.161Z",
-      "updated_at": "2015-07-08T19:39:46.161Z",
-      "username": "mpoppins"
-    }
+{
+	"id": 1,
+	"email": "user1@test.net",
+	"username": "user1",
+	"access_token": "9d2a999c7279e503470323eabc0d7ec1",
+	"created_at": "2015-07-23T01:36:54.986Z",
+	"updated_at": "2015-07-23T01:36:54.986Z"
+}
 ```
 Status Code: :created
 
@@ -84,37 +85,36 @@ If the logged in user has a profile, this is the response you can expect.
 
 ```
 {
-  "id": 9,
-  "email": "jim@fletcher.com",
-  "password": "f4a69973e7b0bf9d160f9f60e3c3acd2494beb0d",
-  "access_token": "ad9dbebb146aa2117e06ace350750983",
-  "created_at": "2015-07-21T16:33:12.363Z",
-  "updated_at": "2015-07-21T16:33:12.363Z",
-  "username": "jfetch",
+  "id": 18,
+  "email": "user18@test.net",
+  "access_token": "f187b4ce68f733b6db755299dba1bd57",
+  "created_at": "2015-07-23T02:18:30.496Z",
+  "updated_at": "2015-07-23T02:18:30.496Z",
+  "username": "user18",
   "avatar_file_name": null,
   "avatar_content_type": null,
   "avatar_file_size": null,
   "avatar_updated_at": null,
   "avatar_remote_url": null,
   "made_profile": {
-    "id": 5,
-    "profiler_id": 3,
-    "profilee_id": 9,
-    "created_at": "2015-07-21T16:33:12.371Z",
-    "updated_at": "2015-07-21T16:33:12.371Z"
+    "id": 16,
+    "profiler_id": 13,
+    "profilee_id": 18,
+    "created_at": "2015-07-23T02:18:30.500Z",
+    "updated_at": "2015-07-23T02:18:30.500Z"
   }
 }
 ```
 If the logged in user does not have a profile, peep this.
+
 ```
 {
-  "id": 10,
-  "email": "tiny@tim.com",
-  "password": "f4a69973e7b0bf9d160f9f60e3c3acd2494beb0d",
-  "access_token": "f745ee4e0f1138d74e40530e44b8fda0",
-  "created_at": "2015-07-21T19:14:24.208Z",
-  "updated_at": "2015-07-21T19:14:24.208Z",
-  "username": "ttim",
+  "id": 1,
+  "email": "user1@test.net",
+  "access_token": "9d2a999c7279e503470323eabc0d7ec1",
+  "created_at": "2015-07-23T01:36:54.986Z",
+  "updated_at": "2015-07-23T01:36:54.986Z",
+  "username": "user1",
   "avatar_file_name": null,
   "avatar_content_type": null,
   "avatar_file_size": null,
@@ -139,34 +139,56 @@ Status code: :unprocessable_entity
 Example Success:
 
 ```
-  [
+[
   {
     "id": 1,
-    "email": "mary@poppins.com",
-    "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
-    "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
-    "created_at": "2015-07-19T03:32:17.108Z",
-    "updated_at": "2015-07-19T03:41:56.401Z",
-    "username": "mpoppins",
-    "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
-    "avatar_content_type": "image/jpeg",
-    "avatar_file_size": 136717,
-    "avatar_updated_at": "2015-07-19T03:41:55.678Z"
+    "email": "user1@test.net",
+    "created_at": "2015-07-23T01:36:54.986Z",
+    "updated_at": "2015-07-23T01:36:54.986Z",
+    "username": "user1",
+    "avatar_file_name": null,
+    "avatar_content_type": null,
+    "avatar_file_size": null,
+    "avatar_updated_at": null,
+    "avatar_remote_url": null
   },
   {
     "id": 2,
-    "email": "walt@white.bb",
-    "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
-    "access_token": "ba9498f019520a1a48a27144e0bb4189",
-    "created_at": "2015-07-19T03:31:27.874Z",
-    "updated_at": "2015-07-19T03:45:13.294Z",
-    "username": "heisenberg",
-    "avatar_file_name": "20150626-IMG_7963.jpg",
-    "avatar_content_type": "image/jpeg",
-    "avatar_file_size": 8641207,
-    "avatar_updated_at": "2015-07-19T03:45:05.611Z"
+    "email": "user2@test.net",
+    "created_at": "2015-07-23T01:40:03.218Z",
+    "updated_at": "2015-07-23T01:40:03.218Z",
+    "username": "user2",
+    "avatar_file_name": null,
+    "avatar_content_type": null,
+    "avatar_file_size": null,
+    "avatar_updated_at": null,
+    "avatar_remote_url": null
+  },
+  {
+    "id": 3,
+    "email": "user3@test.net",
+    "created_at": "2015-07-23T01:48:03.031Z",
+    "updated_at": "2015-07-23T01:48:03.031Z",
+    "username": "user3",
+    "avatar_file_name": null,
+    "avatar_content_type": null,
+    "avatar_file_size": null,
+    "avatar_updated_at": null,
+    "avatar_remote_url": null
+  },
+  {
+    "id": 4,
+    "email": "user4@test.net",
+    "created_at": "2015-07-23T01:50:58.337Z",
+    "updated_at": "2015-07-23T01:50:58.337Z",
+    "username": "user4",
+    "avatar_file_name": null,
+    "avatar_content_type": null,
+    "avatar_file_size": null,
+    "avatar_updated_at": null,
+    "avatar_remote_url": null
   }
-]
+    ]
 ```
 Status Code: :ok
 
@@ -177,13 +199,12 @@ Example Success:
 
 ```
 {
-  "id": 1,
-  "email": "mary@poppins.com",
-  "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
+  "id": 5,
+  "email": "user5@test.net",
   "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
   "created_at": "2015-07-19T03:32:17.108Z",
   "updated_at": "2015-07-19T03:41:56.401Z",
-  "username": "mpoppins",
+  "username": "user5",
   "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
   "avatar_content_type": "image/jpeg",
   "avatar_file_size": 136717,
@@ -222,7 +243,7 @@ Status Code: :unauthorized
 
 When you register as a user you are granted an access token.  The access token will identify you as a unique user of Setup.
 
-In creating a profile you become a profiler.  You must enter the username and email of your friend, the profilee.  You will also create a password for them which they will then change later.  
+In creating a profile you become a profiler.  You must enter the username and email of your friend, the profilee.  You will also give them a password that they will change later.  
 
 All of the parameters listed below are required for profile creation.
 
@@ -242,47 +263,35 @@ Example Success:
 
 ```
 {
-  "profiles": {
-    "id": 3,
-    "profiler_id": 2,
-    "profilee_id": 6,
-    "created_at": "2015-07-20T14:36:33.241Z",
-    "updated_at": "2015-07-20T14:36:33.241Z"
+  "profile": {
+    "id": 16,
+    "profiler_id": 13,
+    "profilee_id": 18,
+    "created_at": "2015-07-23T02:18:30.500Z",
+    "updated_at": "2015-07-23T02:18:30.500Z"
   },
   "question": {
-    "id": 4,
-    "name": "Cakemind",
-    "email": "cakemind@email.com",
-    "birthyear": 1999,
+    "id": 18,
+    "name": "user18",
+    "email": "user18@test.net",
+    "birthyear": 1985,
     "gender": "male",
     "orientation": "straight",
-    "occupation": "student",
-    "location": "here",
-    "created_at": "2015-07-20T14:36:33.228Z",
-    "updated_at": "2015-07-20T14:36:33.251Z",
-    "profile_id": 3
+    "occupation": "developer",
+    "location": "Atlanta",
+    "created_at": "2015-07-23T02:18:30.487Z",
+    "updated_at": "2015-07-23T02:18:30.504Z",
+    "profile_id": 16
   },
   "videos": [],
-  "users": {
-    "id": 6,
-    "email": "cakemind@email.com",
-    "password": "c6823d67cf36b468706cf6011fd87ee26cb82212",
-    "access_token": "344d20626d8323e484295a3118e70821",
-    "created_at": "2015-07-20T14:36:33.236Z",
-    "updated_at": "2015-07-20T14:36:33.236Z",
-    "username": "Cakemind",
-    "avatar_file_name": null,
-    "avatar_content_type": null,
-    "avatar_file_size": null,
-    "avatar_updated_at": null
-  }
+  "avatar_url": "/avatars/original/missing.png"
 }
 ```
 Status Code: 201 Created
 
 Example Failure:
 
-In this API you MAY NOT create a profile for yourself.
+In this API you MAY NOT create a profile for yourself, so don't even think about it.
 
 ```
 	{
@@ -374,21 +383,8 @@ Example Success:
       "thumbnail_url": "https://thumbnail.com"
     }
   ],
-  "users": {
-    "id": 2,
-    "email": "user2@user2.com",
-    "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
-    "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
-    "created_at": "2015-07-19T03:32:17.108Z",
-    "updated_at": "2015-07-19T03:41:56.401Z",
-    "username": "user2",
-    "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
-    "avatar_content_type": "image/jpeg",
-    "avatar_file_size": 136717,
-    "avatar_updated_at": "2015-07-19T03:41:55.678Z",
-    "avatar_remote_url:: "http://bit.ly/1eeYNQf"
-  },
-  "avatar_url": "http://tiysetup.s3.amazonaws.com/users/avatars/000/000/002/original/1024px-Cassowary_head_frontal.jpg?1437277315"
+  "avatar_url": "http://tiysetup.s3.amazonaws.com/users/avatars/000/000/002/original/1024px-Cassowary_head_frontal.jpg?1437277315",
+  "avatar_remote_url": null
 }
 
 ```
@@ -429,130 +425,127 @@ Example Success:
   "profiles": [
     {
       "id": 1,
-      "profiler_id": 1,
-      "profilee_id": 2,
-      "created_at": "2015-07-15T19:43:18.674Z",
-      "updated_at": "2015-07-15T19:43:18.674Z"
+      "profiler_id": 2,
+      "profilee_id": 3,
+      "avatar_url": "/avatars/original/missing.png"
     },
     {
       "id": 2,
-      "profiler_id": 1,
-      "profilee_id": 3,
-      "created_at": "2015-07-15T19:47:21.579Z",
-      "updated_at": "2015-07-15T19:47:21.579Z"
+      "profiler_id": 2,
+      "profilee_id": 4,
+      "avatar_url": "/avatars/original/missing.png"
+    },
+    {
+      "id": 3,
+      "profiler_id": 2,
+      "profilee_id": 5,
+      "avatar_url": "/avatars/original/missing.png"
     }
   ],
   "questions": [
     {
       "id": 1,
       "name": "user2",
-      "email": "user2@2.com",
+      "email": "user2@test.net",
       "birthyear": 1999,
       "gender": "male",
       "orientation": "straight",
-      "occupation": "bum",
+      "occupation": "skateboarder",
       "location": "Atlanta",
-      "created_at": "2015-07-15T19:43:18.680Z",
-      "updated_at": "2015-07-15T19:43:18.680Z",
+      "created_at": "2015-07-23T02:52:32.603Z",
+      "updated_at": "2015-07-23T02:52:32.622Z",
       "profile_id": 1
     },
     {
       "id": 2,
       "name": "user3",
-      "email": "user3@3.com",
-      "birthyear": 1999,
+      "email": "user3@test.net",
+      "birthyear": 1995,
       "gender": "female",
       "orientation": "straight",
-      "occupation": "scientist",
+      "occupation": "diva",
       "location": "Atlanta",
-      "created_at": "2015-07-15T19:47:21.581Z",
-      "updated_at": "2015-07-15T19:47:21.581Z",
+      "created_at": "2015-07-23T02:52:54.564Z",
+      "updated_at": "2015-07-23T02:52:54.584Z",
       "profile_id": 2
-    }
-  ],
-  "videos": [
-    {
-      "id": 1,
-      "videoable_id": 1,
-      "videoable_type": "Profile",
-      "video_url": "catvideo.mp4",
-      "created_at": "2015-07-15T19:51:59.688Z",
-      "updated_at": "2015-07-15T19:51:59.688Z",
-      "caption": "Look at this cat!",
-      "thumbnail_url": "catvideo.png"
-    },
-    {
-      "id": 2,
-      "videoable_id": 1,
-      "videoable_type": "Profile",
-      "video_url": "dogvideo.mp4",
-      "created_at": "2015-07-15T19:55:26.585Z",
-      "updated_at": "2015-07-15T19:55:26.585Z",
-      "caption": "Look at this dog!",
-      "thumbnail_url": "dogvideo.png"
     },
     {
       "id": 3,
-      "videoable_id": 1,
-      "videoable_type": "Profile",
-      "video_url": "snakevideo.mp4",
-      "created_at": "2015-07-15T19:55:42.124Z",
-      "updated_at": "2015-07-15T19:55:42.124Z",
-      "caption": "Look at this snake!",
-      "thumbnail_url": "snakevideo.png"
+      "name": "user5",
+      "email": "user5@test.net",
+      "birthyear": 1990,
+      "gender": "female",
+      "orientation": "straight",
+      "occupation": "sunbather",
+      "location": "Jamaica",
+      "created_at": "2015-07-23T02:53:22.331Z",
+      "updated_at": "2015-07-23T02:53:22.351Z",
+      "profile_id": 3
+    }
+  ],
+  "videos": [],
+  "users": [
+    {
+      "id": 1,
+      "email": "user1@test.net",
+      "created_at": "2015-07-23T02:50:27.069Z",
+      "updated_at": "2015-07-23T02:50:27.069Z",
+      "username": "user1",
+      "avatar_file_name": null,
+      "avatar_content_type": null,
+      "avatar_file_size": null,
+      "avatar_updated_at": null,
+      "avatar_remote_url": null
+    },
+    {
+      "id": 2,
+      "email": "user4@test.net",
+      "created_at": "2015-07-23T02:52:21.756Z",
+      "updated_at": "2015-07-23T02:52:21.756Z",
+      "username": "user4",
+      "avatar_file_name": null,
+      "avatar_content_type": null,
+      "avatar_file_size": null,
+      "avatar_updated_at": null,
+      "avatar_remote_url": null
+    },
+    {
+      "id": 3,
+      "email": "user2@test.net",
+      "created_at": "2015-07-23T02:52:32.609Z",
+      "updated_at": "2015-07-23T02:52:32.609Z",
+      "username": "user2",
+      "avatar_file_name": null,
+      "avatar_content_type": null,
+      "avatar_file_size": null,
+      "avatar_updated_at": null,
+      "avatar_remote_url": null
     },
     {
       "id": 4,
-      "videoable_id": 1,
-      "videoable_type": "Profile",
-      "video_url": "hippovideo.mp4",
-      "created_at": "2015-07-15T19:55:52.135Z",
-      "updated_at": "2015-07-15T19:55:52.135Z",
-      "caption": "Look at this hippo!",
-      "thumbnail_url": "hippovideo.png"
+      "email": "user3@test.net",
+      "created_at": "2015-07-23T02:52:54.573Z",
+      "updated_at": "2015-07-23T02:52:54.573Z",
+      "username": "user3",
+      "avatar_file_name": null,
+      "avatar_content_type": null,
+      "avatar_file_size": null,
+      "avatar_updated_at": null,
+      "avatar_remote_url": null
+    },
+    {
+      "id": 5,
+      "email": "user5@test.net",
+      "created_at": "2015-07-23T02:53:22.339Z",
+      "updated_at": "2015-07-23T02:53:22.339Z",
+      "username": "user5",
+      "avatar_file_name": null,
+      "avatar_content_type": null,
+      "avatar_file_size": null,
+      "avatar_updated_at": null,
+      "avatar_remote_url": null
     }
-  ],
-  "users": [
-      {
-        "id": 1,
-        "email": "mary@poppins.com",
-        "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
-        "access_token": "bd23611228d9f8bf8f5fb21e8db03d02",
-        "created_at": "2015-07-19T03:32:17.108Z",
-        "updated_at": "2015-07-19T03:41:56.401Z",
-        "username": "mpoppins",
-        "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
-        "avatar_content_type": "image/jpeg",
-        "avatar_file_size": 136717,
-        "avatar_updated_at": "2015-07-19T03:41:55.678Z"
-      },
-      {
-        "id": 2,
-        "email": "walt@white.com",
-        "password": "205fbe4c4805b21eeb382d2ca8a8d9c3dd0be517",
-        "access_token": "ba9498f019520a1a48a27144e0bb4189",
-        "created_at": "2015-07-19T03:31:27.874Z",
-        "updated_at": "2015-07-19T03:52:42.416Z",
-        "username": "heisenberg",
-        "avatar_file_name": "1024px-Cassowary_head_frontal.jpg",
-        "avatar_content_type": "image/jpeg",
-        "avatar_file_size": 136717,
-        "avatar_updated_at": "2015-07-19T03:52:41.866Z"
-      },
-      {
-        "id": 3,
-        "email": "leeroy@jenkins.com",
-        "password": "ebfc7910077770c8340f63cd2dca2ac1f120444f",
-        "access_token": "424e388fdd162a48a935816a7bbce79e",
-        "created_at": "2015-07-19T03:58:50.887Z",
-        "updated_at": "2015-07-19T03:58:50.887Z",
-        "username": "ohleeroy",
-        "avatar_file_name": null,
-        "avatar_content_type": null,
-        "avatar_file_size": null,
-        "avatar_updated_at": null
-      }
-    ]
+  ]
 }
 ```
 
@@ -562,7 +555,7 @@ Currently their is no endpoint to change attributes on the Question model.  This
 ###Delete Profile
 ```DELETE '/profiles/:id'```
 
-A profile may only be deleted by its profiler.  A profilee cannot delete a profile created about her, but may delete other profiles for whom she is the profiler.
+A profile may only be deleted by its profiler.  A profilee cannot delete a profile created about her.  She can only delete profiles that she has created.
 
 Example Success:
 
@@ -692,10 +685,11 @@ Again, this is only an option if no one has already created a profile for you.  
 ######Params:
 
 * avatar
-* avatar_remote_url
+* avatar_ remote_url
 
-avatar is form-data
-avatar_remote_url is a string
+Avatar is form-data.
+
+Avatar_ remote_url is a string.
 
 
 Example Response:
@@ -718,4 +712,71 @@ Example Response:
   },
   "avatar_url": "http://tiysetup.s3.amazonaws.com/users/avatars/000/000/002/original/1024px-Cassowary_head_frontal.jpg?1437407160"
 }
+```
+#Search
+
+This first version of Setup has basic search functionality.  You can search based on age, gender, orientation, occupation and location.  You're going to want to set the URL parameter key to 'keywords'.
+
+```GET 'questions/search?keywords=female,straight'```
+
+__Example Response:__
+
+```
+{
+  "questions": [
+    {
+      "id": 2,
+      "name": "user3",
+      "email": "user3@test.net",
+      "birthyear": 1995,
+      "gender": "female",
+      "orientation": "straight",
+      "occupation": "diva",
+      "location": "Atlanta",
+      "created_at": "2015-07-23T02:52:54.564Z",
+      "updated_at": "2015-07-23T02:52:54.584Z",
+      "profile_id": 2
+    },
+    {
+      "id": 3,
+      "name": "user5",
+      "email": "user5@test.net",
+      "birthyear": 1990,
+      "gender": "female",
+      "orientation": "straight",
+      "occupation": "sunbather",
+      "location": "Jamaica",
+      "created_at": "2015-07-23T02:53:22.331Z",
+      "updated_at": "2015-07-23T02:53:22.351Z",
+      "profile_id": 3
+    }
+  ],
+  "profiles": [
+    {
+      "id": 2,
+      "profiler_id": 2,
+      "profilee_id": 4,
+      "avatar_remote_url": null,
+      "avatar_url": "/avatars/original/missing.png"
+    },
+    {
+      "id": 3,
+      "profiler_id": 2,
+      "profilee_id": 5,
+      "avatar_remote_url": null,
+      "avatar_url": "/avatars/original/missing.png"
+    }
+  ]
+}
+```
+
+If you search for a combination of keywords that do not match against at least one profile you'll get an error.
+
+__Example:__
+
+```
+{
+  "message": "Oops! Maybe nothing matches your search. Please search again."
+}
+
 ```
