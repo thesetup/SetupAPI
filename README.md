@@ -1,5 +1,13 @@
 #API Documention for Setup
 
+Setup is a video-driven dating app that you use to set up your friends.  You create a dating profile for one or many of your single friends, post videos of yourself describing how awesome they are, or take videos of them being awesome in action.  The documentation below details MVP functionality of the application.
+
+Future features will include:
+
+ * An application system by which you send video messages to profile owners to express interest in profile subjects
+ * Email functionality
+ * The ability to edit profile information.
+
 ##TABLE OF CONTENTS:
 
 1. [USER] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#user)
@@ -14,7 +22,7 @@
 	*  [Show Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#show-profile)
 	*  [Show All Profiles for User] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#show-all-profiles-for-user)
 	*  [Index Profiles] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#index-profiles)
-	*  [Edit Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#ddit-profile)
+	*  [Edit Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#edit-profile)
 	*  [Delete Profile] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#delete-profile)
 
 3.  [VIDEO] (https://github.com/thesetup/YsrvAbeDbA/blob/master/README.md#video)
@@ -46,7 +54,7 @@
 * email
 * password
 
-Example Success:
+__Example Success:__
 
 ```
 {
@@ -60,7 +68,7 @@ Example Success:
 ```
 Status Code: :created
 
-Example Failures:
+__Example Failure:__
 
 ```
   {
@@ -79,7 +87,7 @@ Status Code: :unprocessable_entity
 * email
 * password
 
-Example Response:
+__Example Response:__
 
 If the logged in user has a profile, this is the response you can expect.
 
@@ -124,7 +132,7 @@ If the logged in user does not have a profile, peep this.
 ```
 Status Code: :ok
 
-Example Failure:
+__Example Failure:__
 
 ```
   {
@@ -136,7 +144,7 @@ Status code: :unprocessable_entity
 ###Index
 ```GET '/users'```
 
-Example Success:
+__Example Success:__
 
 ```
 [
@@ -195,7 +203,7 @@ Status Code: :ok
 ###Show
 ```GET '/users/:user_id'```
 
-Example Success:
+__Example Success:__
 
 ```
 {
@@ -218,7 +226,7 @@ Status Code: :ok
 
 * Requires Access-Token in Headers.
 
-Example Success:
+__Example Success:__
 
 ```
   {
@@ -227,7 +235,7 @@ Example Success:
 ```
 Status Code: :ok
 
-Example Failure:
+__Example Failure:__
 
 ```
   {
@@ -259,7 +267,7 @@ All of the parameters listed below are required for profile creation.
 * occupation
 * location
 
-Example Success:
+__Example Success:__
 
 ```
 {
@@ -289,7 +297,7 @@ Example Success:
 ```
 Status Code: 201 Created
 
-Example Failure:
+__Example Failure:__
 
 In this API you MAY NOT create a profile for yourself, so don't even think about it.
 
@@ -315,7 +323,7 @@ Status Code: 422 Unprocessable Entity
 
 This endpoint will show a given profile and all of the videos, images and questions associated with it.
 
-Example Success:
+__Example Success:__
 
 ```
 {
@@ -393,7 +401,7 @@ Example Success:
 
 Take a gander at all of the profiles any one user has created.  In this array, each profile now includes the username and avatar_url associated with it.
 
-Example Response:
+__Example Response:__
 
 ```
 [
@@ -418,7 +426,7 @@ Example Response:
 
 You can fetch all profiles at this endpoint.
 
-Example Success:
+__Example Success:__
 
 ```
 {
@@ -557,7 +565,7 @@ Currently their is no endpoint to change attributes on the Question model.  This
 
 A profile may only be deleted by its profiler.  A profilee cannot delete a profile created about her.  She can only delete profiles that she has created.
 
-Example Success:
+__Example Success:__
 
 ```
 { "message": "Profile deleted."
@@ -565,7 +573,7 @@ Example Success:
 ```
 Status Code: :ok
 
-Example Failure:
+__Example Failure:__
 
 ```
 {
@@ -587,7 +595,7 @@ One video at a time y'all.  Make sure to include these params.  Also note that o
 * caption
 * video_type
 
-Example Success:
+__Example Success:__
 
 ```
 {
@@ -604,7 +612,7 @@ Example Success:
 ```
 Status Code: 200 ok
 
-Example Failure:
+__Example Failure:__
 
 ```
 {
@@ -620,7 +628,7 @@ Status Code: 422 Unprocessable Entity
 
 Obviously you must be the owner of a profile to swap out its' videos.
 
-Example Response:
+__Example Response:__
 
 ```
 {
@@ -653,7 +661,7 @@ In this first version of Setup, a user can have only one avatar.  To this end, t
 * avatar
 
 
-Example Response:
+__Example Response:__
 
 In this example we see user information for user with id: 2.  Use this endpoint every time you want to change your profilee's avatar.
 
@@ -692,7 +700,7 @@ Avatar is form-data.
 Avatar_ remote_url is a string.
 
 
-Example Response:
+__Example Response:__
 
 ```
 {
