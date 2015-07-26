@@ -1,6 +1,6 @@
 #API Documention for Setup
 
-Setup is a video-driven dating app that you use to set up your friends.  You create a dating profile for one or many of your single friends, post videos of yourself describing how awesome they are, or take videos of them being awesome in action.  The documentation below details MVP functionality of the application.
+Setup is a video-driven dating app that you use to set up your friends.  You create a dating profile for one or many of your single friends, post videos of yourself describing how awesome they are, or take videos of them being awesome in action.  The documentation below details MVP functionality of the application which was conceptualized, designed and developed in less than 3 weeks.
 
 Future features will include:
 
