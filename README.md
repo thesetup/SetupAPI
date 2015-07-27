@@ -6,7 +6,7 @@ Future features will include:
 
  * An application system by which you send video messages to profile owners to express interest in profile subjects
  * Email functionality
- * The ability to edit profile information.
+ * The ability to edit profile information
 
 ##TABLE OF CONTENTS:
 
